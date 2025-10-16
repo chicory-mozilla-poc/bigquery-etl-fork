@@ -2,9 +2,12 @@ fields:
 - name: as_of_date
   type: DATE
   mode: NULLABLE
+  description: Date field
 - name: table_name
   type: STRING
   mode: NULLABLE
+  description: Count calculated from aggregation
 - name: total_rows
   type: INTEGER
   mode: NULLABLE
+  description: Total count or sum

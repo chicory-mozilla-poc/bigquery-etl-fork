@@ -2,15 +2,19 @@ fields:
 - mode: NULLABLE
   name: submission_date
   type: DATE
+  description: Date when the data was submitted
 - mode: NULLABLE
   name: user_id_sha256
   type: STRING
+  description: String value
 - mode: NULLABLE
   name: service
   type: STRING
+  description: String value
 - mode: NULLABLE
   name: country
   type: STRING
+  description: ISO country code
 - mode: NULLABLE
   name: days_seen_bits
   type: INTEGER
@@ -29,4 +33,5 @@ fields:
 - name: user_agent_device_count
   type: INTEGER
   mode: NULLABLE
-  description: Number of devices associated with the user, per service, per day. Estimated from the number of unique user agent strings.
+  description: Number of devices associated with the user, per service, per day. Estimated
+    from the number of unique user agent strings.
