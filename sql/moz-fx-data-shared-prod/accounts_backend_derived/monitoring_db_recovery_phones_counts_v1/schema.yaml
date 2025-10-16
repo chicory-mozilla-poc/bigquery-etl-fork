@@ -2,9 +2,12 @@ fields:
 - name: as_of_date
   type: DATE
   mode: NULLABLE
+  description: Date field representing a specific calendar day
 - name: country_code
   type: STRING
   mode: NULLABLE
+  description: ISO country code or country name identifier
 - name: total_rows
   type: INTEGER
   mode: NULLABLE
+  description: Monetary amount related to revenue, payment, or pricing
