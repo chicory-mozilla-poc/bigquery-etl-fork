@@ -2,6 +2,7 @@ fields:
 - name: id
   type: NUMERIC
   mode: NULLABLE
+  description: Unique identifier for the security event record
 - name: uid
   type: STRING
   mode: NULLABLE
@@ -9,9 +10,11 @@ fields:
 - name: nameId
   type: INTEGER
   mode: NULLABLE
+  description: Foreign key reference to the security event name
 - name: verified
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether the account was verified at the time of the event
 - name: ipAddrHmac
   type: STRING
   mode: NULLABLE
@@ -19,6 +22,7 @@ fields:
 - name: createdAt
   type: TIMESTAMP
   mode: NULLABLE
+  description: Timestamp when the security event was recorded
 - name: tokenVerificationId
   type: STRING
   mode: NULLABLE
@@ -26,3 +30,4 @@ fields:
 - name: ipAddr
   type: STRING
   mode: NULLABLE
+  description: IP address from which the security event originated
