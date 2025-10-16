@@ -2,21 +2,27 @@ fields:
 - name: submission_date
   type: DATE
   mode: NULLABLE
+  description: Date when the data was submitted
 - name: user_id_sha256
   type: STRING
   mode: NULLABLE
+  description: SHA256 hash of user identifier for privacy protection
 - name: service
   type: STRING
   mode: NULLABLE
+  description: Name of the Firefox Account service accessed by the user
 - name: country
   type: STRING
   mode: NULLABLE
+  description: ISO 3166-1 alpha-2 country code derived from client geo data
 - name: seen_in_tier1_country
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether the user was active in a Tier 1 country on this date
 - name: registered
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether the user registered on this date
 - name: user_agent_device_count
   type: INTEGER
   mode: NULLABLE
