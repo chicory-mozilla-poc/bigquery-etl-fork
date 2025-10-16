@@ -2,12 +2,15 @@ fields:
 - name: id
   type: INTEGER
   mode: NULLABLE
+  description: Unique identifier for the email record
 - name: normalizedEmail
   type: STRING
   mode: NULLABLE
+  description: Normalized email address (lowercase, standardized format)
 - name: email
   type: STRING
   mode: NULLABLE
+  description: Email address as provided by the user
 - name: uid
   type: STRING
   mode: NULLABLE
@@ -18,12 +21,16 @@ fields:
 - name: isVerified
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether the email address has been verified
 - name: isPrimary
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether this is the primary email for the account
 - name: verifiedAt
   type: TIMESTAMP
   mode: NULLABLE
+  description: Timestamp when the email was verified
 - name: createdAt
   type: TIMESTAMP
   mode: NULLABLE
+  description: Timestamp when the email record was created
