@@ -2,117 +2,156 @@ fields:
 - mode: NULLABLE
   name: basket_token
   type: STRING
+  description: Unique token identifying the contact in Basket system
 - mode: NULLABLE
   name: create_timestamp
   type: STRING
+  description: Timestamp when the contact record was created
 - mode: NULLABLE
   name: double_opt_in
   type: INTEGER
+  description: Indicates whether contact confirmed subscription via double opt-in (1=yes, 0=no)
 - mode: NULLABLE
   name: email
   type: STRING
+  description: Email address of the contact
 - mode: NULLABLE
   name: email_format
   type: STRING
+  description: Preferred email format (HTML or text)
 - mode: NULLABLE
   name: email_id
   type: STRING
+  description: Unique identifier for the email address
 - mode: NULLABLE
   name: email_lang
   type: STRING
+  description: Preferred language for email communications
 - mode: NULLABLE
   name: fxa_account_deleted
   type: INTEGER
+  description: Indicates whether Firefox Account has been deleted (1=yes, 0=no)
 - mode: NULLABLE
   name: fxa_created_date
   type: STRING
+  description: Date when the Firefox Account was created
 - mode: NULLABLE
   name: fxa_first_service
   type: STRING
+  description: First service the user accessed with their Firefox Account
 - mode: NULLABLE
   name: fxa_id
   type: STRING
+  description: Firefox Account unique identifier
 - mode: NULLABLE
   name: has_opted_out_of_email
   type: INTEGER
+  description: Indicates whether contact has opted out of email communications (1=yes, 0=no)
 - mode: NULLABLE
   name: mailing_country
   type: STRING
+  description: ISO 3166-1 alpha-2 country code for mailing address
 - mode: NULLABLE
   name: recipient_id
   type: INTEGER
+  description: Unique identifier for the recipient in Acoustic system
 - mode: NULLABLE
   name: sfdc_id
   type: STRING
+  description: Salesforce unique identifier for the contact
 - mode: NULLABLE
   name: sub_common_voice
   type: INTEGER
+  description: Subscription status for Common Voice newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_firefox_accounts_journey
   type: INTEGER
+  description: Subscription status for Firefox Accounts Journey newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_firefox_news
   type: INTEGER
+  description: Subscription status for Firefox News newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_hubs
   type: INTEGER
+  description: Subscription status for Hubs newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_internet_health_report
   type: INTEGER
+  description: Subscription status for Internet Health Report newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_knowledge_is_power
   type: INTEGER
+  description: Subscription status for Knowledge is Power newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_miti
   type: INTEGER
+  description: Subscription status for MITI newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_mixed_reality
   type: INTEGER
+  description: Subscription status for Mixed Reality newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_mozilla_fellowship_awardee_alumni
   type: INTEGER
+  description: Subscription status for Mozilla Fellowship Awardee Alumni newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_mozilla_festival
   type: INTEGER
+  description: Subscription status for Mozilla Festival newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_mozilla_foundation
   type: INTEGER
+  description: Subscription status for Mozilla Foundation newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_mozilla_technology
   type: INTEGER
+  description: Subscription status for Mozilla Technology newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_mozillians_nda
   type: INTEGER
+  description: Subscription status for Mozillians NDA newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_take_action_for_the_internet
   type: INTEGER
+  description: Subscription status for Take Action for the Internet newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_test_pilot
   type: INTEGER
+  description: Subscription status for Test Pilot newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: vpn_waitlist_geo
   type: STRING
+  description: Geographic region for VPN waitlist
 - mode: NULLABLE
   name: vpn_waitlist_platform
   type: STRING
+  description: Platform (iOS, Android, etc.) for VPN waitlist
 - mode: NULLABLE
   name: sub_about_mozilla
   type: INTEGER
+  description: Subscription status for About Mozilla newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_apps_and_hacks
   type: INTEGER
+  description: Subscription status for Apps and Hacks newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_rally
   type: INTEGER
+  description: Subscription status for Rally newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: sub_firefox_sweepstakes
   type: INTEGER
+  description: Subscription status for Firefox Sweepstakes newsletter (1=subscribed, 0=not subscribed)
 - mode: NULLABLE
   name: cohort
   type: STRING
+  description: User cohort or segment identifier for analysis
 - mode: NULLABLE
   name: relay_waitlist_geo
   type: STRING
+  description: Geographic region for Relay waitlist
 - mode: NULLABLE
   name: last_modified_date
   type: DATE
+  description: Date when the contact record was last modified
