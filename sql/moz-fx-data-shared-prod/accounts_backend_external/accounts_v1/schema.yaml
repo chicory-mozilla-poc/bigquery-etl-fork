@@ -9,39 +9,52 @@ fields:
   - name: normalizedEmail
     type: STRING
     mode: NULLABLE
+    description: Normalized email address (lowercase, standardized format)
   - name: email
     type: STRING
     mode: NULLABLE
+    description: Email address as provided by the user
   - name: emailVerified
     type: BOOLEAN
     mode: NULLABLE
+    description: Indicates whether the email address has been verified
   - name: verifierVersion
     type: INTEGER
     mode: NULLABLE
+    description: Version of the password verifier algorithm used
   - name: verifierSetAt
     type: TIMESTAMP
     mode: NULLABLE
+    description: Timestamp when the password verifier was last set
   - name: createdAt
     type: TIMESTAMP
     mode: NULLABLE
+    description: Timestamp when the account was created
   - name: locale
     type: STRING
     mode: NULLABLE
+    description: User's preferred locale/language code
   - name: lockedAt
     type: TIMESTAMP
     mode: NULLABLE
+    description: Timestamp when the account was locked
   - name: profileChangedAt
     type: TIMESTAMP
     mode: NULLABLE
+    description: Timestamp when the user profile was last modified
   - name: keysChangedAt
     type: TIMESTAMP
     mode: NULLABLE
+    description: Timestamp when encryption keys were last changed
   - name: ecosystemAnonId
     type: STRING
     mode: NULLABLE
+    description: Anonymous identifier used for cross-product ecosystem analysis
   - name: disabledAt
     type: TIMESTAMP
     mode: NULLABLE
+    description: Timestamp when the account was disabled
   - name: metricsOptOutAt
     type: TIMESTAMP
     mode: NULLABLE
+    description: Timestamp when the user opted out of metrics collection
