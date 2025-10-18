@@ -1,0 +1,3050 @@
+fields:
+- description: The date when the telemetry ping is received on the server side.
+  mode: NULLABLE
+  name: submission_date
+  type: DATE
+- description: A unique identifier (UUID) for the client installation
+  mode: NULLABLE
+  name: client_id
+  type: STRING
+- description: Sum of subprocess abnormal aborts in content processes across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: aborts_content_sum
+  type: INTEGER
+- description: Sum of subprocess abnormal aborts in gmplugin processes across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: aborts_gmplugin_sum
+  type: INTEGER
+- description: Sum of subprocess abnormal aborts in plugin processes across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: aborts_plugin_sum
+  type: INTEGER
+- description: Average count of active addons across all pings for this client on
+    this day.
+  mode: NULLABLE
+  name: active_addons_count_mean
+  type: FLOAT
+- description: Aggregated list of active addons with their properties including version,
+    enabled status, and installation details.
+  fields:
+  - description: Unique identifier for the addon.
+    mode: NULLABLE
+    name: addon_id
+    type: STRING
+  - description: Whether the addon is blocklisted by Mozilla.
+    mode: NULLABLE
+    name: blocklisted
+    type: BOOLEAN
+  - description: Display name of the addon.
+    mode: NULLABLE
+    name: name
+    type: STRING
+  - description: Whether the addon was disabled by the user.
+    mode: NULLABLE
+    name: user_disabled
+    type: BOOLEAN
+  - description: Whether the addon is disabled by the application.
+    mode: NULLABLE
+    name: app_disabled
+    type: BOOLEAN
+  - description: Version string of the addon.
+    mode: NULLABLE
+    name: version
+    type: STRING
+  - description: Scope of the addon installation (user vs. system level).
+    mode: NULLABLE
+    name: scope
+    type: INTEGER
+  - description: Type of the addon (extension, theme, plugin, etc.).
+    mode: NULLABLE
+    name: type
+    type: STRING
+  - description: Whether the addon was installed from outside the official store.
+    mode: NULLABLE
+    name: foreign_install
+    type: BOOLEAN
+  - description: Whether the addon includes binary components.
+    mode: NULLABLE
+    name: has_binary_components
+    type: BOOLEAN
+  - description: Days since epoch when the addon was installed.
+    mode: NULLABLE
+    name: install_day
+    type: INTEGER
+  - description: Days since epoch when the addon was last updated.
+    mode: NULLABLE
+    name: update_day
+    type: INTEGER
+  - description: Signature verification state of the addon.
+    mode: NULLABLE
+    name: signed_state
+    type: INTEGER
+  - description: Whether the addon is a system addon.
+    mode: NULLABLE
+    name: is_system
+    type: BOOLEAN
+  - description: Whether the addon is implemented as a WebExtension.
+    mode: NULLABLE
+    name: is_web_extension
+    type: BOOLEAN
+  - description: Whether the addon is compatible with multi-process Firefox (e10s).
+    mode: NULLABLE
+    name: multiprocess_compatible
+    type: BOOLEAN
+  mode: REPEATED
+  name: active_addons
+  type: RECORD
+- description: Most recent active experiment branch identifier from Normandy studies,
+    deprecated field.
+  mode: NULLABLE
+  name: active_experiment_branch
+  type: STRING
+- description: Most recent active experiment ID from Normandy studies, deprecated
+    field.
+  mode: NULLABLE
+  name: active_experiment_id
+  type: STRING
+- description: Sum of active hours (derived from active ticks at 5 seconds per tick)
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: active_hours_sum
+  type: FLOAT
+- description: Most recent value indicating whether addon compatibility checking is
+    enabled.
+  mode: NULLABLE
+  name: addon_compatibility_check_enabled
+  type: BOOLEAN
+- description: Most recent application build ID (timestamp format YYYYMMDDhhmmss)
+    for this client on this day.
+  mode: NULLABLE
+  name: app_build_id
+  type: STRING
+- description: User visible version string (e.g. "1.0.3") for the browser.
+  mode: NULLABLE
+  name: app_display_version
+  type: STRING
+- description: Most recent application name (typically "Firefox") for this client
+    on this day.
+  mode: NULLABLE
+  name: app_name
+  type: STRING
+- description: User-visible application version string in semantic versioning format
+    (e.g., '1.0.3', '99.3.3') for the browser or mobile app
+  mode: NULLABLE
+  name: app_version
+  type: STRING
+- description: Attribution data indicating how the user acquired Firefox, including
+    marketing campaign information and download source.
+  fields:
+  - description: Attribution source parameter (e.g., "google", "bing").
+    mode: NULLABLE
+    name: source
+    type: STRING
+  - description: Attribution medium parameter (e.g., "organic", "cpc").
+    mode: NULLABLE
+    name: medium
+    type: STRING
+  - description: Attribution campaign identifier.
+    mode: NULLABLE
+    name: campaign
+    type: STRING
+  - description: Attribution content parameter for A/B testing.
+    mode: NULLABLE
+    name: content
+    type: STRING
+  - description: Attribution experiment identifier.
+    mode: NULLABLE
+    name: experiment
+    type: STRING
+  - description: Attribution variation identifier for the experiment.
+    mode: NULLABLE
+    name: variation
+    type: STRING
+  - description: Download token for attribution tracking.
+    mode: NULLABLE
+    name: dltoken
+    type: STRING
+  - description: Download source identifier.
+    mode: NULLABLE
+    name: dlsource
+    type: STRING
+  - description: User agent string from the download context.
+    mode: NULLABLE
+    name: ua
+    type: STRING
+  mode: NULLABLE
+  name: attribution
+  type: RECORD
+- description: Most recent value indicating whether the addon blocklist is enabled.
+  mode: NULLABLE
+  name: blocklist_enabled
+  type: BOOLEAN
+- description: The normalized channel the application is being distributed on.
+  mode: NULLABLE
+  name: channel
+  type: STRING
+- description: Average client clock skew in seconds (difference between client clock
+    and server timestamp) across all pings for this client on this day.
+  mode: NULLABLE
+  name: client_clock_skew_mean
+  type: FLOAT
+- description: Average submission latency in seconds (time from ping creation to submission)
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: client_submission_latency_mean
+  type: FLOAT
+- description: Most recent count of CPU cores available on the system.
+  mode: NULLABLE
+  name: cpu_cores
+  type: INTEGER
+- description: Most recent total count of logical CPU processors on the system.
+  mode: NULLABLE
+  name: cpu_count
+  type: INTEGER
+- description: Most recent CPU family identifier.
+  mode: NULLABLE
+  name: cpu_family
+  type: INTEGER
+- description: Most recent size of CPU L2 cache in kilobytes.
+  mode: NULLABLE
+  name: cpu_l2_cache_kb
+  type: INTEGER
+- description: Most recent size of CPU L3 cache in kilobytes.
+  mode: NULLABLE
+  name: cpu_l3_cache_kb
+  type: INTEGER
+- description: CPU model of the user's device.
+  mode: NULLABLE
+  name: cpu_model
+  type: INTEGER
+- description: CPU speed in MHz.
+  mode: NULLABLE
+  name: cpu_speed_mhz
+  type: INTEGER
+- description: CPU stepping.
+  mode: NULLABLE
+  name: cpu_stepping
+  type: INTEGER
+- description: The CPU vendor (e.g. "GenuineIntel").
+  mode: NULLABLE
+  name: cpu_vendor
+  type: STRING
+- description: Sum of detected crashes in content processes across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: crashes_detected_content_sum
+  type: INTEGER
+- description: Sum of detected crashes in gmplugin processes across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: crashes_detected_gmplugin_sum
+  type: INTEGER
+- description: Sum of detected crashes in plugin processes across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: crashes_detected_plugin_sum
+  type: INTEGER
+- description: Sum of crash report submission attempts for content crashes across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: crash_submit_attempt_content_sum
+  type: INTEGER
+- description: Sum of crash report submission attempts for main process crashes across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: crash_submit_attempt_main_sum
+  type: INTEGER
+- description: Sum of crash report submission attempts for plugin crashes across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: crash_submit_attempt_plugin_sum
+  type: INTEGER
+- description: Sum of successful crash report submissions for content crashes across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: crash_submit_success_content_sum
+  type: INTEGER
+- description: Sum of successful crash report submissions for main process crashes
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: crash_submit_success_main_sum
+  type: INTEGER
+- description: Sum of successful crash report submissions for plugin crashes across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: crash_submit_success_plugin_sum
+  type: INTEGER
+- description: Most recent default search engine identifier.
+  mode: NULLABLE
+  name: default_search_engine
+  type: STRING
+- description: Most recent file path from which the default search engine was loaded.
+  mode: NULLABLE
+  name: default_search_engine_data_load_path
+  type: STRING
+- description: Most recent human-readable name of the default search engine.
+  mode: NULLABLE
+  name: default_search_engine_data_name
+  type: STRING
+- description: Most recent origin of the default search engine configuration.
+  mode: NULLABLE
+  name: default_search_engine_data_origin
+  type: STRING
+- description: Most recent submission URL template for the default search engine.
+  mode: NULLABLE
+  name: default_search_engine_data_submission_url
+  type: STRING
+- description: Sum of times the developer toolbox was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: devtools_toolbox_opened_count_sum
+  type: INTEGER
+- description: Identifier for the Firefox distribution source or partner, associated
+    with the install and indicating where the installation originated from
+  mode: NULLABLE
+  name: distribution_id
+  type: STRING
+- description: Most recent value indicating whether multi-process Firefox (Electrolysis/e10s)
+    is enabled.
+  mode: NULLABLE
+  name: e10s_enabled
+  type: BOOLEAN
+- description: Most recent build architecture (e.g., "x86", "x86-64").
+  mode: NULLABLE
+  name: env_build_arch
+  type: STRING
+- description: Most recent build ID from the environment (may differ from app_build_id
+    in update scenarios).
+  mode: NULLABLE
+  name: env_build_id
+  type: STRING
+- description: Most recent build version from the environment.
+  mode: NULLABLE
+  name: env_build_version
+  type: STRING
+- description: Array of accepted languages for content negotiation.
+  mode: REPEATED
+  name: environment_settings_intl_accept_languages
+  type: STRING
+- description: Array of application UI locales.
+  mode: REPEATED
+  name: environment_settings_intl_app_locales
+  type: STRING
+- description: Array of locales available in the Firefox installation.
+  mode: REPEATED
+  name: environment_settings_intl_available_locales
+  type: STRING
+- description: Array of user-requested locales for content.
+  mode: REPEATED
+  name: environment_settings_intl_requested_locales
+  type: STRING
+- description: Array of operating system locale settings.
+  mode: REPEATED
+  name: environment_settings_intl_system_locales
+  type: STRING
+- description: Array of regional preference locales for formatting dates, numbers,
+    etc.
+  mode: REPEATED
+  name: environment_settings_intl_regional_prefs_locales
+  type: STRING
+- description: Map of active experiments with their branch assignments for this client.
+  fields:
+  - description: Experiment identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Experiment branch assignment.
+    mode: NULLABLE
+    name: value
+    type: STRING
+  mode: REPEATED
+  name: experiments
+  type: RECORD
+- description: Average time in milliseconds for first paint (initial rendering) across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: first_paint_mean
+  type: FLOAT
+- description: Most recent version of Adobe Flash Player plugin installed.
+  mode: NULLABLE
+  name: flash_version
+  type: STRING
+- description: Two-letter ISO 3166-1 alpha-2 country code where the user activity
+    occurred, determined by IP geolocation (unknown values may be stored as '??')
+  mode: NULLABLE
+  name: country
+  type: STRING
+- description: City name derived from IP geolocation.
+  mode: NULLABLE
+  name: city
+  type: STRING
+- description: First-level administrative subdivision (e.g., state, province) from
+    IP geolocation.
+  mode: NULLABLE
+  name: geo_subdivision1
+  type: STRING
+- description: Second-level administrative subdivision (e.g., county) from IP geolocation.
+  mode: NULLABLE
+  name: geo_subdivision2
+  type: STRING
+- description: The name of the internet service provider associated with the client's
+    IP address.
+  mode: NULLABLE
+  name: isp_name
+  type: STRING
+- description: Organization name associated with the ISP.
+  mode: NULLABLE
+  name: isp_organization
+  type: STRING
+- description: Most recent status of the Advanced Layers graphics feature.
+  mode: NULLABLE
+  name: gfx_features_advanced_layers_status
+  type: STRING
+- description: Most recent status of the Direct2D graphics feature.
+  mode: NULLABLE
+  name: gfx_features_d2d_status
+  type: STRING
+- description: Most recent status of the Direct3D 11 graphics feature.
+  mode: NULLABLE
+  name: gfx_features_d3d11_status
+  type: STRING
+- description: Information about the out-of-process compositing ("GPU Process") GFX
+    feature. unused - This feature has not been requested. unavailable - Safe Mode
+    or OS restriction prevents use. blocked - An internal condition (such as safe
+    mode) prevents use. blocklisted - Blocked due to a blocklist restriction. denied"
+    - Blocked due to allowlist restrictions. disabled - User explicitly disabled this
+    default feature. failed - Feature failed to initialize. available - User has this
+    feature available by default and it's in use.
+  mode: NULLABLE
+  name: gfx_features_gpu_process_status
+  type: STRING
+- description: Sum of times the about:debugging panel was opened across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_aboutdebugging_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Animation Inspector was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_animationinspector_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Browser Console was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_browserconsole_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Canvas Debugger was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_canvasdebugger_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Computed View panel was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_computedview_opened_count_sum
+  type: INTEGER
+- description: Sum of times custom developer tools were opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_custom_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Developer Toolbar was opened across all pings for
+    this client on this day (deprecated feature).
+  mode: NULLABLE
+  name: histogram_parent_devtools_developertoolbar_opened_count_sum
+  type: INTEGER
+- description: Sum of times the DOM Inspector was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_dom_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Eyedropper tool was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_eyedropper_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Font Inspector was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_fontinspector_opened_count_sum
+  type: INTEGER
+- description: Sum of times the DOM Inspector tool was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_inspector_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Browser Debugger was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_jsbrowserdebugger_opened_count_sum
+  type: INTEGER
+- description: Sum of times the JavaScript Debugger was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_jsdebugger_opened_count_sum
+  type: INTEGER
+- description: Sum of times the JavaScript Profiler was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_jsprofiler_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Layout View panel was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_layoutview_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Memory tool was opened across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_memory_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Eyedropper was opened from the menu across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_menu_eyedropper_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Network Monitor was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_netmonitor_opened_count_sum
+  type: INTEGER
+- description: Sum of times the DevTools Options panel was opened across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_options_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Paint Flashing tool was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_paintflashing_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Element Picker Eyedropper was opened across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_picker_eyedropper_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Responsive Design Mode was opened across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_responsive_opened_count_sum
+  type: INTEGER
+- description: Sum of times the CSS Rules View was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_ruleview_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Scratchpad was opened across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_scratchpad_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Scratchpad window was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_scratchpad_window_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Shader Editor was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_shadereditor_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Storage Inspector was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_storage_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Style Editor was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_styleeditor_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Web Audio Editor was opened across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_webaudioeditor_opened_count_sum
+  type: INTEGER
+- description: Sum of times the Web Console was opened across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_webconsole_opened_count_sum
+  type: INTEGER
+- description: Sum of times the WebIDE was opened across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: histogram_parent_devtools_webide_opened_count_sum
+  type: INTEGER
+- description: Most recent year when Firefox was installed on this system.
+  mode: NULLABLE
+  name: install_year
+  type: INTEGER
+- description: A flag indicating whether the browser is set as the default browser
+    on the client side.
+  mode: NULLABLE
+  name: is_default_browser
+  type: BOOLEAN
+- description: Most recent value indicating whether Firefox is running under WoW64
+    (Windows 32-bit on Windows 64-bit).
+  mode: NULLABLE
+  name: is_wow64
+  type: BOOLEAN
+- description: User's language and region preference in BCP 47 format combining language
+    code and optional country code (e.g., 'en-US', 'de', 'ru'), representing country-based
+    and language-based preferences for the user interface
+  mode: NULLABLE
+  name: locale
+  type: STRING
+- description: Most recent amount of system memory in megabytes.
+  mode: NULLABLE
+  name: memory_mb
+  type: INTEGER
+- description: The normalized channel the application is being distributed on.
+  mode: NULLABLE
+  name: normalized_channel
+  type: STRING
+- description: Normalized operating system version string.
+  mode: NULLABLE
+  name: normalized_os_version
+  type: STRING
+- description: The normalized name of the operating system running at the client.
+  mode: NULLABLE
+  name: os
+  type: STRING
+- description: Most recent major version number of the OS service pack (Windows).
+  mode: NULLABLE
+  name: os_service_pack_major
+  type: INTEGER
+- description: Most recent minor version number of the OS service pack (Windows).
+  mode: NULLABLE
+  name: os_service_pack_minor
+  type: INTEGER
+- description: Most recent operating system version string.
+  mode: NULLABLE
+  name: os_version
+  type: STRING
+- description: Count of main ping submissions aggregated into this row for this client
+    on this day.
+  mode: NULLABLE
+  name: pings_aggregated_by_this_row
+  type: INTEGER
+- description: Average count of bookmarks stored in Places database across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: places_bookmarks_count_mean
+  type: FLOAT
+- description: Average count of pages in browsing history stored in Places database
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: places_pages_count_mean
+  type: FLOAT
+- description: Sum of plugin hang events across all pings for this client on this
+    day.
+  mode: NULLABLE
+  name: plugin_hangs_sum
+  type: INTEGER
+- description: Sum of times the user clicked "Allow" on a plugin info bar across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: plugins_infobar_allow_sum
+  type: INTEGER
+- description: Sum of times the user clicked "Block" on a plugin info bar across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: plugins_infobar_block_sum
+  type: INTEGER
+- description: Sum of times a plugin info bar was shown across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: plugins_infobar_shown_sum
+  type: INTEGER
+- description: Sum of times a plugin notification was shown across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: plugins_notification_shown_sum
+  type: INTEGER
+- description: The Firefox build id the browser is updating from. Follows the same
+    format as application.buildId. Only valid for "update" pings with reason "success".
+  mode: NULLABLE
+  name: previous_build_id
+  type: STRING
+- description: Age of the Firefox profile in days calculated from profile creation
+    date.
+  mode: NULLABLE
+  name: profile_age_in_days
+  type: INTEGER
+- description: Date when the Firefox profile was created in 'YYYY-MM-DD 00:00:00'
+    format.
+  mode: NULLABLE
+  name: profile_creation_date
+  type: STRING
+- description: Sum of Push API notification events across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: push_api_notify_sum
+  type: INTEGER
+- description: Sample identifier (0-99) used to partition clients for analysis, generated
+    by the data pipeline based on client_id and consistent across pings
+  mode: NULLABLE
+  name: sample_id
+  type: INTEGER
+- description: Most recent sandbox security level for content processes.
+  mode: NULLABLE
+  name: sandbox_effective_content_process_level
+  type: INTEGER
+- description: Sum of WebRTC STUN retransmission events from both parent and content
+    processes across all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_combined_webrtc_nicer_stun_retransmits_sum
+  type: INTEGER
+- description: Sum of WebRTC TURN 401 authentication errors from both parent and content
+    processes across all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_combined_webrtc_nicer_turn_401s_sum
+  type: INTEGER
+- description: Sum of WebRTC TURN 403 forbidden errors from both parent and content
+    processes across all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_combined_webrtc_nicer_turn_403s_sum
+  type: INTEGER
+- description: Sum of WebRTC TURN 438 stale nonce errors from both parent and content
+    processes across all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_combined_webrtc_nicer_turn_438s_sum
+  type: INTEGER
+- description: Sum of Storage API estimate quota calls from content processes across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_content_navigator_storage_estimate_count_sum
+  type: INTEGER
+- description: Sum of Storage API persist calls from content processes across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_content_navigator_storage_persist_count_sum
+  type: INTEGER
+- description: Most recent Websense security software registry version string detected
+    on Windows.
+  mode: NULLABLE
+  name: scalar_parent_aushelper_websense_reg_version
+  type: STRING
+- description: Maximum concurrent tab count across all windows and pings for this
+    client on this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_max_concurrent_tab_count_max
+  type: INTEGER
+- description: Maximum concurrent window count across all pings for this client on
+    this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_max_concurrent_window_count_max
+  type: INTEGER
+- description: Sum of tab open events across all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_tab_open_event_count_sum
+  type: INTEGER
+- description: Sum of total URI loads (page visits excluding some background loads)
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_total_uri_count_sum
+  type: INTEGER
+- description: Sum of all URI loads including background loads across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_unfiltered_uri_count_sum
+  type: INTEGER
+- description: Maximum count of unique domains visited in a single ping for this client
+    on this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_unique_domains_count_max
+  type: INTEGER
+- description: Average count of unique domains visited per ping for this client on
+    this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_unique_domains_count_mean
+  type: FLOAT
+- description: Sum of window open events across all pings for this client on this
+    day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_window_open_event_count_sum
+  type: INTEGER
+- description: Sum of accessibility node inspections in DevTools across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_devtools_accessibility_node_inspected_count_sum
+  type: INTEGER
+- description: Sum of times the Accessibility Inspector was opened across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_devtools_accessibility_opened_count_sum
+  type: INTEGER
+- description: Sum of times the accessibility picker was used across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_devtools_accessibility_picker_used_count_sum
+  type: INTEGER
+- description: Map of accessibility node selection counts by feature across all pings
+    for this client on this day.
+  fields:
+  - description: Feature identifier for accessibility node selection.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of selections for this feature.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_devtools_accessibility_select_accessible_for_node_sum
+  type: RECORD
+- description: Sum of times the accessibility service was enabled across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_devtools_accessibility_service_enabled_count_sum
+  type: INTEGER
+- description: Sum of times "Copy Full CSS Selector" was used in DevTools across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_devtools_copy_full_css_selector_opened_sum
+  type: INTEGER
+- description: Sum of times "Copy Unique CSS Selector" was used in DevTools across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_devtools_copy_unique_css_selector_opened_sum
+  type: INTEGER
+- description: Sum of times the toolbar eyedropper was opened across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_devtools_toolbar_eyedropper_opened_sum
+  type: INTEGER
+- description: Sum of content processes that were marked as troubled due to memory
+    pressure across all pings for this client on this day (deprecated).
+  mode: NULLABLE
+  name: scalar_parent_dom_contentprocess_troubled_due_to_memory_sum
+  type: INTEGER
+- description: Sum of Storage API estimate quota calls from the parent process across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_navigator_storage_estimate_count_sum
+  type: INTEGER
+- description: Sum of Storage API persist calls from the parent process across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_navigator_storage_persist_count_sum
+  type: INTEGER
+- description: Sum of extensions using the storage.sync API across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: scalar_parent_storage_sync_api_usage_extensions_using_sum
+  type: INTEGER
+- description: Most recent search cohort identifier for A/B testing search features.
+  mode: NULLABLE
+  name: search_cohort
+  type: STRING
+- description: Total count of searches from the about:home page for this client on
+    this day.
+  mode: NULLABLE
+  name: search_count_abouthome
+  type: INTEGER
+- description: Total count of searches from the context menu for this client on this
+    day.
+  mode: NULLABLE
+  name: search_count_contextmenu
+  type: INTEGER
+- description: Total count of searches from the new tab page for this client on this
+    day.
+  mode: NULLABLE
+  name: search_count_newtab
+  type: INTEGER
+- description: Total count of searches from the search bar for this client on this
+    day.
+  mode: NULLABLE
+  name: search_count_searchbar
+  type: INTEGER
+- description: Total count of searches initiated by the system for this client on
+    this day.
+  mode: NULLABLE
+  name: search_count_system
+  type: INTEGER
+- description: Total count of searches from the URL bar for this client on this day.
+  mode: NULLABLE
+  name: search_count_urlbar
+  type: INTEGER
+- description: Total count of all searches from any source for this client on this
+    day.
+  mode: NULLABLE
+  name: search_count_all
+  type: INTEGER
+- description: Total count of Search Access Point (SAP) tagged searches for this client
+    on this day.
+  mode: NULLABLE
+  name: search_count_tagged_sap
+  type: INTEGER
+- description: Total count of follow-on searches (searches after an initial search)
+    for this client on this day.
+  mode: NULLABLE
+  name: search_count_tagged_follow_on
+  type: INTEGER
+- description: Total count of organic (non-SAP) searches for this client on this day.
+  mode: NULLABLE
+  name: search_count_organic
+  type: INTEGER
+- description: Total count of searches from URL bar handoff (Activity Stream handoff)
+    for this client on this day.
+  mode: NULLABLE
+  name: search_count_urlbar_handoff
+  type: INTEGER
+- description: Total count of searches from URL bar with persisted search terms for
+    this client on this day.
+  mode: NULLABLE
+  name: search_count_urlbar_persisted
+  type: INTEGER
+- description: Average session restoration time in milliseconds across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: session_restored_mean
+  type: FLOAT
+- description: Count of browser sessions started (subsession_counter = 1) on this
+    day for this client.
+  mode: NULLABLE
+  name: sessions_started_on_this_day
+  type: INTEGER
+- description: Sum of processes forcibly killed during shutdown across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: shutdown_kill_sum
+  type: INTEGER
+- description: Sum of subsession duration in hours across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: subsession_hours_sum
+  type: NUMERIC
+- description: Sum of failed SSL handshake attempts across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: ssl_handshake_result_failure_sum
+  type: INTEGER
+- description: Sum of successful SSL handshake attempts across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: ssl_handshake_result_success_sum
+  type: INTEGER
+- description: Most recent value indicating whether Firefox Sync is configured.
+  mode: NULLABLE
+  name: sync_configured
+  type: BOOLEAN
+- description: Average count of synced desktop devices across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: sync_count_desktop_mean
+  type: FLOAT
+- description: Average count of synced mobile devices across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: sync_count_mobile_mean
+  type: FLOAT
+- description: Sum of synced desktop device counts across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: sync_count_desktop_sum
+  type: INTEGER
+- description: Sum of synced mobile device counts across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: sync_count_mobile_sum
+  type: INTEGER
+- description: Most recent value indicating whether telemetry data collection is enabled.
+  mode: NULLABLE
+  name: telemetry_enabled
+  type: BOOLEAN
+- description: Most recent timezone offset in minutes from UTC.
+  mode: NULLABLE
+  name: timezone_offset
+  type: INTEGER
+- description: Total hours of browser activity for this client on this day (deprecated,
+    set to null).
+  mode: NULLABLE
+  name: total_hours_sum
+  type: NUMERIC
+- description: Most recent value indicating whether automatic download of updates is
+    enabled.
+  mode: NULLABLE
+  name: update_auto_download
+  type: BOOLEAN
+- description: Most recent update channel (may differ from normalized_channel).
+  mode: NULLABLE
+  name: update_channel
+  type: STRING
+- description: Most recent value indicating whether automatic updates are enabled.
+  mode: NULLABLE
+  name: update_enabled
+  type: BOOLEAN
+- description: Most recent application vendor (typically "Mozilla").
+  mode: NULLABLE
+  name: vendor
+  type: STRING
+- description: Sum of web notifications shown across all pings for this client on
+    this day.
+  mode: NULLABLE
+  name: web_notification_shown_sum
+  type: INTEGER
+- description: Most recent Windows build number.
+  mode: NULLABLE
+  name: windows_build_number
+  type: INTEGER
+- description: Most recent Windows Update Build Revision (UBR) number.
+  mode: NULLABLE
+  name: windows_ubr
+  type: INTEGER
+- description: Most recent value indicating whether Firefox Account (FxA) is configured.
+  mode: NULLABLE
+  name: fxa_configured
+  type: BOOLEAN
+- description: Sum of content tracking elements blocked by Enhanced Tracking Protection
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: trackers_blocked_sum
+  type: INTEGER
+- description: Earliest submission timestamp among all pings for this client on this
+    day.
+  mode: NULLABLE
+  name: submission_timestamp_min
+  type: TIMESTAMP
+- description: Total count of ad clicks from all search access points for this client
+    on this day.
+  mode: NULLABLE
+  name: ad_clicks_count_all
+  type: INTEGER
+- description: Total count of searches that showed ads from all access points for
+    this client on this day.
+  mode: NULLABLE
+  name: search_with_ads_count_all
+  type: INTEGER
+- description: Sum of URL bar autofill impressions for about: pages across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_urlbar_impression_autofill_about_sum
+  type: INTEGER
+- description: Sum of URL bar autofill impressions from adaptive history across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_urlbar_impression_autofill_adaptive_sum
+  type: INTEGER
+- description: Sum of URL bar autofill impressions for origin (domain) completions
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_urlbar_impression_autofill_origin_sum
+  type: INTEGER
+- description: Sum of URL bar autofill impressions from other sources across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_urlbar_impression_autofill_other_sum
+  type: INTEGER
+- description: Sum of URL bar autofill impressions for preloaded top sites across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_urlbar_impression_autofill_preloaded_sum
+  type: INTEGER
+- description: Sum of URL bar autofill impressions for full URLs across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_urlbar_impression_autofill_url_sum
+  type: INTEGER
+- description: Map of telemetry event counts by category from the parent process across
+    all pings for this client on this day.
+  fields:
+  - description: Event category identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of events in this category.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_telemetry_event_counts_sum
+  type: RECORD
+- description: Map of telemetry event counts by category from content processes across
+    all pings for this client on this day.
+  fields:
+  - description: Event category identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of events in this category.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_content_telemetry_event_counts_sum
+  type: RECORD
+- description: Map of search mode entry counts from the bookmark menu by search engine
+    across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_bookmarkmenu_sum
+  type: RECORD
+- description: Map of search mode entry counts from Activity Stream handoff by search
+    engine across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_handoff_sum
+  type: RECORD
+- description: Map of search mode entry counts from keyword offer by search engine
+    across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_keywordoffer_sum
+  type: RECORD
+- description: Map of search mode entry counts from one-off search buttons by search
+    engine across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_oneoff_sum
+  type: RECORD
+- description: Map of search mode entry counts from other sources by search engine
+    across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_other_sum
+  type: RECORD
+- description: Map of search mode entry counts from keyboard shortcuts by search engine
+    across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_shortcut_sum
+  type: RECORD
+- description: Map of search mode entry counts from the tab menu by search engine
+    across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_tabmenu_sum
+  type: RECORD
+- description: Map of search mode entry counts from Tab-to-Search by search engine
+    across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_tabtosearch_sum
+  type: RECORD
+- description: Map of search mode entry counts from Tab-to-Search onboarding by search
+    engine across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_tabtosearch_onboard_sum
+  type: RECORD
+- description: Map of search mode entry counts from top sites on new tab by search
+    engine across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_topsites_newtab_sum
+  type: RECORD
+- description: Map of search mode entry counts from top sites in URL bar by search
+    engine across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_topsites_urlbar_sum
+  type: RECORD
+- description: Map of search mode entry counts from Touch Bar by search engine across
+    all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_touchbar_sum
+  type: RECORD
+- description: Map of search mode entry counts from typing by search engine across
+    all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of search mode entries.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_searchmode_typed_sum
+  type: RECORD
+- description: Most recent value indicating whether Firefox is pinned to the Windows
+    taskbar.
+  mode: NULLABLE
+  name: scalar_parent_os_environment_is_taskbar_pinned
+  type: BOOLEAN
+- description: Whether Firefox was launched via desktop shortcut at least once on
+    this day.
+  mode: NULLABLE
+  name: scalar_parent_os_environment_launched_via_desktop
+  type: BOOLEAN
+- description: Whether Firefox was launched via Windows taskbar at least once on this
+    day.
+  mode: NULLABLE
+  name: scalar_parent_os_environment_launched_via_taskbar
+  type: BOOLEAN
+- description: Whether Firefox was launched via other methods at least once on this
+    day.
+  mode: NULLABLE
+  name: scalar_parent_os_environment_launched_via_other
+  type: BOOLEAN
+- description: Whether Firefox was launched via Start Menu at least once on this day.
+  mode: NULLABLE
+  name: scalar_parent_os_environment_launched_via_start_menu
+  type: BOOLEAN
+- description: Whether Firefox was launched via other shortcuts at least once on this
+    day.
+  mode: NULLABLE
+  name: scalar_parent_os_environment_launched_via_other_shortcut
+  type: BOOLEAN
+- description: Total count of searches from web extensions for this client on this
+    day.
+  mode: NULLABLE
+  name: search_count_webextension
+  type: INTEGER
+- description: Total count of searches from aliases for this client on this day.
+  mode: NULLABLE
+  name: search_count_alias
+  type: INTEGER
+- description: Total count of searches from URL bar search mode for this client on
+    this day.
+  mode: NULLABLE
+  name: search_count_urlbar_searchmode
+  type: INTEGER
+- description: Map of interaction counts with preferences pane home settings by action
+    across all pings for this client on this day.
+  fields:
+  - description: Action identifier in preferences.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of interactions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_browser_ui_interaction_preferences_pane_home_sum
+  type: RECORD
+- description: Map of URL bar result picks for autofilled suggestions by result type
+    across all pings for this client on this day.
+  fields:
+  - description: Result type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_autofill_sum
+  type: RECORD
+- description: Map of URL bar result picks for autofilled about: pages by result index
+    across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_autofill_about_sum
+  type: RECORD
+- description: Map of URL bar result picks for adaptive autofill by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_autofill_adaptive_sum
+  type: RECORD
+- description: Map of URL bar result picks for origin autofill by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_autofill_origin_sum
+  type: RECORD
+- description: Map of URL bar result picks for other autofill types by result index
+    across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_autofill_other_sum
+  type: RECORD
+- description: Map of URL bar result picks for preloaded autofill by result index
+    across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_autofill_preloaded_sum
+  type: RECORD
+- description: Map of URL bar result picks for URL autofill by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_autofill_url_sum
+  type: RECORD
+- description: Map of URL bar result picks for bookmarks by result index across all
+    pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_bookmark_sum
+  type: RECORD
+- description: Map of URL bar result picks for dynamic results by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_dynamic_sum
+  type: RECORD
+- description: Map of URL bar result picks for extension-provided results by result
+    index across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_extension_sum
+  type: RECORD
+- description: Map of URL bar result picks for form history by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_formhistory_sum
+  type: RECORD
+- description: Map of URL bar result picks for history by result index across all
+    pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_history_sum
+  type: RECORD
+- description: Map of URL bar result picks for keyword searches by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_keyword_sum
+  type: RECORD
+- description: Map of URL bar result picks for remote tabs (Synced tabs) by result
+    index across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_remotetab_sum
+  type: RECORD
+- description: Map of URL bar result picks for search engines by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_searchengine_sum
+  type: RECORD
+- description: Map of URL bar result picks for search suggestions by result index
+    across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_searchsuggestion_sum
+  type: RECORD
+- description: Map of URL bar result picks for switch to tab actions by result index
+    across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_switchtab_sum
+  type: RECORD
+- description: Map of URL bar result picks for Tab-to-Search by result index across
+    all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_tabtosearch_sum
+  type: RECORD
+- description: Map of URL bar result picks for tips by result index across all pings
+    for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_tip_sum
+  type: RECORD
+- description: Map of URL bar result picks for top sites by result index across all
+    pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_topsite_sum
+  type: RECORD
+- description: Map of URL bar result picks for unknown result types by result index
+    across all pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_unknown_sum
+  type: RECORD
+- description: Map of URL bar result picks for visit URL by result index across all
+    pings for this client on this day.
+  fields:
+  - description: Result index position.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of picks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_urlbar_picked_visiturl_sum
+  type: RECORD
+- description: Most recent default search engine for private browsing mode.
+  mode: NULLABLE
+  name: default_private_search_engine
+  type: STRING
+- description: Most recent file path for private search engine configuration.
+  mode: NULLABLE
+  name: default_private_search_engine_data_load_path
+  type: STRING
+- description: Most recent name of the default private search engine.
+  mode: NULLABLE
+  name: default_private_search_engine_data_name
+  type: STRING
+- description: Most recent origin of the default private search engine configuration.
+  mode: NULLABLE
+  name: default_private_search_engine_data_origin
+  type: STRING
+- description: Most recent submission URL template for the default private search engine.
+  mode: NULLABLE
+  name: default_private_search_engine_data_submission_url
+  type: STRING
+- description: Detailed search counts by engine and source, aggregated across all
+    pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: engine
+    type: STRING
+  - description: Search access point (urlbar, searchbar, etc.).
+    mode: NULLABLE
+    name: source
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: count
+    type: INTEGER
+  mode: REPEATED
+  name: search_counts
+  type: RECORD
+- description: Most recent user preference for browser search region.
+  mode: NULLABLE
+  name: user_pref_browser_search_region
+  type: STRING
+- description: Map of searches with ads shown by search engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_with_ads
+  type: RECORD
+- description: Map of ad clicks by search engine across all pings for this client
+    on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: ad_clicks
+  type: RECORD
+- description: Map of search counts from URL bar by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_urlbar_sum
+  type: RECORD
+- description: Map of search counts from URL bar handoff by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_urlbar_handoff_sum
+  type: RECORD
+- description: Map of search counts from URL bar with persisted terms by engine across
+    all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_urlbar_persisted_sum
+  type: RECORD
+- description: Map of search counts from URL bar search mode by engine across all
+    pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_urlbar_searchmode_sum
+  type: RECORD
+- description: Map of search counts from context menu by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_contextmenu_sum
+  type: RECORD
+- description: Map of search counts from about:home by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_about_home_sum
+  type: RECORD
+- description: Map of search counts from about:newtab by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_about_newtab_sum
+  type: RECORD
+- description: Map of search counts from search bar by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_searchbar_sum
+  type: RECORD
+- description: Map of search counts from system by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_system_sum
+  type: RECORD
+- description: Map of search counts from web extensions by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_webextension_sum
+  type: RECORD
+- description: Map of search counts from tab history by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_tabhistory_sum
+  type: RECORD
+- description: Map of search counts from page reload by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_reload_sum
+  type: RECORD
+- description: Map of search counts from unknown sources by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_content_unknown_sum
+  type: RECORD
+- description: Map of searches with ads from URL bar by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_urlbar_sum
+  type: RECORD
+- description: Map of searches with ads from URL bar handoff by engine across all
+    pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_urlbar_handoff_sum
+  type: RECORD
+- description: Map of searches with ads from URL bar with persisted terms by engine
+    across all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_urlbar_persisted_sum
+  type: RECORD
+- description: Map of searches with ads from URL bar search mode by engine across
+    all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_urlbar_searchmode_sum
+  type: RECORD
+- description: Map of searches with ads from context menu by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_contextmenu_sum
+  type: RECORD
+- description: Map of searches with ads from about:home by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_about_home_sum
+  type: RECORD
+- description: Map of searches with ads from about:newtab by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_about_newtab_sum
+  type: RECORD
+- description: Map of searches with ads from search bar by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_searchbar_sum
+  type: RECORD
+- description: Map of searches with ads from system by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_system_sum
+  type: RECORD
+- description: Map of searches with ads from web extensions by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_webextension_sum
+  type: RECORD
+- description: Map of searches with ads from tab history by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_tabhistory_sum
+  type: RECORD
+- description: Map of searches with ads from page reload by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_reload_sum
+  type: RECORD
+- description: Map of searches with ads from unknown sources by engine across all
+    pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches with ads.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_withads_unknown_sum
+  type: RECORD
+- description: Map of ad clicks from URL bar by engine across all pings for this client
+    on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_urlbar_sum
+  type: RECORD
+- description: Map of ad clicks from URL bar handoff by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_urlbar_handoff_sum
+  type: RECORD
+- description: Map of ad clicks from URL bar with persisted terms by engine across
+    all pings for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_urlbar_persisted_sum
+  type: RECORD
+- description: Map of ad clicks from URL bar search mode by engine across all pings
+    for this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_urlbar_searchmode_sum
+  type: RECORD
+- description: Map of ad clicks from context menu by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_contextmenu_sum
+  type: RECORD
+- description: Map of ad clicks from about:home by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_about_home_sum
+  type: RECORD
+- description: Map of ad clicks from about:newtab by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_about_newtab_sum
+  type: RECORD
+- description: Map of ad clicks from search bar by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_searchbar_sum
+  type: RECORD
+- description: Map of ad clicks from system by engine across all pings for this client
+    on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_system_sum
+  type: RECORD
+- description: Map of ad clicks from web extensions by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_webextension_sum
+  type: RECORD
+- description: Map of ad clicks from tab history by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_tabhistory_sum
+  type: RECORD
+- description: Map of ad clicks from page reload by engine across all pings for this
+    client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_reload_sum
+  type: RECORD
+- description: Map of ad clicks from unknown sources by engine across all pings for
+    this client on this day.
+  fields:
+  - description: Search engine identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of ad clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: search_adclicks_unknown_sum
+  type: RECORD
+- description: Most recent value indicating whether background updates are enabled.
+  mode: NULLABLE
+  name: update_background
+  type: BOOLEAN
+- description: Most recent user preference for whether search suggestions are enabled.
+  mode: NULLABLE
+  name: user_pref_browser_search_suggest_enabled
+  type: STRING
+- description: Most recent user preference for whether the search widget is in the
+    navigation bar.
+  mode: NULLABLE
+  name: user_pref_browser_widget_in_navbar
+  type: STRING
+- description: Most recent user preference for whether to show search suggestions in
+    URL bar.
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_suggest_searches
+  type: STRING
+- description: Most recent user preference for whether to show search suggestions first
+    in URL bar results.
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_show_search_suggestions_first
+  type: STRING
+- description: Most recent user preference for Firefox Suggest quick suggestions (deprecated
+    pref).
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_suggest_quicksuggest
+  type: STRING
+- description: Most recent user preference for sponsored Firefox Suggest suggestions.
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_suggest_quicksuggest_sponsored
+  type: STRING
+- description: Most recent user choice from Firefox Suggest onboarding dialog.
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_quicksuggest_onboarding_dialog_choice
+  type: STRING
+- description: Sum of total URI loads in both normal and private browsing modes across
+    all pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_engagement_total_uri_count_normal_and_private_mode_sum
+  type: INTEGER
+- description: Most recent user preference for whether the new tab page is enabled.
+  mode: NULLABLE
+  name: user_pref_browser_newtabpage_enabled
+  type: STRING
+- description: Most recent user preference for whether opt-out Shield studies are
+    enabled.
+  mode: NULLABLE
+  name: user_pref_app_shield_optoutstudies_enabled
+  type: STRING
+- description: Map of Firefox Suggest quick suggestion click counts by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_click_sum
+  type: RECORD
+- description: Map of Firefox Suggest quick suggestion impression counts by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_impression_sum
+  type: RECORD
+- description: Map of Firefox Suggest help button click counts by suggestion type
+    across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of help clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_help_sum
+  type: RECORD
+- description: Map of contextual services top sites click counts by tile position
+    across all pings for this client on this day.
+  fields:
+  - description: Tile position identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_topsites_click_sum
+  type: RECORD
+- description: Map of contextual services top sites impression counts by tile position
+    across all pings for this client on this day.
+  fields:
+  - description: Tile position identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_topsites_impression_sum
+  type: RECORD
+- description: Most recent user preference for non-sponsored Firefox Suggest suggestions.
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_suggest_quicksuggest_nonsponsored
+  type: STRING
+- description: Most recent user preference for Firefox Suggest data collection.
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_quicksuggest_data_collection_enabled
+  type: STRING
+- description: Most recent accessibility high contrast mode foreground color value.
+  mode: NULLABLE
+  name: scalar_a11y_hcm_foreground
+  type: INTEGER
+- description: Most recent accessibility high contrast mode background color value.
+  mode: NULLABLE
+  name: scalar_a11y_hcm_background
+  type: INTEGER
+- description: Map of accessibility theme usage by theme name across all pings for
+    this client on this day.
+  fields:
+  - description: Theme name identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Boolean indicating theme usage.
+    mode: NULLABLE
+    name: value
+    type: BOOLEAN
+  mode: REPEATED
+  name: a11y_theme
+  type: RECORD
+- description: Map of help button clicks for non-sponsored best match suggestions
+    by suggestion type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of help clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_help_nonsponsored_bestmatch_sum
+  type: RECORD
+- description: Map of help button clicks for sponsored best match suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of help clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_help_sponsored_bestmatch_sum
+  type: RECORD
+- description: Map of block actions for non-sponsored quick suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of blocks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_block_nonsponsored_sum
+  type: RECORD
+- description: Map of block actions for sponsored quick suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of blocks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_block_sponsored_sum
+  type: RECORD
+- description: Map of block actions for sponsored best match suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of blocks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_block_sponsored_bestmatch_sum
+  type: RECORD
+- description: Map of block actions for non-sponsored best match suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of blocks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_block_nonsponsored_bestmatch_sum
+  type: RECORD
+- description: Map of clicks for sponsored best match suggestions by suggestion type
+    across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_click_sponsored_bestmatch_sum
+  type: RECORD
+- description: Map of clicks for non-sponsored best match suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_click_nonsponsored_bestmatch_sum
+  type: RECORD
+- description: Map of impressions for sponsored best match suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_impression_sponsored_bestmatch_sum
+  type: RECORD
+- description: Map of impressions for non-sponsored best match suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_impression_nonsponsored_bestmatch_sum
+  type: RECORD
+- description: Most recent user preference for best match suggestions in URL bar.
+  mode: NULLABLE
+  name: user_pref_browser_urlbar_suggest_bestmatch
+  type: STRING
+- description: Sum of text recognition errors in browser UI interactions across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: scalar_parent_browser_ui_interaction_textrecognition_error_sum
+  type: INTEGER
+- description: Sum of text recognition interaction timing measurements in milliseconds
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: text_recognition_interaction_timing_sum
+  type: INTEGER
+- description: Sum of text recognition interaction timing sample counts across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: text_recognition_interaction_timing_count_sum
+  type: INTEGER
+- description: Map of content context menu interaction counts by action type across
+    all pings for this client on this day.
+  fields:
+  - description: Action type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of interactions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_browser_ui_interaction_content_context_sum
+  type: RECORD
+- description: Sum of text recognition API performance measurements in milliseconds
+    across all pings for this client on this day.
+  mode: NULLABLE
+  name: text_recognition_api_performance_sum
+  type: INTEGER
+- description: Sum of text recognition API performance sample counts across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: text_recognition_api_performance_count_sum
+  type: INTEGER
+- description: Sum of text recognition recognized text lengths across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: text_recognition_text_length_sum
+  type: INTEGER
+- description: Sum of text recognition text length sample counts across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: text_recognition_text_length_count_sum
+  type: INTEGER
+- description: Sum of cumulative searches in Places search bar across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: places_searchbar_cumulative_searches_sum
+  type: INTEGER
+- description: Sum of cumulative filter operations in Places search bar across all
+    pings for this client on this day.
+  mode: NULLABLE
+  name: places_searchbar_cumulative_filter_count_sum
+  type: INTEGER
+- description: Whether Firefox was launched via private taskbar shortcut at least
+    once on this day.
+  mode: NULLABLE
+  name: scalar_parent_os_environment_launched_via_taskbar_private
+  type: BOOLEAN
+- description: Whether a private window was used at least once on this day.
+  mode: NULLABLE
+  name: dom_parentprocess_private_window_used
+  type: BOOLEAN
+- description: Whether Firefox or private Firefox is pinned to taskbar based on any
+    ping on this day.
+  mode: NULLABLE
+  name: os_environment_is_taskbar_pinned_any
+  type: BOOLEAN
+- description: Whether the private Firefox shortcut is pinned to taskbar based on
+    any ping on this day.
+  mode: NULLABLE
+  name: os_environment_is_taskbar_pinned_private_any
+  type: BOOLEAN
+- description: Most recent value indicating whether private Firefox shortcut is pinned
+    to taskbar.
+  mode: NULLABLE
+  name: os_environment_is_taskbar_pinned_private
+  type: BOOLEAN
+- description: Sum of bookmarks migrated from Chrome across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: bookmark_migrations_quantity_chrome
+  type: INTEGER
+- description: Sum of bookmarks migrated from Edge across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: bookmark_migrations_quantity_edge
+  type: INTEGER
+- description: Sum of bookmarks migrated from Safari across all pings for this client
+    on this day.
+  mode: NULLABLE
+  name: bookmark_migrations_quantity_safari
+  type: INTEGER
+- description: Sum of bookmarks migrated from all browsers across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: bookmark_migrations_quantity_all
+  type: INTEGER
+- description: Sum of history entries migrated from Chrome across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: history_migrations_quantity_chrome
+  type: INTEGER
+- description: Sum of history entries migrated from Edge across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: history_migrations_quantity_edge
+  type: INTEGER
+- description: Sum of history entries migrated from Safari across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: history_migrations_quantity_safari
+  type: INTEGER
+- description: Sum of history entries migrated from all browsers across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: history_migrations_quantity_all
+  type: INTEGER
+- description: Sum of login credentials migrated from Chrome across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: logins_migrations_quantity_chrome
+  type: INTEGER
+- description: Sum of login credentials migrated from Edge across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: logins_migrations_quantity_edge
+  type: INTEGER
+- description: Sum of login credentials migrated from Safari across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: logins_migrations_quantity_safari
+  type: INTEGER
+- description: Sum of login credentials migrated from all browsers across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: logins_migrations_quantity_all
+  type: INTEGER
+- description: Sum of audio playback time in milliseconds across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: media_play_time_ms_audio_sum
+  type: INTEGER
+- description: Sum of video playback time in milliseconds across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: media_play_time_ms_video_sum
+  type: INTEGER
+- description: Map of block actions for dynamic Wikipedia suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of blocks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_block_dynamic_wikipedia_sum
+  type: RECORD
+- description: Map of block actions for weather suggestions by suggestion type across
+    all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of blocks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_block_weather_sum
+  type: RECORD
+- description: Map of clicks for dynamic Wikipedia suggestions by suggestion type
+    across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_click_dynamic_wikipedia_sum
+  type: RECORD
+- description: Map of clicks for non-sponsored suggestions by suggestion type across
+    all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_click_nonsponsored_sum
+  type: RECORD
+- description: Map of clicks for sponsored suggestions by suggestion type across all
+    pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_click_sponsored_sum
+  type: RECORD
+- description: Map of clicks for weather suggestions by suggestion type across all
+    pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_click_weather_sum
+  type: RECORD
+- description: Map of help button clicks for dynamic Wikipedia suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of help clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_help_dynamic_wikipedia_sum
+  type: RECORD
+- description: Map of help button clicks for non-sponsored suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of help clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_help_nonsponsored_sum
+  type: RECORD
+- description: Map of help button clicks for sponsored suggestions by suggestion type
+    across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of help clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_help_sponsored_sum
+  type: RECORD
+- description: Map of help button clicks for weather suggestions by suggestion type
+    across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of help clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_help_weather_sum
+  type: RECORD
+- description: Map of impressions for dynamic Wikipedia suggestions by suggestion
+    type across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_impression_dynamic_wikipedia_sum
+  type: RECORD
+- description: Map of impressions for non-sponsored suggestions by suggestion type
+    across all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_impression_nonsponsored_sum
+  type: RECORD
+- description: Map of impressions for sponsored suggestions by suggestion type across
+    all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_impression_sponsored_sum
+  type: RECORD
+- description: Map of impressions for weather suggestions by suggestion type across
+    all pings for this client on this day.
+  fields:
+  - description: Suggestion type identifier.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of impressions.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: contextual_services_quicksuggest_impression_weather_sum
+  type: RECORD
+- description: Map of sidebar opened counts by entry point across all pings for this
+    client on this day.
+  fields:
+  - description: Entry point identifier for sidebar opening.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of sidebar opens.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_sidebar_opened_sum
+  type: RECORD
+- description: Map of sidebar search interaction counts by entry point across all
+    pings for this client on this day.
+  fields:
+  - description: Entry point identifier for sidebar search.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_sidebar_search_sum
+  type: RECORD
+- description: Map of sidebar link click counts by entry point across all pings for
+    this client on this day.
+  fields:
+  - description: Entry point identifier for sidebar link.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of link clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_sidebar_link_sum
+  type: RECORD
+- description: Average count of previous day visits in Places history across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: places_previousday_visits_mean
+  type: FLOAT
+- description: Sum of cumulative bookmark searches in Library across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: places_library_cumulative_bookmark_searches_sum
+  type: INTEGER
+- description: Sum of cumulative history searches in Library across all pings for
+    this client on this day.
+  mode: NULLABLE
+  name: places_library_cumulative_history_searches_sum
+  type: INTEGER
+- description: Sum of cumulative searches in bookmarks search bar across all pings
+    for this client on this day.
+  mode: NULLABLE
+  name: places_bookmarks_searchbar_cumulative_searches_sum
+  type: INTEGER
+- description: Map of Library link click counts by entry point across all pings for
+    this client on this day.
+  fields:
+  - description: Entry point identifier for Library link.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of link clicks.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_library_link_sum
+  type: RECORD
+- description: Map of Library opened counts by entry point across all pings for this
+    client on this day.
+  fields:
+  - description: Entry point identifier for Library opening.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of opens.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_library_opened_sum
+  type: RECORD
+- description: Map of Library search interaction counts by entry point across all
+    pings for this client on this day.
+  fields:
+  - description: Entry point identifier for Library search.
+    mode: NULLABLE
+    name: key
+    type: STRING
+  - description: Count of searches.
+    mode: NULLABLE
+    name: value
+    type: INTEGER
+  mode: REPEATED
+  name: scalar_parent_library_search_sum
+  type: RECORD
+- description: First profile selection reason observed in pings for this client on
+    this day.
+  mode: NULLABLE
+  name: startup_profile_selection_reason_first
+  type: STRING
+- description: First document ID from the earliest ping for this client on this day.
+  mode: NULLABLE
+  name: first_document_id
+  type: STRING
+- description: Most recent partner ID associated with the Firefox installation.
+  mode: NULLABLE
+  name: partner_id
+  type: STRING
+- description: Most recent distribution version string.
+  mode: NULLABLE
+  name: distribution_version
+  type: STRING
+- description: Most recent distributor name for the Firefox installation.
+  mode: NULLABLE
+  name: distributor
+  type: STRING
+- description: Most recent distributor channel for the Firefox installation.
+  mode: NULLABLE
+  name: distributor_channel
+  type: STRING
+- description: Most recent build platform version string.
+  mode: NULLABLE
+  name: env_build_platform_version
+  type: STRING
+- description: Most recent XPCOM ABI (Application Binary Interface) identifier.
+  mode: NULLABLE
+  name: env_build_xpcom_abi
+  type: STRING
+- description: Most recent version of the GeoIP database used for geolocation.
+  mode: NULLABLE
+  name: geo_db_version
+  type: STRING
+- description: The hw.model of the hardware running this software. Mac only. e.g.
+    "MacBookPro14,1"
+  mode: NULLABLE
+  name: apple_model_id
+  type: STRING
+- description: Maximum subsession counter value observed across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: max_subsession_counter
+  type: INTEGER
+- description: Minimum subsession counter value observed across all pings for this
+    client on this day.
+  mode: NULLABLE
+  name: min_subsession_counter
+  type: INTEGER
+- description: Most recent profile selection reason from the first ping of each subsession.
+  mode: NULLABLE
+  name: startup_profile_selection_first_ping_only
+  type: STRING
+- description: A UUID uniquely identifying the profile group, not shared with other
+    telemetry data.
+  mode: NULLABLE
+  name: profile_group_id
+  type: STRING
