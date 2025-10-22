@@ -1,0 +1,395 @@
+fields:
+- name: submission_date
+  type: DATE
+  mode: NULLABLE
+  description: Date when the telemetry data was submitted, used as the partition key for daily aggregation
+
+- name: app_version
+  type: STRING
+  mode: NULLABLE
+  description: Firefox application version number
+
+- name: os
+  type: STRING
+  mode: NULLABLE
+  description: Operating system of the client (e.g., Windows, macOS, Linux)
+
+- name: channel
+  type: STRING
+  mode: NULLABLE
+  description: Firefox release channel (release, beta, nightly, etc.)
+
+- name: locale
+  type: STRING
+  mode: NULLABLE
+  description: Browser locale/language setting
+
+- name: country
+  type: STRING
+  mode: NULLABLE
+  description: Geographic country code of the client
+
+- name: homepage_category
+  type: STRING
+  mode: NULLABLE
+  description: Category classification of the homepage configuration
+
+- name: newtab_category
+  type: STRING
+  mode: NULLABLE
+  description: Category classification of the new tab page configuration
+
+- name: organic_content_enabled
+  type: BOOLEAN
+  mode: NULLABLE
+  description: Boolean flag indicating if organic content recommendations are enabled
+
+- name: sponsored_content_enabled
+  type: BOOLEAN
+  mode: NULLABLE
+  description: Boolean flag indicating if sponsored content is enabled
+
+- name: sponsored_topsites_enabled
+  type: BOOLEAN
+  mode: NULLABLE
+  description: Boolean flag indicating if sponsored topsites are enabled
+
+- name: organic_topsites_enabled
+  type: BOOLEAN
+  mode: NULLABLE
+  description: Boolean flag indicating if organic topsites are enabled
+
+- name: newtab_search_enabled
+  type: BOOLEAN
+  mode: NULLABLE
+  description: Boolean flag indicating if new tab search functionality is enabled
+
+- name: all_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total count of all new tab page visits across all clients
+
+- name: newtab_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who visited the new tab page
+
+- name: default_ui_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits where the default UI was displayed
+
+- name: default_ui_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who saw the default UI
+
+- name: any_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with any type of user engagement
+
+- name: any_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients with any engagement activity
+
+- name: nonsearch_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with non-search engagement interactions
+
+- name: nonsearch_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients with non-search engagement
+
+- name: any_content_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with content engagement (clicks or impressions)
+
+- name: any_content_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with content
+
+- name: any_content_click_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of clicks on any content recommendations
+
+- name: any_content_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of impressions for any content recommendations
+
+- name: organic_content_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with organic content engagement
+
+- name: organic_content_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with organic content
+
+- name: organic_content_click_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total clicks on organic content recommendations
+
+- name: organic_content_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total impressions of organic content recommendations
+
+- name: sponsored_content_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with sponsored content engagement
+
+- name: sponsored_content_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with sponsored content
+
+- name: sponsored_content_click_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total clicks on sponsored content recommendations
+
+- name: sponsored_content_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total impressions of sponsored content recommendations
+
+- name: any_topsite_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with topsite engagement (any type)
+
+- name: any_topsite_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with topsites
+
+- name: any_topsite_click_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total clicks on any topsites
+
+- name: any_topsite_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total impressions of any topsites
+
+- name: organic_topsite_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with organic topsite engagement
+
+- name: organic_topsite_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with organic topsites
+
+- name: organic_topsite_click_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total clicks on organic topsites
+
+- name: organic_topsite_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total impressions of organic topsites
+
+- name: sponsored_topsite_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with sponsored topsite engagement
+
+- name: sponsored_topsite_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with sponsored topsites
+
+- name: sponsored_topsite_click_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total clicks on sponsored topsites
+
+- name: sponsored_topsite_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total impressions of sponsored topsites
+
+- name: widget_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with widget interaction
+
+- name: widget_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with widgets
+
+- name: others_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with other types of engagement not categorized above
+
+- name: others_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients with other engagement types
+
+- name: organic_content_dismissal_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who dismissed organic content
+
+- name: organic_content_dismissal_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits where organic content was dismissed
+
+- name: organic_content_dismissal_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of organic content dismissals
+
+- name: sponsored_content_dismissal_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who dismissed sponsored content
+
+- name: sponsored_content_dismissal_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits where sponsored content was dismissed
+
+- name: sponsored_content_dismissal_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of sponsored content dismissals
+
+- name: organic_topsite_dismissal_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who dismissed organic topsites
+
+- name: organic_topsite_dismissal_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits where organic topsites were dismissed
+
+- name: organic_topsite_dismissal_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of organic topsite dismissals
+
+- name: sponsored_topsite_dismissal_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who dismissed sponsored topsites
+
+- name: sponsored_topsite_dismissal_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits where sponsored topsites were dismissed
+
+- name: sponsored_topsite_dismissal_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of sponsored topsite dismissals
+
+- name: content_thumbs_up_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who gave thumbs up to content
+
+- name: content_thumbs_up_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with thumbs up interactions on content
+
+- name: content_thumbs_up_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of thumbs up given to content
+
+- name: content_thumbs_down_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who gave thumbs down to content
+
+- name: content_thumbs_down_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with thumbs down interactions on content
+
+- name: content_thumbs_down_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of thumbs down given to content
+
+- name: search_ad_click_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who clicked on search ads
+
+- name: search_ad_click_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with search ad clicks
+
+- name: search_ad_click_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of search ad clicks
+
+- name: search_ad_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of search ad impressions
+
+- name: search_engagement_clients
+  type: INTEGER
+  mode: NULLABLE
+  description: Distinct count of clients who engaged with search functionality
+
+- name: search_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with search engagement
+
+- name: search_interaction_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of search interactions
+
+- name: widget_interaction_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of widget interactions
+
+- name: widget_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of widget impressions
+
+- name: other_engagement_visits
+  type: INTEGER
+  mode: NULLABLE
+  description: Total visits with other engagement types
+
+- name: other_interaction_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of other interactions
+
+- name: other_impression_count
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of other impressions
