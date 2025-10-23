@@ -5,8 +5,8 @@ fields:
   description: Whether the user's logged in to an FxA account.
 - name: activity_segment
   type: STRING
-  description: Classification of users based on their browsing activity.
-    E.g., infrequent, casual, regular.
+  description: Classification of users based on their browsing activity. E.g., infrequent,
+    casual, regular.
   aliases:
   - segment
   possible_values:
@@ -69,15 +69,15 @@ fields:
     interaction pings, e.g. top-sites ping.
 - name: country
   type: STRING
-  description: Name of the country in which the activity took place, as determined by
-    the IP geolocation.
+  description: Name of the country in which the activity took place, as determined
+    by the IP geolocation.
   aliases:
   - normalized_country
   - geo
 - name: country_code
   type: STRING
-  description: Code of the country in which the activity took place, as determined by
-    the IP geolocation. Unknown or NULL values are normally stored as '??'.
+  description: Code of the country in which the activity took place, as determined
+    by the IP geolocation. Unknown or NULL values are normally stored as '??'.
   aliases:
   - normalized_country_code
 - name: created_at
@@ -101,9 +101,15 @@ fields:
 - name: document_id
   type: STRING
   description: The document ID specified in the URI when the client sent this message.
+- name: external_id
+  type: STRING
+  mode: NULLABLE
+  description: Unique identifier for the user in external systems, typically a hashed
+    UUID.
 - name: is_default_browser
   type: BOOLEAN
-  description: A flag indicating whether the browser is set as the default browser on the client side.
+  description: A flag indicating whether the browser is set as the default browser
+    on the client side.
 - name: is_desktop
   type: BOOLEAN
   description: Indicates if the client is included in the desktop KPI.
@@ -112,7 +118,8 @@ fields:
   description: Indicates if the client is included in the mobile KPI.
 - name: isp_name
   type: STRING
-  description: The name of the internet service provider associated with the client's IP address.
+  description: The name of the internet service provider associated with the client's
+    IP address.
   aliases:
   - isp
 - name: locale
@@ -138,7 +145,8 @@ fields:
 - name: os_code
   type: STRING
   mode: NULLABLE
-  description: The operating system code based on the Common Platform Enumeration CPE.
+  description: The operating system code based on the Common Platform Enumeration
+    CPE.
 - name: os_major
   type: INTEGER
   description: Major or first part of the operating system version running at the
@@ -153,13 +161,19 @@ fields:
   aliases:
   - os_minor_version
   - os_version_minor
+- name: payload
+  type: STRING
+  mode: NULLABLE
+  description: JSON payload containing user profile data for Braze API sync including
+    email, locale, subscription preferences, and FxA identifier.
 - name: profile_group_id
   type: STRING
-  description: A UUID uniquely identifying the profile group, not shared with other telemetry data.
+  description: A UUID uniquely identifying the profile group, not shared with other
+    telemetry data.
 - name: sample_id
   type: INTEGER
-  description: A number, 0-99, that samples by client_id and allows filtering data for analysis.
-    It is a pipeline-generated artifact that should match between pings.
+  description: A number, 0-99, that samples by client_id and allows filtering data
+    for analysis. It is a pipeline-generated artifact that should match between pings.
 - name: source_column
   type: STRING
   description: Column name in the source used to ingest the data.
@@ -176,14 +190,14 @@ fields:
   description: The submission_timestamp truncated to the hour.
 - name: submission_month
   type: DATE
-  description: First calendar day of the month extracted from submission_date or
-    submission_timestamp.
+  description: First calendar day of the month extracted from submission_date or submission_timestamp.
 - name: submission_timestamp
   type: TIMESTAMP
   description: Timestamp when the ping is received on the server side.
 - name: telemetry_sdk_build
   type: STRING
-  description: The version of the Glean SDK at the time the ping was collected (e.g. 25.0.0).
+  description: The version of the Glean SDK at the time the ping was collected (e.g.
+    25.0.0).
 - name: updated_at
   type: TIMESTAMP
   description: Most recent date and time when the row was updated.
