@@ -1,0 +1,41 @@
+fields:
+- name: app_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Apple App Store application identifier for Firefox app
+- name: date
+  type: TIMESTAMP
+  mode: NULLABLE
+  description: Report date in Pacific Time (PT) with timestamp at midnight
+- name: source_type
+  type: STRING
+  mode: NULLABLE
+  description: Traffic source category for app discovery or acquisition
+- name: territory
+  type: STRING
+  mode: NULLABLE
+  description: Country or region where app metrics were recorded
+- name: _fivetran_synced
+  type: TIMESTAMP
+  mode: NULLABLE
+  description: Timestamp when Fivetran last synchronized this record
+- name: impressions
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of times app was viewed in App Store
+- name: impressions_unique_device
+  type: INTEGER
+  mode: NULLABLE
+  description: Count of unique devices that generated impressions
+- name: meets_threshold
+  type: BOOLEAN
+  mode: NULLABLE
+  description: Indicates if data meets Apple privacy threshold for reporting
+- name: page_views
+  type: INTEGER
+  mode: NULLABLE
+  description: Total views of the app product page in App Store
+- name: page_views_unique_device
+  type: INTEGER
+  mode: NULLABLE
+  description: Count of unique devices that viewed the product page
