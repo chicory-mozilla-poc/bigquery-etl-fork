@@ -6,62 +6,107 @@ fields:
 - mode: NULLABLE
   name: recipient_id
   type: INTEGER
-  description: The ID of the contact associated with the event.
+  description: >
+    Unique identifier for the contact/recipient in Acoustic Campaign. This ID links to the contact
+    record and enables tracking individual recipient behavior across multiple campaigns and mailings.
+    Use this field to deduplicate recipients or join with contact-level data.
 
 - mode: NULLABLE
   name: report_id
   type: INTEGER
-  description: null
+  description: >
+    Internal identifier for the report grouping in Acoustic's reporting structure. This field is
+    system-generated and primarily used for Acoustic's internal data organization. May be null for
+    certain event types.
 
 - mode: NULLABLE
   name: mailing_id
   type: INTEGER
-  description: The ID of the Sent email associated with the event.
+  description: >
+    Unique identifier for the specific sent email (mailing instance) associated with this event.
+    Each deployment of an email template receives a unique mailing_id, enabling analysis of performance
+    across multiple sends of the same campaign. Essential for calculating email-level metrics like
+    open rates and click-through rates.
 
 - mode: NULLABLE
   name: campaign_id
   type: INTEGER
-  description: The ID of the campaign associated with the event.
+  description: >
+    Identifier for the marketing campaign grouping multiple related mailings. Campaigns represent
+    higher-level marketing initiatives that may include multiple email sends, A/B tests, or variants.
+    Use this to aggregate performance across all mailings within a campaign.
 
 - mode: NULLABLE
   name: content_id
   type: STRING
-  description: The ID of the content associated with the event.
+  description: >
+    Identifier for the specific content variant or creative version used in the email. This enables
+    A/B testing analysis and content performance comparison within the same mailing or campaign.
+    Particularly useful for tracking which subject lines, layouts, or messaging performs best.
 
 - mode: NULLABLE
   name: event_timestamp
   type: DATETIME
-  description: The date and time of the event in the API user’s time zone.
+  description: >
+    The precise date and time when the email event occurred, recorded in the Acoustic API user's
+    configured time zone. For 'Sent' events, this is the send time; for 'Open' or 'Click' events,
+    this is when the recipient engaged. Note that timezone conversion may be needed for cross-platform
+    analysis. Should align closely with the submission_date partition field.
 
 - mode: NULLABLE
   name: event_type
   type: STRING
-  description: The type of contact event.
+  description: >
+    The category of email engagement event. Common values include 'Sent' (email delivered to recipient),
+    'Open' (email opened/tracked), 'Click' (link clicked), 'HardBounce' (permanent delivery failure),
+    'SoftBounce' (temporary delivery failure), 'Unsubscribe' (recipient opted out), and 'Suppressed'
+    (prevented from sending due to suppression rules). Critical field for building engagement funnels
+    and calculating email performance metrics. Clustering on this field optimizes event-type queries.
 
 - mode: NULLABLE
   name: recipient_type
   type: STRING
-  description: The type of contact to whom the Acoustic Campaign sent the email.
+  description: >
+    Classification of how the recipient was addressed in the email send. Standard values include 'To'
+    (primary recipient), 'CC' (carbon copy), and 'BCC' (blind carbon copy). This field helps distinguish
+    between primary campaign targets and secondary recipients. Clustered for query optimization when
+    filtering by recipient role.
 
 - mode: NULLABLE
   name: body_type
   type: STRING
-  description: The body type the contact received.
+  description: >
+    The email format/rendering type that the recipient received based on their email client capabilities
+    and preferences. Typical values are 'HTML' (rich formatted email with images and styling) and 'Text'
+    (plain text email). Use this to analyze engagement differences between HTML and text recipients, as
+    tracking capabilities and user experience vary significantly. Clustered for efficient querying.
 
 - mode: NULLABLE
   name: click_name
   type: STRING
-  description: The user-specified name of the link or Clickstream.
+  description: >
+    User-defined descriptive name assigned to the clicked link or clickstream in Acoustic Campaign's
+    link tracking configuration. This human-readable identifier makes it easier to identify which call-to-action
+    or content section drove engagement, without parsing URLs. Only populated for 'Click' event types.
+    Examples might include 'Download Firefox', 'Learn More CTA', or 'Footer Unsubscribe'.
 
 - mode: NULLABLE
   name: url
   type: STRING
-  description: The hyperlink of a Clickthrough or Clickstream.
+  description: >
+    The full hyperlink URL that was clicked by the recipient, typically including tracking parameters
+    appended by Acoustic Campaign. Only populated for 'Click' and 'Clickstream' event types. Useful for
+    detailed click destination analysis, landing page performance, and URL parameter tracking. May contain
+    UTM parameters or other tracking tokens.
 
 - mode: NULLABLE
   name: suppression_reason
   type: STRING
-  description: The reason a contact was suppressed.
+  description: >
+    The specific reason code or category explaining why a recipient was suppressed from receiving the email
+    or from future campaign sends. Only populated for 'Suppressed' event types or when a send was blocked.
+    Common reasons include 'Unsubscribed', 'HardBounce', 'ComplaintSpam', 'GlobalUnsubscribe', or custom
+    suppression rules. Essential for email deliverability analysis and list hygiene monitoring.
 
 
 ###### ETL fields
@@ -69,5 +114,8 @@ fields:
 - mode: NULLABLE
   name: submission_date
   type: DATE
-  description: Airflow's execution date should \
-    overlap with date inside event_timestamp field
+  description: >
+    The Airflow DAG execution date for the ETL pipeline that imported this data, which should align with
+    the date component of the event_timestamp field. Used as the partitioning key for the table, enabling
+    efficient time-based queries and data lifecycle management (775-day retention). When querying recent
+    data, filter on this field to optimize performance and costs. Format: YYYY-MM-DD.
