@@ -1,0 +1,56 @@
+fields:
+- name: submission_date
+  type: DATE
+  mode: NULLABLE
+  description: Date when the data was submitted, derived from submission_timestamp
+
+- name: client_id
+  type: STRING
+  mode: NULLABLE
+  description: Unique identifier for the Fenix client
+
+- name: sample_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Sample identifier for the client, used for sampling purposes
+
+- name: app_version
+  type: STRING
+  mode: NULLABLE
+  description: |
+    Application version of the Fenix client. Format varies by channel:
+    - Release/Beta: standard version format (e.g., 80.0.0, 80.0.0b1)
+    - Nightly: geckoview_version is used instead of app_display_version
+    Only valid versions matching the pattern ^\d+\.\d+(\.\d+)?([ab]\d+)?$ are included
+
+- name: country
+  type: STRING
+  mode: NULLABLE
+  description: Normalized country code, derived from the most frequently occurring value (mode_last) across submissions
+
+- name: locale
+  type: STRING
+  mode: NULLABLE
+  description: Client locale setting, derived from the most frequently occurring value (mode_last) across submissions
+
+- name: app_os
+  type: STRING
+  mode: NULLABLE
+  description: Normalized operating system, derived from the most frequently occurring value (mode_last) across submissions
+
+- name: addons
+  type: RECORD
+  mode: REPEATED
+  description: Array of enabled addons for the client
+  fields:
+  - name: addon
+    type: STRING
+    mode: NULLABLE
+    description: Trimmed addon identifier
+
+  - name: version
+    type: STRING
+    mode: NULLABLE
+    description: |
+      Version of the addon. Currently returns NULL as Fenix metrics ping
+      does not contain addon version data as of 2020-07-01
