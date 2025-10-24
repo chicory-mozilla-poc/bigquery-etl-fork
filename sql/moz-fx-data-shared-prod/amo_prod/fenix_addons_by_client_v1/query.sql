@@ -1,3 +1,4 @@
+-- Test comment: This query aggregates Fenix addon data across multiple channels
 CREATE TEMP FUNCTION get_fields(m ANY TYPE) AS (
   STRUCT(
     m.submission_timestamp,
