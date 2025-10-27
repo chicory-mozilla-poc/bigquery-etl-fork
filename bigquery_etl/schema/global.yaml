@@ -190,3 +190,51 @@ fields:
   aliases:
   - updated_timestamp
   - updated_date
+- name: body_type
+  type: STRING
+  mode: NULLABLE
+  description: Email format type received by the contact (HTML, text, etc.)
+- name: campaign_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Unique identifier for the email marketing campaign
+- name: click_name
+  type: STRING
+  mode: NULLABLE
+  description: Name assigned to the clicked link or clickstream
+- name: content_id
+  type: STRING
+  mode: NULLABLE
+  description: Unique identifier for the email content version
+- name: event_timestamp
+  type: DATETIME
+  mode: NULLABLE
+  description: Timestamp when the email event occurred in user timezone
+- name: event_type
+  type: STRING
+  mode: NULLABLE
+  description: Type of email interaction event (open, click, bounce, etc.)
+- name: mailing_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Unique identifier for the sent email message
+- name: recipient_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Unique identifier for the contact in Acoustic Campaign
+- name: recipient_type
+  type: STRING
+  mode: NULLABLE
+  description: Classification of the email recipient
+- name: report_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Report identifier for the email campaign export
+- name: suppression_reason
+  type: STRING
+  mode: NULLABLE
+  description: Reason why the contact was excluded from the mailing
+- name: url
+  type: STRING
+  mode: NULLABLE
+  description: URL of the clicked link in the email
