@@ -60,9 +60,21 @@ fields:
 - name: attribution_variation
   type: STRING
   description: The attribution variation key.
+- name: body_type
+  type: STRING
+  description: Email body format received by the contact (HTML, plain text, or multipart)
+- name: campaign_id
+  type: INTEGER
+  description: Identifier for the Acoustic Campaign associated with the mailing
+- name: click_name
+  type: STRING
+  description: User-defined name for the clicked link or clickstream identifier
 - name: client_id
   type: STRING
   description: A unique identifier (UUID) for the client.
+- name: content_id
+  type: STRING
+  description: Identifier for the email content or template used in the mailing
 - name: context_id
   type: STRING
   description: A unique identifier (UUID) for clients in contextual services user
@@ -101,6 +113,12 @@ fields:
 - name: document_id
   type: STRING
   description: The document ID specified in the URI when the client sent this message.
+- name: event_timestamp
+  type: DATETIME
+  description: Timestamp of the recipient event in the API user's time zone
+- name: event_type
+  type: STRING
+  description: Type of email event (e.g., sent, opened, clicked, bounced, unsubscribed)
 - name: is_default_browser
   type: BOOLEAN
   description: A flag indicating whether the browser is set as the default browser on the client side.
@@ -118,6 +136,9 @@ fields:
 - name: locale
   type: STRING
   description: Set of language- and/or country-based preferences for a user interface.
+- name: mailing_id
+  type: INTEGER
+  description: Unique identifier for the email mailing sent to the recipient
 - name: normalized_channel
   description: The normalized channel the application is being distributed on.
   type: STRING
@@ -156,6 +177,15 @@ fields:
 - name: profile_group_id
   type: STRING
   description: A UUID uniquely identifying the profile group, not shared with other telemetry data.
+- name: recipient_id
+  type: INTEGER
+  description: Unique identifier for the contact who received the email campaign
+- name: recipient_type
+  type: STRING
+  description: Classification of the recipient (e.g., contact, seed, test)
+- name: report_id
+  type: INTEGER
+  description: Identifier linking to the specific report generated for this recipient event
 - name: sample_id
   type: INTEGER
   description: A number, 0-99, that samples by client_id and allows filtering data for analysis.
@@ -181,6 +211,9 @@ fields:
 - name: submission_timestamp
   type: TIMESTAMP
   description: Timestamp when the ping is received on the server side.
+- name: suppression_reason
+  type: STRING
+  description: Reason the contact was suppressed from receiving the email (e.g., unsubscribed, bounced)
 - name: telemetry_sdk_build
   type: STRING
   description: The version of the Glean SDK at the time the ping was collected (e.g. 25.0.0).
@@ -190,3 +223,6 @@ fields:
   aliases:
   - updated_timestamp
   - updated_date
+- name: url
+  type: STRING
+  description: Full URL of the link clicked by the recipient
