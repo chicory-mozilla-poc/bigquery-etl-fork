@@ -2,153 +2,208 @@ fields:
 - name: submission_date
   type: DATE
   mode: NULLABLE
+  description: The date when the telemetry ping is received on the server side.
 - name: country_code
   type: STRING
   mode: NULLABLE
+  description: Code of the country in which the activity took place, as 
+    determined by the IP geolocation. Unknown or NULL values are normally stored
+    as '??'.
 - name: channel
   type: STRING
   mode: NULLABLE
+  description: The normalized channel the application is being distributed on.
 - name: browser_version
   type: STRING
   mode: NULLABLE
+  description: Version of the Firefox browser generating the interaction events.
 - name: browser_name
   type: STRING
   mode: NULLABLE
+  description: Name of the browser generating the newtab interaction events.
 - name: search_engine
   type: STRING
   mode: NULLABLE
+  description: Search engine used for queries initiated from the newtab page.
 - name: search_access_point
   type: STRING
   mode: NULLABLE
+  description: Entry point from which the search was initiated on newtab.
 - name: default_search_engine
   type: STRING
   mode: NULLABLE
+  description: User's default search engine configured in browser settings.
 - name: default_private_search_engine
   type: STRING
   mode: NULLABLE
+  description: Default search engine configured for private browsing mode.
 - name: pocket_story_position
   type: INTEGER
   mode: NULLABLE
+  description: Position index of Pocket story in the newtab feed layout.
 - name: newtab_open_source
   type: STRING
   mode: NULLABLE
+  description: Source that triggered the opening of the newtab page.
 - name: pocket_is_signed_in
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether the user is signed into their Pocket account.
 - name: pocket_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether Pocket recommendations are enabled on newtab.
 - name: pocket_sponsored_stories_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether sponsored Pocket stories are enabled in newtab.
 - name: topsites_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether the top sites section is enabled on newtab.
 - name: newtab_homepage_category
   type: STRING
   mode: NULLABLE
+  description: Content category configured for the browser homepage.
 - name: newtab_newtab_category
   type: STRING
   mode: NULLABLE
+  description: Content category configured for new tab pages.
 - name: topsites_rows
   type: INTEGER
   mode: NULLABLE
+  description: Number of rows configured for displaying top sites on newtab.
 - name: is_new_profile
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether the profile was created within the measurement period.
 - name: activity_segment
   type: STRING
   mode: NULLABLE
+  description: Classification of users based on their browsing activity. E.g., 
+    infrequent, casual, regular.
 - name: client_count
   type: INTEGER
   mode: NULLABLE
+  description: Distinct count of clients with newtab interactions on the date.
 - name: legacy_telemetry_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Distinct count of clients using legacy telemetry on the date.
 - name: newtab_interactions_visits
   type: INTEGER
   mode: NULLABLE
+  description: Total number of distinct newtab page visits across all clients.
 - name: topsite_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Total clicks on top site tiles in newtab.
 - name: sponsored_topsite_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on sponsored top site tiles.
 - name: organic_topsite_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on organic (non-sponsored) top site tiles.
 - name: topsite_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Total impressions of top site tiles displayed on newtab.
 - name: sponsored_topsite_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of sponsored top site tiles.
 - name: organic_topsite_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of organic (non-sponsored) top site tiles.
 - name: topsite_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Total dismissals of top site tiles by users.
 - name: sponsored_topsite_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of sponsored top site tiles.
 - name: organic_topsite_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of organic (non-sponsored) top site tiles.
 - name: searches
   type: INTEGER
   mode: NULLABLE
+  description: Total search queries initiated from newtab page.
 - name: tagged_search_ad_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on search ads with Mozilla attribution tags.
 - name: tagged_search_ad_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of search ads with Mozilla attribution tags.
 - name: follow_on_search_ad_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on search ads in follow-on search result pages.
 - name: follow_on_search_ad_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of search ads in follow-on search result pages.
 - name: tagged_follow_on_search_ad_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on tagged ads in follow-on search pages.
 - name: tagged_follow_on_search_ad_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of tagged ads in follow-on search pages.
 - name: pocket_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Total impressions of Pocket story recommendations on newtab.
 - name: sponsored_pocket_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of sponsored Pocket story recommendations.
 - name: organic_pocket_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of organic (non-sponsored) Pocket recommendations.
 - name: pocket_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Total clicks on Pocket story recommendations.
 - name: sponsored_pocket_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on sponsored Pocket story recommendations.
 - name: organic_pocket_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on organic (non-sponsored) Pocket recommendations.
 - name: pocket_saves
   type: INTEGER
   mode: NULLABLE
+  description: Total saves of Pocket stories from newtab.
 - name: sponsored_pocket_saves
   type: INTEGER
   mode: NULLABLE
+  description: Saves of sponsored Pocket stories.
 - name: organic_pocket_saves
   type: INTEGER
   mode: NULLABLE
+  description: Saves of organic (non-sponsored) Pocket stories.
 - name: os
   type: STRING
   mode: NULLABLE
+  description: The normalized name of the operating system running at the 
+    client.
 - name: os_version
   type: STRING
   mode: NULLABLE
+  description: Version of the operating system running at the client.
 - name: newtab_search_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether the search functionality is enabled on newtab.
