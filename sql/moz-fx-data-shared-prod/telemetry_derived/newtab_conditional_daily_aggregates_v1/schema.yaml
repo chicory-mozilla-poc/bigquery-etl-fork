@@ -6,140 +6,219 @@ fields:
 - name: country_code
   type: STRING
   mode: NULLABLE
-  description: Code of the country in which the activity took place, as determined
-    by the IP geolocation. Unknown or NULL values are normally stored as '??'.
+  description: Code of the country in which the activity took place, as 
+    determined by the IP geolocation. Unknown or NULL values are normally stored
+    as '??'.
 - name: pocket_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether Pocket recommendations are enabled in the new 
+    tab
 - name: pocket_sponsored_stories_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether sponsored Pocket stories are enabled in the new
+    tab
 - name: topsites_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Indicates whether top sites are enabled in the new tab
 - name: total_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Total count of distinct clients across all channels
 - name: total_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Total count of distinct new tab visits across all channels
 - name: client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct clients on the release channel
 - name: visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct new tab visits on the release channel
 - name: homepage_category_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients with homepage category enabled
 - name: homepage_category_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with homepage category enabled
 - name: newtab_category_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients with new tab category enabled
 - name: newtab_category_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with new tab category enabled
 - name: home_default_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients opening about:home with default
+    homepage settings
 - name: home_default_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits to about:home with default 
+    homepage settings
 - name: newtab_default_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients opening about:newtab with 
+    default new tab settings
 - name: newtab_default_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits to about:newtab with default new
+    tab settings
 - name: home_nondefault_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients opening about:home with 
+    non-default homepage settings
 - name: home_nondefault_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits to about:home with non-default 
+    homepage settings
 - name: newtab_nondefault_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients opening about:newtab with 
+    non-default new tab settings
 - name: newtab_nondefault_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits to about:newtab with non-default
+    new tab settings
 - name: welcome_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients visiting about:welcome page
 - name: welcome_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits to about:welcome page
 - name: searched_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who performed at least one 
+    search
 - name: searched_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits where at least one search 
+    occurred
 - name: sponsored_topsite_impressed_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who viewed at least one 
+    sponsored top site
 - name: sponsored_topsite_impressed_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one sponsored top 
+    site impression
 - name: sponsored_topsite_clicked_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who clicked at least one 
+    sponsored top site
 - name: sponsored_topsite_clicked_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one sponsored top 
+    site click
 - name: topsite_impressed_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who viewed at least one top 
+    site
 - name: topsite_impressed_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one top site 
+    impression
 - name: topsite_clicked_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who clicked at least one top 
+    site
 - name: topsite_clicked_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one top site click
 - name: sponsored_pocket_impressed_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who viewed at least one 
+    sponsored Pocket story
 - name: sponsored_pocket_impressed_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one sponsored 
+    Pocket story impression
 - name: sponsored_pocket_clicked_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who clicked at least one 
+    sponsored Pocket story
 - name: sponsored_pocket_clicked_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one sponsored 
+    Pocket story click
 - name: organic_pocket_impressed_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who viewed at least one organic
+    Pocket story
 - name: organic_pocket_impressed_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one organic Pocket
+    story impression
 - name: organic_pocket_clicked_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who clicked at least one 
+    organic Pocket story
 - name: organic_pocket_clicked_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one organic Pocket
+    story click
 - name: pocket_impressed_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who viewed at least one Pocket 
+    story (sponsored or organic)
 - name: pocket_impressed_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one Pocket story 
+    impression (sponsored or organic)
 - name: pocket_clicked_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who clicked at least one Pocket
+    story (sponsored or organic)
 - name: pocket_clicked_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits with at least one Pocket story 
+    click (sponsored or organic)
 - name: pocket_signed_in_client_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release clients who were signed in to their 
+    Pocket account
 - name: pocket_signed_in_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Count of distinct release visits where user was signed in to 
+    their Pocket account
