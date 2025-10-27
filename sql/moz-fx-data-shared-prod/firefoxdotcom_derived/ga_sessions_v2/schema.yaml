@@ -23,7 +23,8 @@ fields:
 - name: session_number
   mode: NULLABLE
   type: INTEGER
-  description: The session number for this client. Starts at 1, consecutively increasing.
+  description: The session number for this client. Starts at 1, consecutively 
+    increasing.
 - name: time_on_site
   mode: NULLABLE
   type: INTEGER
@@ -36,7 +37,7 @@ fields:
   type: STRING
   mode: NULLABLE
   description: |-
-    Country reported during GA user's session_start event. If no session start event, first reported country in the session.
+    Name of the country in which the activity took place, as determined by the IP geolocation.
 - name: region
   type: STRING
   mode: NULLABLE
@@ -48,21 +49,23 @@ fields:
 - name: device_category
   type: STRING
   mode: NULLABLE
-  description: The type of device (Mobile, Tablet, Desktop) reported during GA user's session_start event
+  description: The type of device (Mobile, Tablet, Desktop) reported during GA 
+    user's session_start event
 - name: mobile_device_model
   type: STRING
   mode: NULLABLE
-  description: The mobile device model reported during GA user's session_start event
+  description: The mobile device model reported during GA user's session_start 
+    event
 - name: mobile_device_string
   type: STRING
   mode: NULLABLE
   description: |-
-    The mobile device string reported during GA user's session_start event.
-    The branding, model, and marketing name used to identify the mobile device.
+    The mobile device string reported during GA user's session_start event. The branding, model, and marketing name used to identify the mobile device.
 - name: os
   type: STRING
   mode: NULLABLE
-  description: "Operating system reported during GA user's session_start event (e.g., 'Macintosh' or 'Windows')."
+  description: "Operating system reported during GA user's session_start event (e.g.,
+    'Macintosh' or 'Windows')."
 - name: os_version
   type: STRING
   mode: NULLABLE
@@ -75,7 +78,8 @@ fields:
 - name: browser
   type: STRING
   mode: NULLABLE
-  description: "Browser reported during GA user's session_start event (e.g., 'Chrome' or 'Firefox')."
+  description: "Browser reported during GA user's session_start event (e.g., 'Chrome'
+    or 'Firefox')."
 - name: browser_version
   type: STRING
   mode: NULLABLE
@@ -115,11 +119,13 @@ fields:
 - name: manual_campaign_id
   type: STRING
   mode: NULLABLE
-  description: Manual Campaign ID reported from collected_traffic_source during GA user's session_start event.
+  description: Manual Campaign ID reported from collected_traffic_source during 
+    GA user's session_start event.
 - name: manual_campaign_name
   type: STRING
   mode: NULLABLE
-  description: Manual Campaign Name reported from collected_traffic_source during GA user's session_start event.
+  description: Manual Campaign Name reported from collected_traffic_source 
+    during GA user's session_start event.
 - name: manual_source
   type: STRING
   mode: NULLABLE
@@ -129,24 +135,27 @@ fields:
   type: STRING
   mode: NULLABLE
   description: |-
-    Manual Medium reported from collected_traffic_source during GA user's session_start event.
-    Could be 'organic', 'cpc', 'referral', or the value of the utm_medium URL parameter.
+    Manual Medium reported from collected_traffic_source during GA user's session_start event. Could be 'organic', 'cpc', 'referral', or the value of the utm_medium URL parameter.
 - name: manual_term
   type: STRING
   mode: NULLABLE
-  description: Manual Term reported from collected_traffic_source during GA user's session_start event.
+  description: Manual Term reported from collected_traffic_source during GA 
+    user's session_start event.
 - name: manual_content
   type: STRING
   mode: NULLABLE
-  description: Manual Content reported from collected_traffic_source during GA user's session_start event.
+  description: Manual Content reported from collected_traffic_source during GA 
+    user's session_start event.
 - name: gclid
   type: STRING
   mode: NULLABLE
-  description: The last reported Google Click ID, which uniquely represent an ad click for Google ads.
+  description: The last reported Google Click ID, which uniquely represent an ad
+    click for Google ads.
 - name: gclid_array
   type: STRING
   mode: REPEATED
-  description: All reported Google Click IDs, which uniquely represent an ad click for Google ads.
+  description: All reported Google Click IDs, which uniquely represent an ad 
+    click for Google ads.
 - name: had_download_event
   type: BOOLEAN
   mode: NULLABLE
@@ -158,23 +167,28 @@ fields:
 - name: last_reported_install_target
   type: STRING
   mode: NULLABLE
-  description: "The last reported install target for this session (e.g. 'desktop_release' or 'android_beta')."
+  description: "The last reported install target for this session (e.g. 'desktop_release'
+    or 'android_beta')."
 - name: all_reported_install_targets
   type: STRING
   mode: REPEATED
-  description: "All install targets reported for this session (e.g. 'desktop_release' or 'android_beta'."
+  description: "All install targets reported for this session (e.g. 'desktop_release'
+    or 'android_beta'."
 - name: last_reported_stub_session_id
   type: STRING
   mode: NULLABLE
-  description: "The last reported Stub Session ID for this session. Can be used to join with `dl_ga_triplets` to get dl_tokens."
+  description: "The last reported Stub Session ID for this session. Can be used to
+    join with `dl_ga_triplets` to get dl_tokens."
 - name: all_reported_stub_session_ids
   type: STRING
   mode: REPEATED
-  description: "All reported Stub Session IDs for this session. Can be used to join with `dl_ga_triplets` to get dl_tokens."
+  description: "All reported Stub Session IDs for this session. Can be used to join
+    with `dl_ga_triplets` to get dl_tokens."
 - name: landing_screen
   type: STRING
   mode: NULLABLE
-  description: "The first reported landing screen for this session. Most sessions only have one, so this is a safe value to use."
+  description: "The first reported landing screen for this session. Most sessions
+    only have one, so this is a safe value to use."
 - name: first_term_from_event_params
   type: STRING
   mode: NULLABLE
@@ -186,15 +200,18 @@ fields:
 - name: ad_google_campaign
   type: STRING
   mode: NULLABLE
-  description: Google Ads Campaign Name reported during GA user's session_start event
+  description: Google Ads Campaign Name reported during GA user's session_start 
+    event
 - name: ad_google_campaign_id
   type: STRING
   mode: NULLABLE
-  description: Google Ads Campaign ID reported during GA user's session_start event
+  description: Google Ads Campaign ID reported during GA user's session_start 
+    event
 - name: ad_google_group
   type: STRING
   mode: NULLABLE
-  description: Google Ads Ad Group Name reported during GA user's session_start event
+  description: Google Ads Ad Group Name reported during GA user's session_start 
+    event
 - name: ad_google_group_id
   type: STRING
   mode: NULLABLE
@@ -202,56 +219,70 @@ fields:
 - name: ad_google_account
   type: STRING
   mode: NULLABLE
-  description: Google Ads Account Name reported during GA user's session_start event
+  description: Google Ads Account Name reported during GA user's session_start 
+    event
 - name: ad_crosschannel_source
   type: STRING
   mode: NULLABLE
-  description: Google Ads Cross-Channel Campaign Source reported during GA user's session_start event
+  description: Google Ads Cross-Channel Campaign Source reported during GA 
+    user's session_start event
 - name: ad_crosschannel_medium
   type: STRING
   mode: NULLABLE
-  description: Google Ads Cross-Channel Campaign Medium reported during GA user's session_start event
+  description: Google Ads Cross-Channel Campaign Medium reported during GA 
+    user's session_start event
 - name: ad_crosschannel_campaign
   type: STRING
   mode: NULLABLE
-  description: Google Ads Cross-Channel Campaign Name reported during GA user's session_start event
+  description: Google Ads Cross-Channel Campaign Name reported during GA user's 
+    session_start event
 - name: ad_crosschannel_campaign_id
   type: STRING
   mode: NULLABLE
-  description: Google Ads Cross-Channel Campaign ID reported during GA user's session_start event
+  description: Google Ads Cross-Channel Campaign ID reported during GA user's 
+    session_start event
 - name: ad_crosschannel_source_platform
   type: STRING
   mode: NULLABLE
-  description: Google Ads Cross-Channel Source Platform reported during GA user's session_start event
+  description: Google Ads Cross-Channel Source Platform reported during GA 
+    user's session_start event
 - name: ad_crosschannel_primary_channel_group
   type: STRING
   mode: NULLABLE
-  description: Google Ads Cross-Channel Primary Channel Group reported during GA user's session_start event
+  description: Google Ads Cross-Channel Primary Channel Group reported during GA
+    user's session_start event
 - name: ad_crosschannel_default_channel_group
   type: STRING
   mode: NULLABLE
-  description: Google Ads Cross-Channel Default Channel Group reported during GA user's session_start event
+  description: Google Ads Cross-Channel Default Channel Group reported during GA
+    user's session_start event
 - name: first_experiment_id_from_event_params
   type: STRING
   mode: NULLABLE
-  description: The first non-null reported experiment ID from event_params for this session.
+  description: The first non-null reported experiment ID from event_params for 
+    this session.
 - name: distinct_experiment_ids_from_event_params
   type: STRING
   mode: REPEATED
-  description: All non-null reported experiment IDs from event_params for this session.
+  description: All non-null reported experiment IDs from event_params for this 
+    session.
 - name: first_experiment_branch_from_event_params
   type: STRING
   mode: NULLABLE
-  description: The first non-null reported experiment branch from event_params for this session.
+  description: The first non-null reported experiment branch from event_params 
+    for this session.
 - name: distinct_experiment_branches_from_event_params
   type: STRING
   mode: REPEATED
-  description: All non-null reported experiment branches from event_params for this session.
+  description: All non-null reported experiment branches from event_params for 
+    this session.
 - name: first_gad_campaignid_from_event_params
   type: STRING
   mode: NULLABLE
-  description: The first non-null reported gad_campaignid from event_params for this session.
+  description: The first non-null reported gad_campaignid from event_params for 
+    this session.
 - name: distinct_gad_campaignid_from_event_params
   type: STRING
   mode: REPEATED
-  description: All non-null reported gad_campaignid from event_params for this session.
+  description: All non-null reported gad_campaignid from event_params for this 
+    session.
