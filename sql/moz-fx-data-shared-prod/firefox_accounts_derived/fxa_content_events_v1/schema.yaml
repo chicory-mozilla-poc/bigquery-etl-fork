@@ -2,510 +2,676 @@ fields:
 - name: logName
   type: STRING
   mode: NULLABLE
+  description: Google Cloud Platform log name identifier for the source log stream from FxA content server
 - name: resource
   type: RECORD
   mode: NULLABLE
+  description: GCP resource information containing metadata about the compute instance generating the logs
   fields:
   - name: type
     type: STRING
     mode: NULLABLE
+    description: Type of GCP resource (e.g., gce_instance, k8s_container)
   - name: labels
     type: RECORD
     mode: NULLABLE
+    description: Key-value labels associated with the GCP resource
     fields:
     - name: instance_id
       type: STRING
       mode: NULLABLE
+      description: Unique identifier for the GCP compute instance
     - name: project_id
       type: STRING
       mode: NULLABLE
+      description: GCP project ID where the resource is hosted
     - name: zone
       type: STRING
       mode: NULLABLE
+      description: GCP zone where the compute instance is located (e.g., us-west1-a)
 - name: textPayload
   type: STRING
   mode: NULLABLE
+  description: Plain text log payload for non-structured log entries
 - name: jsonPayload
   type: RECORD
   mode: NULLABLE
+  description: Structured JSON payload containing the Amplitude event data and FxA content server log fields. This is the primary data container for analytics events.
   fields:
   - name: type
     type: STRING
     mode: NULLABLE
+    description: Event type identifier from the log entry. Filtered to 'amplitudeEvent' for this table.
   - name: pid
     type: FLOAT
     mode: NULLABLE
+    description: Process ID of the FxA content server process that generated the log entry
   - name: logger
     type: STRING
     mode: NULLABLE
+    description: Logger name or identifier used by the FxA content server
   - name: timestamp
     type: FLOAT
     mode: NULLABLE
+    description: Unix timestamp (in milliseconds) when the event was logged by the FxA content server
   - name: severity
     type: FLOAT
     mode: NULLABLE
+    description: Numeric severity level of the log entry (e.g., 0=DEBUG, 1=INFO, 2=WARNING, 3=ERROR)
   - name: envversion
     type: STRING
     mode: NULLABLE
+    description: Version of the logging environment or schema used by the FxA content server
   - name: fields
     type: RECORD
     mode: NULLABLE
+    description: Nested record containing detailed event fields including amplitude event properties, user context, and HTTP request data
     fields:
     - name: op
       type: STRING
       mode: NULLABLE
+      description: Operation identifier indicating the type of action or event being logged
     - name: os_version
       type: STRING
       mode: NULLABLE
+      description: Operating system version of the user's device (e.g., 10.15.7, Windows 10)
     - name: event_properties
       type: STRING
       mode: NULLABLE
+      description: JSON-encoded string containing additional properties specific to the amplitude event type
     - name: event_type
       type: STRING
       mode: NULLABLE
+      description: Amplitude event type name (e.g., 'fxa_login - view', 'fxa_reg - complete'). This field is required and used as a filter in the ETL.
     - name: country
       type: STRING
       mode: NULLABLE
+      description: Two-letter ISO country code derived from the user's IP address
     - name: os_name
       type: STRING
       mode: NULLABLE
+      description: Operating system name of the user's device (e.g., Mac OS X, Windows, Linux, iOS, Android)
     - name: time
       type: FLOAT
       mode: NULLABLE
+      description: Timestamp of the event in milliseconds since epoch
     - name: language
       type: STRING
       mode: NULLABLE
+      description: User's browser or device language setting (e.g., en-US, fr-FR)
     - name: user_properties
       type: STRING
       mode: NULLABLE
+      description: JSON-encoded string containing user-level properties for amplitude analytics
     - name: session_id
       type: FLOAT
       mode: NULLABLE
+      description: Amplitude session identifier for grouping related events within a user session
     - name: region
       type: STRING
       mode: NULLABLE
+      description: Geographic region or state/province derived from the user's IP address
     - name: app_version
       type: STRING
       mode: NULLABLE
+      description: Version of the FxA content server or application generating the event
     - name: device_model
       type: STRING
       mode: NULLABLE
+      description: Model name of the user's device (e.g., iPhone 12, Pixel 5)
     - name: err
       type: STRING
       mode: NULLABLE
+      description: Error message or identifier when the event relates to an error condition
     - name: method
       type: STRING
       mode: NULLABLE
+      description: HTTP request method (GET, POST, PUT, DELETE, etc.) for HTTP-related events
     - name: path
       type: STRING
       mode: NULLABLE
+      description: URL path of the HTTP request
     - name: clientaddress
       type: STRING
       mode: NULLABLE
+      description: Client IP address making the request
     - name: remoteaddresschain
       type: STRING
       mode: NULLABLE
+      description: Chain of proxy IP addresses if the request passed through proxies or load balancers
     - name: useragent
       type: STRING
       mode: NULLABLE
+      description: User-Agent HTTP header string containing browser and device information
     - name: status
       type: STRING
       mode: NULLABLE
+      description: HTTP response status code (e.g., 200, 404, 500)
     - name: t
       type: STRING
       mode: NULLABLE
+      description: Timestamp or time-related field from the original log entry
     - name: contentlength
       type: STRING
       mode: NULLABLE
+      description: HTTP Content-Length header value indicating response size in bytes
     - name: referer
       type: STRING
       mode: NULLABLE
+      description: HTTP Referer header indicating the page that linked to the current request (alternative spelling)
     - name: violated
       type: STRING
       mode: NULLABLE
+      description: Content Security Policy (CSP) directive that was violated, if applicable
     - name: agent
       type: STRING
       mode: NULLABLE
+      description: User agent string or identifier
     - name: source
       type: STRING
       mode: NULLABLE
+      description: Source URL or file where a CSP violation or error occurred
     - name: line
       type: FLOAT
       mode: NULLABLE
+      description: Line number in source code where an error or CSP violation occurred
     - name: blocked
       type: STRING
       mode: NULLABLE
+      description: URI or resource that was blocked by Content Security Policy
     - name: column
       type: FLOAT
       mode: NULLABLE
+      description: Column number in source code where an error or CSP violation occurred
     - name: referrer
       type: STRING
       mode: NULLABLE
+      description: HTTP Referrer header indicating the page that linked to the current request (standard spelling)
     - name: sample
       type: STRING
       mode: NULLABLE
+      description: Sample of code or content related to a CSP violation
     - name: msg
       type: STRING
       mode: NULLABLE
+      description: Message or description field for log entries
     - name: error
       type: STRING
       mode: NULLABLE
+      description: Error message or error object serialized as string
     - name: stack
       type: STRING
       mode: NULLABLE
+      description: Stack trace for error events
     - name: context
       type: STRING
       mode: NULLABLE
+      description: Contextual information about where or how the event occurred
     - name: event
       type: STRING
       mode: NULLABLE
+      description: Event name or identifier for the log entry
     - name: joierrors
       type: STRING
       mode: NULLABLE
+      description: Joi validation errors serialized as string (Joi is a validation library used by FxA)
     - name: user_id
       type: STRING
       mode: NULLABLE
+      description: SHA256 hashed Firefox Accounts user identifier. Original user_id is hashed using TO_HEX(SHA256()) for privacy protection.
     - name: device_id
       type: STRING
       mode: NULLABLE
+      description: SHA256 hashed device identifier for amplitude analytics. Original device_id is hashed using TO_HEX(SHA256()) for privacy protection.
     - name: config
       type: STRING
       mode: NULLABLE
+      description: Configuration data or settings related to the event
     - name: tags
       type: STRING
       mode: NULLABLE
+      description: Tags associated with the event for categorization or filtering
     - name: release
       type: STRING
       mode: NULLABLE
+      description: Release version or build identifier for the application
     - name: level
       type: STRING
       mode: NULLABLE
+      description: Log level or severity (e.g., debug, info, warning, error)
     - name: project
       type: STRING
       mode: NULLABLE
+      description: Project identifier associated with the event
     - name: extra
       type: STRING
       mode: NULLABLE
+      description: Additional arbitrary data associated with the event
     - name: request
       type: STRING
       mode: NULLABLE
+      description: HTTP request details serialized as string
     - name: exception
       type: STRING
       mode: NULLABLE
+      description: Exception details for error events
     - name: fingerprint
       type: STRING
       mode: NULLABLE
+      description: Unique identifier or hash for grouping similar events or errors
     - name: culprit
       type: STRING
       mode: NULLABLE
+      description: Source location or function identified as the cause of an error
     - name: logger
       type: STRING
       mode: NULLABLE
+      description: Logger name within the fields context (duplicate of top-level logger)
     - name: event_id
       type: STRING
       mode: NULLABLE
+      description: Unique identifier for the event
     - name: platform
       type: STRING
       mode: NULLABLE
+      description: Platform identifier (e.g., web, mobile, desktop)
     - name: message
       type: STRING
       mode: NULLABLE
+      description: Human-readable message describing the event
     - name: value
       type: STRING
       mode: NULLABLE
+      description: Generic value field for event-specific data
     - name: param
       type: STRING
       mode: NULLABLE
+      description: Parameter value associated with the event
     - name: amplitudeevent
       type: STRING
       mode: NULLABLE
+      description: Serialized amplitude event data
   - name: region
     type: STRING
     mode: NULLABLE
+    description: Geographic region derived from user's location (top-level field outside of fields record)
   - name: hostname
     type: STRING
     mode: NULLABLE
+    description: Hostname of the FxA content server that generated the event
   - name: flow_id
     type: STRING
     mode: NULLABLE
+    description: Flow identifier used to track user journey across multiple events and pages in a session
   - name: flow_time
     type: FLOAT
     mode: NULLABLE
+    description: Time elapsed in milliseconds since the start of the flow
   - name: v
     type: FLOAT
     mode: NULLABLE
+    description: Version number for the event schema or payload format
   - name: country
     type: STRING
     mode: NULLABLE
+    description: Two-letter ISO country code (top-level field outside of fields record)
   - name: entrypoint
     type: STRING
     mode: NULLABLE
+    description: Entry point or referral source indicating how the user arrived at FxA (e.g., 'preferences', 'sync')
   - name: event
     type: STRING
     mode: NULLABLE
+    description: Event identifier (top-level field outside of fields record)
   - name: useragent
     type: STRING
     mode: NULLABLE
+    description: User-Agent string (top-level field outside of fields record)
   - name: op
     type: STRING
     mode: NULLABLE
+    description: Operation identifier (top-level field outside of fields record)
   - name: locale
     type: STRING
     mode: NULLABLE
+    description: User's locale setting (e.g., en-US, de-DE)
   - name: service
     type: STRING
     mode: NULLABLE
+    description: Mozilla service or client that initiated the FxA interaction (e.g., 'sync', 'pocket', 'monitor')
   - name: context
     type: STRING
     mode: NULLABLE
+    description: Context identifier for the event (top-level field outside of fields record)
   - name: utm_campaign
     type: STRING
     mode: NULLABLE
+    description: UTM campaign parameter for marketing attribution tracking
   - name: utm_medium
     type: STRING
     mode: NULLABLE
+    description: UTM medium parameter indicating the marketing medium (e.g., 'email', 'social', 'cpc')
   - name: utm_content
     type: STRING
     mode: NULLABLE
+    description: UTM content parameter for differentiating similar content or links
   - name: utm_source
     type: STRING
     mode: NULLABLE
+    description: UTM source parameter identifying the traffic source (e.g., 'google', 'newsletter')
   - name: user_properties
     type: RECORD
     mode: NULLABLE
+    description: Structured record of user-level properties for amplitude analytics, tracking persistent user attributes
     fields:
     - name: ua_browser
       type: STRING
       mode: NULLABLE
+      description: Browser name parsed from User-Agent string (e.g., Chrome, Firefox, Safari)
     - name: utm_campaign
       type: STRING
       mode: NULLABLE
+      description: UTM campaign parameter stored as user property
     - name: _append
       type: RECORD
       mode: NULLABLE
+      description: Special amplitude property for appending values to array-type user properties
       fields:
       - name: fxa_services_used
         type: STRING
         mode: NULLABLE
+        description: Comma-separated list or serialized array of FxA services the user has accessed
       - name: experiments
         type: STRING
         mode: REPEATED
+        description: List of experiment IDs or names that the user is enrolled in
     - name: flow_id
       type: STRING
       mode: NULLABLE
+      description: Flow identifier stored as user property
     - name: entrypoint
       type: STRING
       mode: NULLABLE
+      description: Entry point stored as user property
     - name: utm_source
       type: STRING
       mode: NULLABLE
+      description: UTM source parameter stored as user property
     - name: ua_version
       type: STRING
       mode: NULLABLE
+      description: Browser version parsed from User-Agent string
     - name: utm_content
       type: STRING
       mode: NULLABLE
+      description: UTM content parameter stored as user property
     - name: utm_medium
       type: STRING
       mode: NULLABLE
+      description: UTM medium parameter stored as user property
     - name: utm_term
       type: STRING
       mode: NULLABLE
+      description: UTM term parameter for paid search keyword tracking
     - name: newsletter_state
       type: STRING
       mode: NULLABLE
+      description: User's newsletter subscription state (e.g., subscribed, unsubscribed)
   - name: user_id
     type: STRING
     mode: NULLABLE
+    description: SHA256 hashed Firefox Accounts user identifier (top-level field). Hashed using TO_HEX(SHA256()) for privacy.
   - name: os_version
     type: STRING
     mode: NULLABLE
+    description: Operating system version (top-level field outside of fields record)
   - name: device_id
     type: STRING
     mode: NULLABLE
+    description: SHA256 hashed device identifier (top-level field). Hashed using TO_HEX(SHA256()) for privacy.
   - name: event_properties
     type: RECORD
     mode: NULLABLE
+    description: Structured record containing event-specific properties that vary based on the event type
     fields:
     - name: service
       type: STRING
       mode: NULLABLE
+      description: Mozilla service related to this specific event
     - name: reason
       type: STRING
       mode: NULLABLE
+      description: Reason or cause for the event (e.g., error reason, disconnect reason)
     - name: connect_device_flow
       type: STRING
       mode: NULLABLE
+      description: Flow type for device connection events (e.g., 'pairing', 'signin')
     - name: email_provider
       type: STRING
       mode: NULLABLE
+      description: Email provider domain of the user's email address (e.g., gmail.com, yahoo.com)
     - name: email_type
       type: STRING
       mode: NULLABLE
+      description: Type of email being sent or processed (e.g., 'verification', 'reset_password')
     - name: oauth_client_id
       type: STRING
       mode: NULLABLE
+      description: OAuth client identifier for the relying party application
     - name: connect_device_os
       type: STRING
       mode: NULLABLE
+      description: Operating system of the device being connected
   - name: event_type
     type: STRING
     mode: NULLABLE
+    description: Amplitude event type (top-level field). Required field used as filter in the ETL - only records with non-null event_type are included.
   - name: os_name
     type: STRING
     mode: NULLABLE
+    description: Operating system name (top-level field outside of fields record)
   - name: app_version
     type: STRING
     mode: NULLABLE
+    description: Application version (top-level field outside of fields record)
   - name: language
     type: STRING
     mode: NULLABLE
+    description: User's language preference (top-level field outside of fields record)
   - name: session_id
     type: FLOAT
     mode: NULLABLE
+    description: Amplitude session identifier (top-level field outside of fields record)
   - name: device_model
     type: STRING
     mode: NULLABLE
+    description: Device model name (top-level field outside of fields record)
 - name: timestamp
   type: TIMESTAMP
   mode: NULLABLE
+  description: GCP log timestamp indicating when the log entry was received by Google Cloud Logging. Used for table partitioning.
 - name: receiveTimestamp
   type: TIMESTAMP
   mode: NULLABLE
+  description: Timestamp when Google Cloud Logging received and processed the log entry
 - name: severity
   type: STRING
   mode: NULLABLE
+  description: GCP log severity level (DEFAULT, DEBUG, INFO, NOTICE, WARNING, ERROR, CRITICAL, ALERT, EMERGENCY)
 - name: insertId
   type: STRING
   mode: NULLABLE
+  description: Unique identifier assigned by Google Cloud Logging for deduplication of log entries
 - name: httpRequest
   type: RECORD
   mode: NULLABLE
+  description: Structured HTTP request information extracted from the log entry
   fields:
   - name: requestMethod
     type: STRING
     mode: NULLABLE
+    description: HTTP method of the request (GET, POST, PUT, DELETE, PATCH, etc.)
   - name: requestUrl
     type: STRING
     mode: NULLABLE
+    description: Full URL of the HTTP request including protocol, host, path, and query parameters
   - name: requestSize
     type: INTEGER
     mode: NULLABLE
+    description: Size of the HTTP request in bytes
   - name: status
     type: INTEGER
     mode: NULLABLE
+    description: HTTP response status code (200, 404, 500, etc.)
   - name: responseSize
     type: INTEGER
     mode: NULLABLE
+    description: Size of the HTTP response in bytes
   - name: userAgent
     type: STRING
     mode: NULLABLE
+    description: User-Agent header from the HTTP request
   - name: remoteIp
     type: STRING
     mode: NULLABLE
+    description: IP address of the client making the request
   - name: serverIp
     type: STRING
     mode: NULLABLE
+    description: IP address of the server that handled the request
   - name: referer
     type: STRING
     mode: NULLABLE
+    description: HTTP Referer header indicating the previous page
   - name: cacheLookup
     type: BOOLEAN
     mode: NULLABLE
+    description: Whether a cache lookup was performed for this request
   - name: cacheHit
     type: BOOLEAN
     mode: NULLABLE
+    description: Whether the request was served from cache
   - name: cacheValidatedWithOriginServer
     type: BOOLEAN
     mode: NULLABLE
+    description: Whether the cached content was validated with the origin server
   - name: cacheFillBytes
     type: INTEGER
     mode: NULLABLE
+    description: Number of bytes written to cache for this request
   - name: protocol
     type: STRING
     mode: NULLABLE
+    description: HTTP protocol version (HTTP/1.0, HTTP/1.1, HTTP/2, etc.)
 - name: labels
   type: RECORD
   mode: NULLABLE
+  description: Custom labels attached to the log entry for categorization and filtering
   fields:
   - name: type
     type: STRING
     mode: NULLABLE
+    description: Type label for the log entry
   - name: compute_googleapis_com_resource_name
     type: STRING
     mode: NULLABLE
+    description: GCP compute resource name from the googleapis label
   - name: application
     type: STRING
     mode: NULLABLE
+    description: Application identifier label
   - name: env
     type: STRING
     mode: NULLABLE
+    description: Environment label (e.g., production, staging, development)
   - name: stack
     type: STRING
     mode: NULLABLE
+    description: Stack or deployment identifier label
   - name: fxa________
     type: STRING
     mode: NULLABLE
+    description: FxA-specific label (partial field name, likely truncated)
   - name: defau
     type: STRING
     mode: NULLABLE
+    description: Label field (partial field name, likely truncated)
   - name: cont
     type: STRING
     mode: NULLABLE
+    description: Label field (partial field name, likely truncated)
   - name: pro
     type: STRING
     mode: NULLABLE
+    description: Label field (partial field name, likely truncated)
   - name: fxa______pi
     type: STRING
     mode: NULLABLE
+    description: FxA-specific label (partial field name, likely truncated)
 - name: operation
   type: RECORD
   mode: NULLABLE
+  description: Information about the operation or transaction that generated the log entry
   fields:
   - name: id
     type: STRING
     mode: NULLABLE
+    description: Unique identifier for the operation
   - name: producer
     type: STRING
     mode: NULLABLE
+    description: Service or component that produced the operation
   - name: first
     type: BOOLEAN
     mode: NULLABLE
+    description: Whether this is the first log entry for the operation
   - name: last
     type: BOOLEAN
     mode: NULLABLE
+    description: Whether this is the last log entry for the operation
 - name: trace
   type: STRING
   mode: NULLABLE
+  description: Distributed tracing trace ID for correlating related requests across services
 - name: spanId
   type: STRING
   mode: NULLABLE
+  description: Distributed tracing span ID representing a unit of work within a trace
 - name: traceSampled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether this trace was selected for sampling and detailed analysis
 - name: sourceLocation
   type: RECORD
   mode: NULLABLE
+  description: Source code location that generated the log entry
   fields:
   - name: file
     type: STRING
     mode: NULLABLE
+    description: Source file name or path
   - name: line
     type: INTEGER
     mode: NULLABLE
+    description: Line number in the source file
   - name: function
     type: STRING
     mode: NULLABLE
+    description: Function or method name that generated the log
 - name: split
   type: RECORD
   mode: NULLABLE
+  description: Information for handling split or sharded log entries that exceed size limits
   fields:
   - name: uid
     type: STRING
     mode: NULLABLE
+    description: Unique identifier linking split log entries together
   - name: index
     type: INTEGER
     mode: NULLABLE
+    description: Index of this split entry in the sequence
   - name: totalSplits
     type: INTEGER
     mode: NULLABLE
+    description: Total number of split entries for the original log
