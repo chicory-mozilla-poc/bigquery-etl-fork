@@ -6,62 +6,62 @@ fields:
 - mode: NULLABLE
   name: recipient_id
   type: INTEGER
-  description: The ID of the contact associated with the event.
+  description: Unique identifier for the contact/recipient associated with the email event in Acoustic Campaign
 
 - mode: NULLABLE
   name: report_id
   type: INTEGER
-  description: null
+  description: Internal report identifier used for tracking and grouping email campaign analytics
 
 - mode: NULLABLE
   name: mailing_id
   type: INTEGER
-  description: The ID of the Sent email associated with the event.
+  description: Unique identifier for the specific email message that was sent to the recipient
 
 - mode: NULLABLE
   name: campaign_id
   type: INTEGER
-  description: The ID of the campaign associated with the event.
+  description: Unique identifier for the marketing campaign to which this email event belongs
 
 - mode: NULLABLE
   name: content_id
   type: STRING
-  description: The ID of the content associated with the event.
+  description: Identifier for the specific email content or template used in the mailing
 
 - mode: NULLABLE
   name: event_timestamp
   type: DATETIME
-  description: The date and time of the event in the API user’s time zone.
+  description: Date and time when the email event occurred, recorded in the API user's configured timezone
 
 - mode: NULLABLE
   name: event_type
   type: STRING
-  description: The type of contact event.
+  description: Classification of the email interaction event (e.g., sent, opened, clicked, bounced, unsubscribed)
 
 - mode: NULLABLE
   name: recipient_type
   type: STRING
-  description: The type of contact to whom the Acoustic Campaign sent the email.
+  description: Classification of the contact recipient (e.g., test, seed, regular subscriber)
 
 - mode: NULLABLE
   name: body_type
   type: STRING
-  description: The body type the contact received.
+  description: Format of the email body that was delivered to the recipient (e.g., HTML, plain text, multipart)
 
 - mode: NULLABLE
   name: click_name
   type: STRING
-  description: The user-specified name of the link or Clickstream.
+  description: User-defined label for the tracked link or clickstream element within the email
 
 - mode: NULLABLE
   name: url
   type: STRING
-  description: The hyperlink of a Clickthrough or Clickstream.
+  description: Full hyperlink URL that was clicked by the recipient (for click-through or clickstream events)
 
 - mode: NULLABLE
   name: suppression_reason
   type: STRING
-  description: The reason a contact was suppressed.
+  description: Reason why the email was not delivered or the contact was excluded (e.g., bounced, unsubscribed, opted-out)
 
 
 ###### ETL fields
@@ -69,5 +69,4 @@ fields:
 - mode: NULLABLE
   name: submission_date
   type: DATE
-  description: Airflow's execution date should \
-    overlap with date inside event_timestamp field
+  description: ETL processing date representing when the data was ingested, aligned with Airflow execution date
