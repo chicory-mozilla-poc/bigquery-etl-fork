@@ -23,3 +23,4 @@ bigquery:
     - country_code
 references: {}
 require_column_descriptions: false
+deprecated: true
