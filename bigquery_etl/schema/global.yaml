@@ -190,3 +190,51 @@ fields:
   aliases:
   - updated_timestamp
   - updated_date
+- name: recipient_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Unique identifier for the contact in Acoustic Campaign system
+- name: report_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Identifier for the Acoustic Campaign report associated with this event
+- name: mailing_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Unique identifier for the sent email message in Acoustic Campaign
+- name: campaign_id
+  type: INTEGER
+  mode: NULLABLE
+  description: Unique identifier for the Acoustic Campaign associated with the email event
+- name: content_id
+  type: STRING
+  mode: NULLABLE
+  description: Identifier for the email content template or version used
+- name: event_timestamp
+  type: DATETIME
+  mode: NULLABLE
+  description: Date and time when the email event occurred in the API user's timezone
+- name: event_type
+  type: STRING
+  mode: NULLABLE
+  description: Type of email interaction event (e.g., sent, opened, clicked, bounced)
+- name: recipient_type
+  type: STRING
+  mode: NULLABLE
+  description: Classification of the contact recipient in Acoustic Campaign
+- name: body_type
+  type: STRING
+  mode: NULLABLE
+  description: Format of the email body delivered to the contact (e.g., HTML, text)
+- name: click_name
+  type: STRING
+  mode: NULLABLE
+  description: User-defined name assigned to the clicked link or clickstream
+- name: url
+  type: STRING
+  mode: NULLABLE
+  description: Full hyperlink URL for clickthrough or clickstream events
+- name: suppression_reason
+  type: STRING
+  mode: NULLABLE
+  description: Reason why a contact was suppressed from receiving emails
