@@ -1,52 +1,123 @@
-# Newtab Visits Daily
-
-A daily job that computes one row per New Tab visit (`newtab_visit_id`) per day for Firefox Newtab Homepage. The
-dataset captures whether and how a user interacted with Search, Content Articles and Top Sites on the default New Tab
-UI,
-along with counts, impressions, window size, and visit duration.
+# Firefox Desktop Newtab Visits Daily
 
 ## Overview
 
-- **Purpose:** Measure New Tab engagement on sponsored/organic content at a per-visit granularity for analysis and
-  reporting.
-- **Grain:** 1 row per (`submission_date`, `client_id`, `newtab_visit_id`).
-- **Source:** `moz-fx-data-shared-prod.firefox_desktop_stable.newtab_v1`, events unnested from Component `events`.
-- **Metrics filter:** Metrics are scoped to visits opened in the **default New Tab UI**.
-- **Incrementality:** Runs daily and processes data for a single partition date via `@submission_date`.
+This table provides daily metrics for Firefox Desktop newtab (new tab page) visits. Each row represents a unique newtab visit session, capturing user interactions with various newtab features including sponsored and organic content, topsites, search functionality, widgets, and customization options.
 
-## How it works (high level)
+## Data Source
 
-1. **Unnest & filter events** for the target `@submission_date`, selecting categories:
-   - `newtab.search` (`issued`), `newtab.search.ad` (`click`, `impression`)
-   - `pocket` (`click`, `impression`, `dismiss`, `thumb_voting_interaction`)
-   - `topsites` (`click`, `impression`, `dismiss`)
-   - `newtab` UI signals (`opened`, `closed`, weather*, widgets*, wallpaper*, topic_selection*, sections*,
-     inline_selection*)
-2. **Visit-level rollups** using aggregate event flags & counts per `newtab_visit_id`.
-3. **Derived metrics**, including visit duration (close minus open) and window inner size captured at open.
-4. **New fields (Aug 2025):** sampling, legacy profile grouping, geo subdivision, experiment metadata, weather flag,
-   search engine IDs, topsite configuration, blocked sponsors, and new dismissal/thumbs metrics across content and topsites.
+The table is derived from the `firefox_desktop_stable.newtab_v1` ping, processing events related to newtab opens, closes, searches, content impressions, clicks, and user interactions. The ETL aggregates event-level telemetry into visit-level metrics.
 
-\* See schema for the full list of weather/widgets/wallpaper/sections/topic/inline events included.
+## Key Metrics
 
-## Output schema
+- **Visit Identification**: Each visit is uniquely identified by `newtab_visit_id`
+- **Content Engagement**: Tracks both organic and sponsored content from Pocket (clicks, impressions, dismissals)
+- **Topsite Activity**: Monitors organic and sponsored topsite interactions
+- **Search Behavior**: Captures search issuance and ad engagement
+- **Widgets**: Tracks weather, timer, and list widget usage
+- **Customization**: Records wallpaper, topic selection, and section preferences
 
-See `schema.yaml` for complete field names, types, and descriptions.
+## Table Characteristics
 
-Key examples:
-- Count fields like `any_content_click_count`, `organic_topsite_impression_count`, `search_ad_impression_count` quantify event frequencies within the visit.
-- Prefixes `sponsored` and `organic` indicate the associated articles are sponsored or organic.
-- `newtab_visit_duration` is the timestamp difference between `newtab.opened` and `newtab.closed` (ms).
-- Window size at open: `newtab_window_inner_height`, `newtab_window_inner_width`.
+- **Granularity**: One row per newtab visit per day
+- **Partitioning**: Daily partitioning on `submission_date` (required filter)
+- **Clustering**: Optimized by `channel`, `country`, `newtab_category`
+- **Update Schedule**: Daily via `bqetl_newtab` DAG
+- **Data Retention**: 775 days
 
-## Scheduling & storage
+## Default UI Context
 
-- **DAG:** `bqetl_newtab` (daily)
-- **Table type:** Client-level
-- **Partitioning:** Time-partitioned on `submission_date` (required partition filter)
-- **Clustering:** `channel`, `country`, `newtab_category`
-- **Expiration:** 775 days
+Many metrics are conditioned on `is_default_ui = TRUE`, meaning they only capture interactions when the newtab page was opened in the default Firefox UI configuration (not in custom homepage settings).
 
-## Parameters
+## Downstream Analysis Suggestions
 
-- `@submission_date` (DATE): processes a single day.
+### 1. Sponsored Content Performance Analysis
+Analyze the effectiveness of sponsored content and topsites:
+```sql
+SELECT 
+  submission_date,
+  channel,
+  country,
+  COUNT(DISTINCT client_id) as users,
+  SUM(sponsored_content_impression_count) as sponsored_impressions,
+  SUM(sponsored_content_click_count) as sponsored_clicks,
+  SAFE_DIVIDE(SUM(sponsored_content_click_count), SUM(sponsored_content_impression_count)) as ctr
+FROM `moz-fx-data-shared-prod.firefox_desktop_derived.newtab_visits_daily_v2`
+WHERE submission_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY)
+  AND is_default_ui = TRUE
+  AND sponsored_content_enabled = TRUE
+GROUP BY 1,2,3
+ORDER BY submission_date DESC;
+```
+
+### 2. User Engagement Funnel
+Build a funnel showing newtab visit to content interaction:
+```sql
+SELECT
+  submission_date,
+  COUNT(DISTINCT newtab_visit_id) as total_visits,
+  COUNT(DISTINCT CASE WHEN is_content_impression THEN newtab_visit_id END) as visits_with_impressions,
+  COUNT(DISTINCT CASE WHEN is_content_click THEN newtab_visit_id END) as visits_with_clicks,
+  COUNT(DISTINCT CASE WHEN is_search_issued THEN newtab_visit_id END) as visits_with_search
+FROM `moz-fx-data-shared-prod.firefox_desktop_derived.newtab_visits_daily_v2`
+WHERE submission_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+  AND is_default_ui = TRUE
+GROUP BY 1
+ORDER BY 1 DESC;
+```
+
+### 3. Feature Adoption and Retention
+Track adoption of newtab features over time:
+```sql
+SELECT
+  submission_date,
+  COUNTIF(newtab_weather_enabled) as weather_enabled_users,
+  COUNTIF(sponsored_content_enabled) as sponsored_stories_enabled,
+  COUNTIF(sponsored_topsites_enabled) as sponsored_topsites_enabled,
+  COUNTIF(is_widget_interaction) as widget_interactions,
+  COUNT(DISTINCT client_id) as total_users
+FROM `moz-fx-data-shared-prod.firefox_desktop_derived.newtab_visits_daily_v2`
+WHERE submission_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY)
+GROUP BY 1
+ORDER BY 1 DESC;
+```
+
+### 4. Experiment Impact Analysis
+Compare metrics across experiment branches:
+```sql
+WITH experiment_users AS (
+  SELECT
+    submission_date,
+    client_id,
+    exp.value.branch as experiment_branch,
+    AVG(any_content_click_count) as avg_content_clicks,
+    AVG(search_interaction_count) as avg_searches,
+    AVG(newtab_visit_duration) as avg_duration_ms
+  FROM `moz-fx-data-shared-prod.firefox_desktop_derived.newtab_visits_daily_v2`,
+  UNNEST(experiments) as exp
+  WHERE submission_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 14 DAY)
+    AND exp.key = 'your-experiment-id'
+  GROUP BY 1,2,3
+)
+SELECT
+  experiment_branch,
+  AVG(avg_content_clicks) as mean_content_clicks,
+  AVG(avg_searches) as mean_searches,
+  AVG(avg_duration_ms) / 1000 as mean_duration_seconds
+FROM experiment_users
+GROUP BY 1;
+```
+
+## Important Notes
+
+- Metrics with `_count` suffix represent aggregated counts within a single visit
+- Boolean `is_*` fields indicate whether an event occurred at least once during the visit
+- All interaction metrics are filtered to `is_default_ui = TRUE` for consistency
+- Visit duration may be NULL if close event was not captured
+- The `experiments` field is a repeated RECORD containing all active experiments for the visit
+
+## Contact
+
+- **Owner**: gkatre@mozilla.com
+- **DAG**: bqetl_newtab
+- **Schedule**: Daily incremental load
