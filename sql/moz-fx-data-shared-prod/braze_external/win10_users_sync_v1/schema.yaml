@@ -1,0 +1,13 @@
+fields:
+- name: updated_at
+  type: TIMESTAMP
+  mode: NULLABLE
+  description: Most recent date and time when the row was updated.
+- name: external_id
+  type: STRING
+  mode: NULLABLE
+  description: Unique identifier for the user in external systems, typically a hashed UUID.
+- name: payload
+  type: STRING
+  mode: NULLABLE
+  description: JSON payload containing user profile data for Braze API sync including email, locale, subscription preferences, and FxA identifier.
