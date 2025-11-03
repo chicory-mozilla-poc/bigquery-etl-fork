@@ -7,108 +7,108 @@ fields:
   mode: NULLABLE
   name: client_id
   type: STRING
-- description: null
+- description: Total content process aborts. Source subprocess_abnormal_abort['content'] keyed histogram.
   mode: NULLABLE
   name: aborts_content_sum
   type: INTEGER
-- description: null
+- description: Total GMP plugin process aborts. Source subprocess_abnormal_abort['gmplugin'] keyed histogram.
   mode: NULLABLE
   name: aborts_gmplugin_sum
   type: INTEGER
-- description: null
+- description: Total plugin process aborts. Source subprocess_abnormal_abort['plugin'] keyed histogram.
   mode: NULLABLE
   name: aborts_plugin_sum
   type: INTEGER
-- description: null
+- description: Average number of active addons across all pings for this client-day.
   mode: NULLABLE
   name: active_addons_count_mean
   type: FLOAT
-- description: null
+- description: List of active browser addons with their properties.
   fields:
-  - description: null
+  - description: Unique identifier for the addon.
     mode: NULLABLE
     name: addon_id
     type: STRING
-  - description: null
+  - description: Whether the addon is blocklisted.
     mode: NULLABLE
     name: blocklisted
     type: BOOLEAN
-  - description: null
+  - description: Display name of the addon.
     mode: NULLABLE
     name: name
     type: STRING
-  - description: null
+  - description: Whether the addon was disabled by the user.
     mode: NULLABLE
     name: user_disabled
     type: BOOLEAN
-  - description: null
+  - description: Whether the addon was disabled by the application.
     mode: NULLABLE
     name: app_disabled
     type: BOOLEAN
-  - description: null
+  - description: Version string of the addon.
     mode: NULLABLE
     name: version
     type: STRING
-  - description: null
+  - description: Scope of the addon installation.
     mode: NULLABLE
     name: scope
     type: INTEGER
-  - description: null
+  - description: Type of addon (extension, theme, plugin, etc).
     mode: NULLABLE
     name: type
     type: STRING
-  - description: null
+  - description: Whether the addon was installed by a foreign application.
     mode: NULLABLE
     name: foreign_install
     type: BOOLEAN
-  - description: null
+  - description: Whether the addon has binary components.
     mode: NULLABLE
     name: has_binary_components
     type: BOOLEAN
-  - description: null
+  - description: Number of days since epoch when the addon was installed.
     mode: NULLABLE
     name: install_day
     type: INTEGER
-  - description: null
+  - description: Number of days since epoch when the addon was last updated.
     mode: NULLABLE
     name: update_day
     type: INTEGER
-  - description: null
+  - description: Signing status of the addon.
     mode: NULLABLE
     name: signed_state
     type: INTEGER
-  - description: null
+  - description: Whether the addon is a system addon.
     mode: NULLABLE
     name: is_system
     type: BOOLEAN
-  - description: null
+  - description: Whether the addon is a WebExtension.
     mode: NULLABLE
     name: is_web_extension
     type: BOOLEAN
-  - description: null
+  - description: Whether the addon is compatible with multiprocess Firefox.
     mode: NULLABLE
     name: multiprocess_compatible
     type: BOOLEAN
   mode: REPEATED
   name: active_addons
   type: RECORD
-- description: null
+- description: Active experiment branch (deprecated - use experiments field).
   mode: NULLABLE
   name: active_experiment_branch
   type: STRING
-- description: null
+- description: Active experiment ID (deprecated - use experiments field).
   mode: NULLABLE
   name: active_experiment_id
   type: STRING
-- description: null
+- description: Total active usage hours, calculated from active_ticks (5-second intervals). Does not include idle time.
   mode: NULLABLE
   name: active_hours_sum
   type: FLOAT
-- description: null
+- description: Whether addon compatibility checking is enabled.
   mode: NULLABLE
   name: addon_compatibility_check_enabled
   type: BOOLEAN
-- description: null
+- description: The build identifier from the application.
   mode: NULLABLE
   name: app_build_id
   type: STRING
@@ -116,7 +116,7 @@ fields:
   mode: NULLABLE
   name: app_display_version
   type: STRING
-- description: null
+- description: Application name.
   mode: NULLABLE
   name: app_name
   type: STRING
@@ -124,21 +124,21 @@ fields:
   mode: NULLABLE
   name: app_version
   type: STRING
-- description: null
+- description: Marketing attribution data for this installation.
   fields:
-  - description: null
+  - description: Attribution source (e.g., google, bing).
     mode: NULLABLE
     name: source
     type: STRING
-  - description: null
+  - description: Attribution medium (e.g., organic, cpc, referral).
     mode: NULLABLE
     name: medium
     type: STRING
-  - description: null
+  - description: Attribution campaign identifier.
     mode: NULLABLE
     name: campaign
     type: STRING
-  - description: null
+  - description: Attribution content identifier for A/B testing.
     mode: NULLABLE
     name: content
     type: STRING
@@ -160,7 +160,7 @@ fields:
   mode: NULLABLE
   name: attribution
   type: RECORD
-- description: null
+- description: Whether the blocklist system is enabled.
   mode: NULLABLE
   name: blocklist_enabled
   type: BOOLEAN
@@ -168,31 +168,31 @@ fields:
   mode: NULLABLE
   name: channel
   type: STRING
-- description: null
+- description: Average difference in seconds between client system time and server time.
   mode: NULLABLE
   name: client_clock_skew_mean
   type: FLOAT
-- description: null
+- description: Average time in milliseconds between ping creation and submission.
   mode: NULLABLE
   name: client_submission_latency_mean
   type: FLOAT
-- description: null
+- description: Number of physical CPU cores.
   mode: NULLABLE
   name: cpu_cores
   type: INTEGER
-- description: null
+- description: Total number of logical CPU processors.
   mode: NULLABLE
   name: cpu_count
   type: INTEGER
-- description: null
+- description: CPU family identifier.
   mode: NULLABLE
   name: cpu_family
   type: INTEGER
-- description: null
+- description: Size of CPU L2 cache in kilobytes.
   mode: NULLABLE
   name: cpu_l2_cache_kb
   type: INTEGER
-- description: null
+- description: Size of CPU L3 cache in kilobytes.
   mode: NULLABLE
   name: cpu_l3_cache_kb
   type: INTEGER
@@ -212,63 +212,63 @@ fields:
   mode: NULLABLE
   name: cpu_vendor
   type: STRING
-- description: null
+- description: Crashes detected in content process. Source subprocess_crashes_with_dump keyed histogram.
   mode: NULLABLE
   name: crashes_detected_content_sum
   type: INTEGER
-- description: null
+- description: Crashes detected in gmplugin process. Source subprocess_crashes_with_dump keyed histogram.
   mode: NULLABLE
   name: crashes_detected_gmplugin_sum
   type: INTEGER
-- description: null
+- description: Crashes detected in plugin process. Source subprocess_crashes_with_dump keyed histogram.
   mode: NULLABLE
   name: crashes_detected_plugin_sum
   type: INTEGER
-- description: null
+- description: Crash report submission attempts for content process. Source process_crash_submit_attempt keyed histogram.
   mode: NULLABLE
   name: crash_submit_attempt_content_sum
   type: INTEGER
-- description: null
+- description: Crash report submission attempts for main process. Source process_crash_submit_attempt keyed histogram.
   mode: NULLABLE
   name: crash_submit_attempt_main_sum
   type: INTEGER
-- description: null
+- description: Crash report submission attempts for plugin process. Source process_crash_submit_attempt keyed histogram.
   mode: NULLABLE
   name: crash_submit_attempt_plugin_sum
   type: INTEGER
-- description: null
+- description: Successful crash report submissions for content process. Source process_crash_submit_success keyed histogram.
   mode: NULLABLE
   name: crash_submit_success_content_sum
   type: INTEGER
-- description: null
+- description: Successful crash report submissions for main process. Source process_crash_submit_success keyed histogram.
   mode: NULLABLE
   name: crash_submit_success_main_sum
   type: INTEGER
-- description: null
+- description: Successful crash report submissions for plugin process. Source process_crash_submit_success keyed histogram.
   mode: NULLABLE
   name: crash_submit_success_plugin_sum
   type: INTEGER
-- description: null
+- description: Default search engine identifier.
   mode: NULLABLE
   name: default_search_engine
   type: STRING
-- description: null
+- description: Load path for the default search engine.
   mode: NULLABLE
   name: default_search_engine_data_load_path
   type: STRING
-- description: null
+- description: Name of the default search engine.
   mode: NULLABLE
   name: default_search_engine_data_name
   type: STRING
-- description: null
+- description: Origin of the default search engine (e.g., user-set, default, verified).
   mode: NULLABLE
   name: default_search_engine_data_origin
   type: STRING
-- description: null
+- description: Submission URL for the default search engine.
   mode: NULLABLE
   name: default_search_engine_data_submission_url
   type: STRING
-- description: null
+- description: Total count of developer toolbox opens.
   mode: NULLABLE
   name: devtools_toolbox_opened_count_sum
   type: INTEGER
@@ -276,64 +276,64 @@ fields:
   mode: NULLABLE
   name: distribution_id
   type: STRING
-- description: null
+- description: Whether multi-process mode (e10s) is enabled.
   mode: NULLABLE
   name: e10s_enabled
   type: BOOLEAN
-- description: null
+- description: Build architecture (e.g., x86, x86-64).
   mode: NULLABLE
   name: env_build_arch
   type: STRING
-- description: null
+- description: Build identifier from the environment.
   mode: NULLABLE
   name: env_build_id
   type: STRING
-- description: null
+- description: Build version from the environment.
   mode: NULLABLE
   name: env_build_version
   type: STRING
-- description: null
+- description: Accepted languages for internationalization.
   mode: REPEATED
   name: environment_settings_intl_accept_languages
   type: STRING
-- description: null
+- description: Application locales for internationalization.
   mode: REPEATED
   name: environment_settings_intl_app_locales
   type: STRING
-- description: null
+- description: Available locales for internationalization.
   mode: REPEATED
   name: environment_settings_intl_available_locales
   type: STRING
-- description: null
+- description: Requested locales for internationalization.
   mode: REPEATED
   name: environment_settings_intl_requested_locales
   type: STRING
-- description: null
+- description: System locales for internationalization.
   mode: REPEATED
   name: environment_settings_intl_system_locales
   type: STRING
-- description: null
+- description: Regional preference locales for internationalization.
   mode: REPEATED
   name: environment_settings_intl_regional_prefs_locales
   type: STRING
-- description: null
+- description: Active experiments and their branches.
   fields:
-  - description: null
+  - description: Experiment identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Experiment branch.
     mode: NULLABLE
     name: value
     type: STRING
   mode: REPEATED
   name: experiments
   type: RECORD
-- description: null
+- description: Average time to first paint in milliseconds.
   mode: NULLABLE
   name: first_paint_mean
   type: FLOAT
-- description: null
+- description: Version of Flash plugin.
   mode: NULLABLE
   name: flash_version
   type: STRING
@@ -342,15 +342,15 @@ fields:
   mode: NULLABLE
   name: country
   type: STRING
-- description: null
+- description: City where the activity took place based on IP geolocation.
   mode: NULLABLE
   name: city
   type: STRING
-- description: null
+- description: First-level geographic subdivision (e.g., state, province).
   mode: NULLABLE
   name: geo_subdivision1
   type: STRING
-- description: null
+- description: Second-level geographic subdivision (e.g., county).
   mode: NULLABLE
   name: geo_subdivision2
   type: STRING
@@ -359,19 +359,19 @@ fields:
   mode: NULLABLE
   name: isp_name
   type: STRING
-- description: null
+- description: Organization name associated with the ISP.
   mode: NULLABLE
   name: isp_organization
   type: STRING
-- description: null
+- description: Graphics feature status for advanced layers.
   mode: NULLABLE
   name: gfx_features_advanced_layers_status
   type: STRING
-- description: null
+- description: Graphics feature status for Direct2D.
   mode: NULLABLE
   name: gfx_features_d2d_status
   type: STRING
-- description: null
+- description: Graphics feature status for Direct3D 11.
   mode: NULLABLE
   name: gfx_features_d3d11_status
   type: STRING
@@ -385,131 +385,131 @@ fields:
   mode: NULLABLE
   name: gfx_features_gpu_process_status
   type: STRING
-- description: null
+- description: Count of developer tool about:debugging panel opens.
   mode: NULLABLE
   name: histogram_parent_devtools_aboutdebugging_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of animation inspector tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_animationinspector_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of browser console opens.
   mode: NULLABLE
   name: histogram_parent_devtools_browserconsole_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of canvas debugger tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_canvasdebugger_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of computed view panel opens.
   mode: NULLABLE
   name: histogram_parent_devtools_computedview_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of custom devtools panel opens.
   mode: NULLABLE
   name: histogram_parent_devtools_custom_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of developer toolbar opens.
   mode: NULLABLE
   name: histogram_parent_devtools_developertoolbar_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of DOM inspector tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_dom_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of eyedropper tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_eyedropper_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of font inspector tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_fontinspector_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of inspector tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_inspector_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of browser debugger tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_jsbrowserdebugger_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of JavaScript debugger tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_jsdebugger_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of JavaScript profiler tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_jsprofiler_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of layout view panel opens.
   mode: NULLABLE
   name: histogram_parent_devtools_layoutview_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of memory tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_memory_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of eyedropper tool opens from menu.
   mode: NULLABLE
   name: histogram_parent_devtools_menu_eyedropper_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of network monitor tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_netmonitor_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of devtools options panel opens.
   mode: NULLABLE
   name: histogram_parent_devtools_options_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of paint flashing tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_paintflashing_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of eyedropper tool opens from picker.
   mode: NULLABLE
   name: histogram_parent_devtools_picker_eyedropper_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of responsive design mode opens.
   mode: NULLABLE
   name: histogram_parent_devtools_responsive_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of CSS rules view panel opens.
   mode: NULLABLE
   name: histogram_parent_devtools_ruleview_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of scratchpad tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_scratchpad_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of scratchpad window opens.
   mode: NULLABLE
   name: histogram_parent_devtools_scratchpad_window_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of shader editor tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_shadereditor_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of storage inspector tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_storage_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of style editor tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_styleeditor_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of web audio editor tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_webaudioeditor_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of web console tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_webconsole_opened_count_sum
   type: INTEGER
-- description: null
+- description: Count of WebIDE tool opens.
   mode: NULLABLE
   name: histogram_parent_devtools_webide_opened_count_sum
   type: INTEGER
-- description: null
+- description: Year when Firefox was installed (derived from profile creation date).
   mode: NULLABLE
   name: install_year
   type: INTEGER
@@ -518,7 +518,7 @@ fields:
   mode: NULLABLE
   name: is_default_browser
   type: BOOLEAN
-- description: null
+- description: Whether the process is running under WOW64 (32-bit on 64-bit Windows).
   mode: NULLABLE
   name: is_wow64
   type: BOOLEAN
@@ -526,7 +526,7 @@ fields:
   mode: NULLABLE
   name: locale
   type: STRING
-- description: null
+- description: Amount of system memory in megabytes.
   mode: NULLABLE
   name: memory_mb
   type: INTEGER
@@ -534,7 +534,7 @@ fields:
   mode: NULLABLE
   name: normalized_channel
   type: STRING
-- description: null
+- description: Normalized version string of the operating system.
   mode: NULLABLE
   name: normalized_os_version
   type: STRING
@@ -542,47 +542,47 @@ fields:
   mode: NULLABLE
   name: os
   type: STRING
-- description: null
+- description: Major version number of the OS service pack.
   mode: NULLABLE
   name: os_service_pack_major
   type: INTEGER
-- description: null
+- description: Minor version number of the OS service pack.
   mode: NULLABLE
   name: os_service_pack_minor
   type: INTEGER
-- description: null
+- description: Operating system version string.
   mode: NULLABLE
   name: os_version
   type: STRING
-- description: null
+- description: Number of main pings aggregated into this daily row.
   mode: NULLABLE
   name: pings_aggregated_by_this_row
   type: INTEGER
-- description: null
+- description: Average number of bookmarks in the browser.
   mode: NULLABLE
   name: places_bookmarks_count_mean
   type: FLOAT
-- description: null
+- description: Average number of pages in browser history.
   mode: NULLABLE
   name: places_pages_count_mean
   type: FLOAT
-- description: null
+- description: Total number of plugin hangs.
   mode: NULLABLE
   name: plugin_hangs_sum
   type: INTEGER
-- description: null
+- description: Total count of plugin infobar allow actions.
   mode: NULLABLE
   name: plugins_infobar_allow_sum
   type: INTEGER
-- description: null
+- description: Total count of plugin infobar block actions.
   mode: NULLABLE
   name: plugins_infobar_block_sum
   type: INTEGER
-- description: null
+- description: Total count of plugin infobar displays.
   mode: NULLABLE
   name: plugins_infobar_shown_sum
   type: INTEGER
-- description: null
+- description: Total count of plugin notification displays.
   mode: NULLABLE
   name: plugins_notification_shown_sum
   type: INTEGER
@@ -591,15 +591,15 @@ fields:
   mode: NULLABLE
   name: previous_build_id
   type: STRING
-- description: null
+- description: Age of the Firefox profile in days.
   mode: NULLABLE
   name: profile_age_in_days
   type: INTEGER
-- description: null
+- description: Date when the Firefox profile was created.
   mode: NULLABLE
   name: profile_creation_date
   type: STRING
-- description: null
+- description: Total count of push API notifications.
   mode: NULLABLE
   name: push_api_notify_sum
   type: INTEGER
@@ -608,168 +608,168 @@ fields:
   mode: NULLABLE
   name: sample_id
   type: INTEGER
-- description: null
+- description: Effective sandbox level for content processes.
   mode: NULLABLE
   name: sandbox_effective_content_process_level
   type: INTEGER
-- description: null
+- description: Total WebRTC STUN retransmissions.
   mode: NULLABLE
   name: scalar_combined_webrtc_nicer_stun_retransmits_sum
   type: INTEGER
-- description: null
+- description: Total WebRTC TURN 401 authentication failures.
   mode: NULLABLE
   name: scalar_combined_webrtc_nicer_turn_401s_sum
   type: INTEGER
-- description: null
+- description: Total WebRTC TURN 403 forbidden errors.
   mode: NULLABLE
   name: scalar_combined_webrtc_nicer_turn_403s_sum
   type: INTEGER
-- description: null
+- description: Total WebRTC TURN 438 stale nonce errors.
   mode: NULLABLE
   name: scalar_combined_webrtc_nicer_turn_438s_sum
   type: INTEGER
-- description: null
+- description: Total Navigator Storage API estimate calls from content process.
   mode: NULLABLE
   name: scalar_content_navigator_storage_estimate_count_sum
   type: INTEGER
-- description: null
+- description: Total Navigator Storage API persist calls from content process.
   mode: NULLABLE
   name: scalar_content_navigator_storage_persist_count_sum
   type: INTEGER
-- description: null
+- description: Websense registry version for enterprise security software detection.
   mode: NULLABLE
   name: scalar_parent_aushelper_websense_reg_version
   type: STRING
-- description: null
+- description: Maximum number of concurrent tabs open at any time during the day.
   mode: NULLABLE
   name: scalar_parent_browser_engagement_max_concurrent_tab_count_max
   type: INTEGER
-- description: null
+- description: Maximum number of concurrent windows open at any time during the day.
   mode: NULLABLE
   name: scalar_parent_browser_engagement_max_concurrent_window_count_max
   type: INTEGER
-- description: null
+- description: Total number of tab open events.
   mode: NULLABLE
   name: scalar_parent_browser_engagement_tab_open_event_count_sum
   type: INTEGER
-- description: null
+- description: Total number of URI loads (pages navigated to).
   mode: NULLABLE
   name: scalar_parent_browser_engagement_total_uri_count_sum
   type: INTEGER
-- description: null
+- description: Total unfiltered URI count including background requests.
   mode: NULLABLE
   name: scalar_parent_browser_engagement_unfiltered_uri_count_sum
   type: INTEGER
-- description: null
+- description: Maximum number of unique domains visited in a single session.
   mode: NULLABLE
   name: scalar_parent_browser_engagement_unique_domains_count_max
   type: INTEGER
-- description: null
+- description: Average number of unique domains visited across sessions.
   mode: NULLABLE
   name: scalar_parent_browser_engagement_unique_domains_count_mean
   type: FLOAT
-- description: null
+- description: Total number of window open events.
   mode: NULLABLE
   name: scalar_parent_browser_engagement_window_open_event_count_sum
   type: INTEGER
-- description: null
+- description: Total count of accessibility nodes inspected in devtools.
   mode: NULLABLE
   name: scalar_parent_devtools_accessibility_node_inspected_count_sum
   type: INTEGER
-- description: null
+- description: Total count of accessibility panel opens in devtools.
   mode: NULLABLE
   name: scalar_parent_devtools_accessibility_opened_count_sum
   type: INTEGER
-- description: null
+- description: Total count of accessibility picker tool uses in devtools.
   mode: NULLABLE
   name: scalar_parent_devtools_accessibility_picker_used_count_sum
   type: INTEGER
-- description: null
+- description: Accessibility accessible node selections in devtools, keyed by action.
   fields:
-  - description: null
+  - description: Selection action type.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of selections.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_devtools_accessibility_select_accessible_for_node_sum
   type: RECORD
-- description: null
+- description: Total count of accessibility service enabled events in devtools.
   mode: NULLABLE
   name: scalar_parent_devtools_accessibility_service_enabled_count_sum
   type: INTEGER
-- description: null
+- description: Total count of copy full CSS selector operations in devtools.
   mode: NULLABLE
   name: scalar_parent_devtools_copy_full_css_selector_opened_sum
   type: INTEGER
-- description: null
+- description: Total count of copy unique CSS selector operations in devtools.
   mode: NULLABLE
   name: scalar_parent_devtools_copy_unique_css_selector_opened_sum
   type: INTEGER
-- description: null
+- description: Total count of eyedropper tool opens from devtools toolbar.
   mode: NULLABLE
   name: scalar_parent_devtools_toolbar_eyedropper_opened_sum
   type: INTEGER
-- description: null
+- description: Total count of content processes terminated due to high memory usage.
   mode: NULLABLE
   name: scalar_parent_dom_contentprocess_troubled_due_to_memory_sum
   type: INTEGER
-- description: null
+- description: Total Navigator Storage API estimate calls from parent process.
   mode: NULLABLE
   name: scalar_parent_navigator_storage_estimate_count_sum
   type: INTEGER
-- description: null
+- description: Total Navigator Storage API persist calls from parent process.
   mode: NULLABLE
   name: scalar_parent_navigator_storage_persist_count_sum
   type: INTEGER
-- description: null
+- description: Total number of extensions using storage.sync API.
   mode: NULLABLE
   name: scalar_parent_storage_sync_api_usage_extensions_using_sum
   type: INTEGER
-- description: null
+- description: Search cohort identifier for search experiments.
   mode: NULLABLE
   name: search_cohort
   type: STRING
-- description: null
+- description: Total searches from about:home page.
   mode: NULLABLE
   name: search_count_abouthome
   type: INTEGER
-- description: null
+- description: Total searches from context menu.
   mode: NULLABLE
   name: search_count_contextmenu
   type: INTEGER
-- description: null
+- description: Total searches from new tab page.
   mode: NULLABLE
   name: search_count_newtab
   type: INTEGER
-- description: null
+- description: Total searches from search bar.
   mode: NULLABLE
   name: search_count_searchbar
   type: INTEGER
-- description: null
+- description: Total searches initiated by the system.
   mode: NULLABLE
   name: search_count_system
   type: INTEGER
-- description: null
+- description: Total searches from URL bar.
   mode: NULLABLE
   name: search_count_urlbar
   type: INTEGER
-- description: null
+- description: Total searches across all sources.
   mode: NULLABLE
   name: search_count_all
   type: INTEGER
-- description: null
+- description: Total searches with SAP (Search Access Point) tagging.
   mode: NULLABLE
   name: search_count_tagged_sap
   type: INTEGER
-- description: null
+- description: Total follow-on searches (refinements of previous searches).
   mode: NULLABLE
   name: search_count_tagged_follow_on
   type: INTEGER
-- description: null
+- description: Total organic searches (not from partnerships).
   mode: NULLABLE
   name: search_count_organic
   type: INTEGER
@@ -779,323 +779,323 @@ fields:
 - mode: NULLABLE
   name: search_count_urlbar_persisted
   type: INTEGER
-- description: null
+- description: Average time in milliseconds to restore a session.
   mode: NULLABLE
   name: session_restored_mean
   type: FLOAT
-- description: null
+- description: Number of browser sessions started on this calendar day.
   mode: NULLABLE
   name: sessions_started_on_this_day
   type: INTEGER
-- description: null
+- description: Total count of browser shutdowns that required force-killing processes.
   mode: NULLABLE
   name: shutdown_kill_sum
   type: INTEGER
-- description: null
+- description: Total duration of all subsessions in hours.
   mode: NULLABLE
   name: subsession_hours_sum
   type: NUMERIC
-- description: null
+- description: Total SSL/TLS handshake failures.
   mode: NULLABLE
   name: ssl_handshake_result_failure_sum
   type: INTEGER
-- description: null
+- description: Total successful SSL/TLS handshakes.
   mode: NULLABLE
   name: ssl_handshake_result_success_sum
   type: INTEGER
-- description: null
+- description: Whether Firefox Sync is configured for this client.
   mode: NULLABLE
   name: sync_configured
   type: BOOLEAN
-- description: null
+- description: Average number of desktop devices connected via Sync.
   mode: NULLABLE
   name: sync_count_desktop_mean
   type: FLOAT
-- description: null
+- description: Average number of mobile devices connected via Sync.
   mode: NULLABLE
   name: sync_count_mobile_mean
   type: FLOAT
-- description: null
+- description: Total number of desktop devices connected via Sync.
   mode: NULLABLE
   name: sync_count_desktop_sum
   type: INTEGER
-- description: null
+- description: Total number of mobile devices connected via Sync.
   mode: NULLABLE
   name: sync_count_mobile_sum
   type: INTEGER
-- description: null
+- description: Whether telemetry data collection is enabled.
   mode: NULLABLE
   name: telemetry_enabled
   type: BOOLEAN
-- description: null
+- description: Client timezone offset from UTC in minutes.
   mode: NULLABLE
   name: timezone_offset
   type: INTEGER
-- description: null
+- description: Total hours across all subsessions including idle time.
   mode: NULLABLE
   name: total_hours_sum
   type: NUMERIC
-- description: null
+- description: Whether automatic download of updates is enabled.
   mode: NULLABLE
   name: update_auto_download
   type: BOOLEAN
-- description: null
+- description: Update channel identifier.
   mode: NULLABLE
   name: update_channel
   type: STRING
-- description: null
+- description: Whether application updates are enabled.
   mode: NULLABLE
   name: update_enabled
   type: BOOLEAN
-- description: null
+- description: Application vendor name.
   mode: NULLABLE
   name: vendor
   type: STRING
-- description: null
+- description: Total number of web notifications displayed to the user.
   mode: NULLABLE
   name: web_notification_shown_sum
   type: INTEGER
-- description: null
+- description: Windows OS build number.
   mode: NULLABLE
   name: windows_build_number
   type: INTEGER
-- description: null
+- description: Windows Update Build Revision (UBR) number.
   mode: NULLABLE
   name: windows_ubr
   type: INTEGER
-- description: null
+- description: Whether Firefox Account (FxA) is configured for this client.
   mode: NULLABLE
   name: fxa_configured
   type: BOOLEAN
-- description: null
+- description: Total number of tracking elements blocked by Enhanced Tracking Protection.
   mode: NULLABLE
   name: trackers_blocked_sum
   type: INTEGER
-- description: null
+- description: Earliest submission timestamp for pings aggregated in this row.
   mode: NULLABLE
   name: submission_timestamp_min
   type: TIMESTAMP
-- description: null
+- description: Total clicks on search ads, summed across all sources.
   mode: NULLABLE
   name: ad_clicks_count_all
   type: INTEGER
-- description: null
+- description: Total searches that displayed ads, summed across all sources.
   mode: NULLABLE
   name: search_with_ads_count_all
   type: INTEGER
-- description: null
+- description: Total URL bar impressions with autofill from about pages.
   mode: NULLABLE
   name: scalar_parent_urlbar_impression_autofill_about_sum
   type: INTEGER
-- description: null
+- description: Total URL bar impressions with adaptive autofill suggestions.
   mode: NULLABLE
   name: scalar_parent_urlbar_impression_autofill_adaptive_sum
   type: INTEGER
-- description: null
+- description: Total URL bar impressions with autofill from origin (domain).
   mode: NULLABLE
   name: scalar_parent_urlbar_impression_autofill_origin_sum
   type: INTEGER
-- description: null
+- description: Total URL bar impressions with other autofill types.
   mode: NULLABLE
   name: scalar_parent_urlbar_impression_autofill_other_sum
   type: INTEGER
-- description: null
+- description: Total URL bar impressions with preloaded autofill suggestions.
   mode: NULLABLE
   name: scalar_parent_urlbar_impression_autofill_preloaded_sum
   type: INTEGER
-- description: null
+- description: Total URL bar impressions with full URL autofill.
   mode: NULLABLE
   name: scalar_parent_urlbar_impression_autofill_url_sum
   type: INTEGER
-- description: null
+- description: Telemetry event counts from parent process, keyed by event category.
   fields:
-  - description: null
+  - description: Event category identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of events in this category.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_telemetry_event_counts_sum
   type: RECORD
-- description: null
+- description: Telemetry event counts from content process, keyed by event category.
   fields:
-  - description: null
+  - description: Event category identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of events in this category.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_content_telemetry_event_counts_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from bookmark menu, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_bookmarkmenu_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from activity stream handoff, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_handoff_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from keyword offers, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_keywordoffer_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from one-off buttons, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_oneoff_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from other sources, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_other_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from shortcuts, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_shortcut_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from tab menu, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_tabmenu_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from tab-to-search, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_tabtosearch_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from tab-to-search onboarding, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_tabtosearch_onboard_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from new tab top sites, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_topsites_newtab_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from URL bar top sites, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_topsites_urlbar_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from Touch Bar, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
   mode: REPEATED
   name: scalar_parent_urlbar_searchmode_touchbar_sum
   type: RECORD
-- description: null
+- description: URL bar search mode entries from typed input, keyed by search engine.
   fields:
-  - description: null
+  - description: Search engine identifier.
     mode: NULLABLE
     name: key
     type: STRING
-  - description: null
+  - description: Count of search mode entries.
     mode: NULLABLE
     name: value
     type: INTEGER
