@@ -2,197 +2,209 @@ fields:
 - name: submission_date
   type: DATE
   mode: NULLABLE
-  description: Day the event was received in the newtab ping
+  description: The date when the telemetry ping is received on the server side.
 - name: client_id
   type: STRING
   mode: NULLABLE
-  description: Unique ID for the client installation.
+  description: A unique identifier (UUID) for the client.
 - name: newtab_visit_id
   type: STRING
   mode: NULLABLE
-  description: Unique identifier for the newtab visit
+  description: Unique identifier for each newtab visit session
 - name: app_version
   type: INTEGER
   mode: NULLABLE
-  description: Firefox Desktop major version
+  description: User visible version string (e.g. "1.0.3") for the browser.
 - name: os
   type: STRING
   mode: NULLABLE
-  description: Operating system of the host system
+  description: The normalized name of the operating system running at the 
+    client.
 - name: channel
   type: STRING
   mode: NULLABLE
-  description: Firefox Desktop deployment channel (e.g. release, beta)
+  description: The normalized channel the application is being distributed on.
 - name: locale
   type: STRING
   mode: NULLABLE
-  description: language or country based preferences of the host system
+  description: Set of language- and/or country-based preferences for a user 
+    interface.
 - name: country
   type: STRING
   mode: NULLABLE
-  description: Country where the newtab event is reported
+  description: Name of the country in which the activity took place, as 
+    determined by the IP geolocation.
 - name: homepage_category
   type: STRING
   mode: NULLABLE
-  description: User’s chosen homepage/new window appearance
+  description: User's configured homepage or new window appearance preference
 - name: newtab_category
   type: STRING
   mode: NULLABLE
-  description: User’s chosen newtab appearance
+  description: User's configured newtab page appearance preference
 - name: organic_content_enabled
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user has enabled organic stories in the browser.
+  description: Whether user has enabled organic Pocket stories in newtab
 - name: sponsored_content_enabled
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user has enabled sponsored stories in the browser.
+  description: Whether user has enabled sponsored Pocket stories in newtab
 - name: sponsored_topsites_enabled
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user has enabled sponsored topsites in the browser.
+  description: Whether user has enabled sponsored topsites in newtab
 - name: organic_topsites_enabled
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user has enabled organic topsites in the browser.
+  description: Whether user has enabled organic topsites in newtab
 - name: newtab_search_enabled
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user has enabled search in the browser.
+  description: Whether user has enabled search functionality in newtab
 - name: is_default_ui
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the newtab open was a default ui
+  description: Whether the newtab visit used default UI configuration
 - name: is_newtab_opened
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user opened a newtab
+  description: Whether a newtab page was opened during this visit
 - name: is_search_issued
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user issued search with newtab opened in default ui
+  description: Whether user issued a search query in default UI newtab
 - name: is_search_ad_click
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user clicked a search Ad with newtab opened in default ui
+  description: Whether user clicked a search ad in default UI newtab
 - name: is_content_interaction
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user interacted upon any content with newtab opened in default ui
+  description: Whether user interacted with Pocket content in default UI newtab
 - name: is_content_click
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user clicked on any content with newtab opened in default ui
+  description: Whether user clicked on Pocket content in default UI newtab
 - name: is_content_impression
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if any content was impressed on a newtab with newtab opened in default ui
+  description: Whether Pocket content was displayed in default UI newtab
 - name: is_sponsored_content_interaction
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if sponsored content was interacted upon with newtab opened in default ui
+  description: Whether user interacted with sponsored Pocket content in default 
+    UI
 - name: is_sponsored_content_click
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if sponsored content was clicked with newtab opened in default ui
+  description: Whether user clicked sponsored Pocket content in default UI
 - name: is_sponsored_content_impression
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if sponsored content was impressed with newtab opened in default ui
+  description: Whether sponsored Pocket content was displayed in default UI
 - name: any_content_click_count
   type: INTEGER
-  description: Count of clicks on any newtab content with newtab opened in default ui
+  description: Total clicks on any Pocket content in default UI newtab
 - name: any_content_impression_count
   type: INTEGER
-  description: Count of impression on any newtab content with newtab opened in default ui
+  description: Total impressions of any Pocket content in default UI newtab
 - name: organic_content_click_count
   type: INTEGER
-  description: Count of clicks on Organic content with newtab opened in default ui
+  description: Total clicks on organic Pocket content in default UI newtab
 - name: organic_content_impression_count
   type: INTEGER
-  description: Count of Organic content impressions with newtab opened in default ui
+  description: Total impressions of organic Pocket content in default UI newtab
 - name: sponsored_content_click_count
   type: INTEGER
-  description: Count of clicks on sponsored content with newtab opened in default ui
+  description: Total clicks on sponsored Pocket content in default UI newtab
 - name: sponsored_content_impression_count
   type: INTEGER
-  description: Count of sponsored content impressions with newtab opened in default ui
+  description: Total impressions of sponsored Pocket content in default UI 
+    newtab
 - name: is_topsite_interaction
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user interacted on any topsite with newtab opened in default ui
+  description: Whether user interacted with any topsite tile in default UI
 - name: is_topsite_click
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user clicked on any topsite with newtab opened in default ui
+  description: Whether user clicked a topsite tile in default UI newtab
 - name: is_topsite_impression
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if any topsite was impressed upon with newtab opened in default ui
+  description: Whether topsite tiles were displayed in default UI newtab
 - name: is_sponsored_topsite_interaction
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user interacted on a sponsored topsite with newtab opened in default ui
+  description: Whether user interacted with a sponsored topsite in default UI
 - name: is_sponsored_topsite_click
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user clicked a sponsored topsite with newtab opened in default ui
+  description: Whether user clicked a sponsored topsite in default UI
 - name: is_sponsored_topsite_impression
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if a sponsored topsite was impressed upon with newtab opened in default ui
+  description: Whether sponsored topsites were displayed in default UI
 - name: any_topsite_click_count
   type: INTEGER
-  description: Count of clicks on topsite with newtab opened in default ui
+  description: Total clicks on any topsite tiles in default UI newtab
 - name: any_topsite_impression_count
   type: INTEGER
-  description: Count of topsite impressions with newtab opened in default ui
+  description: Total impressions of topsite tiles in default UI newtab
 - name: organic_topsite_click_count
   type: INTEGER
-  description: Count of clicks on organic topsite with newtab opened in default ui
+  description: Total clicks on organic topsite tiles in default UI newtab
 - name: organic_topsite_impression_count
   type: INTEGER
-  description: Count of organic topsite impressions with newtab opened in default ui
+  description: Total impressions of organic topsite tiles in default UI newtab
 - name: sponsored_topsite_click_count
   type: INTEGER
-  description: Count of clicks on sponsored topsite with newtab opened in default ui
+  description: Total clicks on sponsored topsite tiles in default UI newtab
 - name: sponsored_topsite_impression_count
   type: INTEGER
-  description: Count of sponsored topsite impressions with newtab opened in default ui
+  description: Total impressions of sponsored topsite tiles in default UI newtab
 - name: is_widget_interaction
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user interacted on any widget with newtab opened in default ui
+  description: Whether user interacted with widgets (weather, lists, timer) in 
+    default UI
 - name: is_wallpaper_interaction
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user interacted with wallpaper with newtab opened in default ui
+  description: Whether user interacted with wallpaper features in default UI
 - name: is_other_interaction
   type: BOOLEAN
   mode: NULLABLE
-  description: TRUE if the user interacted with wallpaper, topic_selection or sections with newtab opened in default ui
+  description: Whether user interacted with wallpaper, topic selection, or 
+    sections in default UI
 
   # Phase 4 Fields
 - name: sample_id
   type: INTEGER
-  description: Hashed version of client_id (0-99). Useful for distribution analysis
+  description: A number, 0-99, that samples by client_id and allows filtering 
+    data for analysis. It is a pipeline-generated artifact that should match 
+    between pings.
 - name: profile_group_id
   type: STRING
-  description: Legacy telemetry. Enables the calculation of metrics by profile_id
+  description: A UUID uniquely identifying the profile group, not shared with 
+    other telemetry data.
 - name: geo_subdivision
   type: STRING
-  description: First major country subdivision, typically a state, province, or county
+  description: First major country subdivision like state, province, or county
 - name: is_section
   type: BOOLEAN
-  description: Whether a visit had an impression that belonged to a section with default UI
+  description: Whether the visit had Pocket content impression belonging to a 
+    section
 - name: experiments
   type: RECORD
   mode: REPEATED
-  description: Array of experiments to associate with each visit
+  description: Array of active experiments associated with this newtab visit
   fields:
   - name: key
     type: STRING
     mode: NULLABLE
+    description: Experiment identifier or slug name
   - name: value
     type: RECORD
     mode: NULLABLE
@@ -200,6 +212,7 @@ fields:
     - name: branch
       type: STRING
       mode: NULLABLE
+      description: Experiment branch name assigned to the user
     - name: extra
       type: RECORD
       mode: NULLABLE
@@ -207,97 +220,105 @@ fields:
       - name: type
         type: STRING
         mode: NULLABLE
+        description: Type or category of the experiment
       - name: enrollment_id
         type: STRING
         mode: NULLABLE
+        description: Unique identifier for user's enrollment in the experiment
+      description: Additional experiment metadata including type and enrollment 
+        ID
+    description: Experiment assignment details including branch and enrollment
 - name: newtab_weather_enabled
   type: BOOLEAN
-  description: Whether the weather widget is enabled
+  description: Whether the weather widget is enabled on newtab
 - name: default_search_engine
   type: STRING
-  description: Engine_id of the default search engine
+  description: Engine ID of the user's default search engine
 - name: default_private_search_engine
   type: STRING
-  description: Engine_id of the default private search engine
+  description: Engine ID of the default search engine for private browsing
 - name: topsite_rows
   type: INTEGER
-  description: The number of topsite tile rows configured to be shown on the newtab page
+  description: Number of topsite tile rows configured to display on newtab
 - name: topsite_sponsored_tiles_configured
   type: INTEGER
-  description: The number of topsite tiles configured to be shown on newtab
+  description: Number of sponsored topsite tiles configured to display
 - name: newtab_blocked_sponsors
   type: STRING
   mode: REPEATED
-  description: Array of advertiser names that have been dismissed by the user
+  description: List of advertiser names dismissed or blocked by the user
 - name: organic_content_dismissal_count
   type: INTEGER
-  description: Count of organic content dismissals
+  description: Total dismissals of organic Pocket content in default UI
 - name: sponsored_content_dismissal_count
   type: INTEGER
-  description: Count of sponsored content dismissals
+  description: Total dismissals of sponsored Pocket content in default UI
 - name: organic_topsite_dismissal_count
   type: INTEGER
-  description: Count of organic topsite dismissals
+  description: Total dismissals of organic topsite tiles in default UI
 - name: sponsored_topsite_dismissal_count
   type: INTEGER
-  description: Count of sponsored topsite dismissals
+  description: Total dismissals of sponsored topsite tiles in default UI
 - name: any_interaction_count
   type: INTEGER
-  description: Count of any client interactions
+  description: Total count of all user interactions in default UI newtab
 - name: search_interaction_count
   type: INTEGER
-  description: Count of search interactions
+  description: Total count of search-related interactions in default UI
 - name: nonsearch_interaction_count
   type: INTEGER
-  description: Count of non-search interactions
+  description: Total count of non-search interactions in default UI
 - name: any_content_interaction_count
   type: INTEGER
-  description: Count of any content interactions
+  description: Total interactions with any Pocket content in default UI
 - name: organic_content_interaction_count
   type: INTEGER
-  description: Count of organic content interactions
+  description: Total interactions with organic Pocket content in default UI
 - name: sponsored_content_interaction_count
   type: INTEGER
-  description: Count of sponsored content interactions
+  description: Total interactions with sponsored Pocket content in default UI
 - name: any_topsite_interaction_count
   type: INTEGER
-  description: Count of any topsite interactions
+  description: Total interactions with any topsite tiles in default UI
 - name: organic_topsite_interaction_count
   type: INTEGER
-  description: Count of organic topsite interactions
+  description: Total interactions with organic topsite tiles in default UI
 - name: sponsored_topsite_interaction_count
   type: INTEGER
-  description: Count of sponsored topsite interactions
+  description: Total interactions with sponsored topsite tiles in default UI
 - name: content_thumbs_up_count
   type: INTEGER
-  description: Count of organic content thumbs up
+  description: Total thumbs up votes on Pocket content in default UI
 - name: content_thumbs_down_count
   type: INTEGER
-  description: Count of organic content thumbs down
+  description: Total thumbs down votes on Pocket content in default UI
 - name: search_ad_click_count
   type: INTEGER
-  description: Count of search ad clicks
+  description: Total clicks on search advertisements in default UI newtab
 - name: search_ad_impression_count
   type: INTEGER
-  description: Count of search ad impressions
+  description: Total impressions of search advertisements in default UI newtab
 - name: widget_interaction_count
   type: INTEGER
-  description: Count of widget interactions
+  description: Total interactions with widgets (weather, lists, timer) in 
+    default UI
 - name: widget_impression_count
   type: INTEGER
-  description: Count of widget impressions
+  description: Total impressions of widgets in default UI newtab
 - name: other_interaction_count
   type: INTEGER
-  description: Count of other misc interactions
+  description: Total miscellaneous interactions (wallpaper, topics, sections) in
+    default UI
 - name: other_impression_count
   type: INTEGER
-  description: Count of other misc impressions
+  description: Total miscellaneous impressions in default UI newtab
 - name: newtab_visit_duration
   type: INTEGER
-  description: Visit duration in milliseconds (timestamp diff between close and open event)
+  description: Duration of newtab visit in milliseconds (from open to close 
+    event)
 - name: newtab_window_inner_height
   type: INTEGER
-  description: The height of the browser window in pixels
+  description: Browser window inner height in pixels during newtab open
 - name: newtab_window_inner_width
   type: INTEGER
-  description: The width of the browser window in pixels
+  description: Browser window inner width in pixels during newtab open
