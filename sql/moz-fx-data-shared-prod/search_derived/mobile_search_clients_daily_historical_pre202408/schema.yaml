@@ -2,103 +2,137 @@ fields:
 - name: submission_date
   type: DATE
   mode: NULLABLE
+  description: Date when the mobile search activity data was submitted, used for partitioning the table. This table contains historical data up to and including 2024-07-31.
 - name: client_id
   type: STRING
   mode: NULLABLE
+  description: Unique identifier for the mobile Firefox client. This is derived from the Glean client_info.client_id and serves as the primary key for aggregating search metrics at the client level.
 - name: engine
   type: STRING
   mode: NULLABLE
+  description: Search engine identifier representing the specific search provider used (e.g., google, bing, ddg). This is the raw engine name before normalization.
 - name: source
   type: STRING
   mode: NULLABLE
+  description: Source code or identifier indicating how the search was initiated (e.g., urlbar, searchbar, contextmenu, system, widget). Helps categorize the user interaction type that triggered the search.
 - name: app_name
   type: STRING
   mode: NULLABLE
+  description: Name of the mobile Firefox application generating the search activity (e.g., Fenix, Firefox iOS, Focus). This is the raw application identifier before normalization.
 - name: normalized_app_name
   type: STRING
   mode: NULLABLE
+  description: Standardized application name derived from app_name for consistent reporting across different mobile Firefox products (e.g., 'Firefox for Android', 'Firefox for iOS').
 - name: search_count
   type: INTEGER
   mode: NULLABLE
+  description: Total number of search events performed by the client on this date across all search types. This is the aggregated sum of all search interactions.
 - name: organic
   type: INTEGER
   mode: NULLABLE
+  description: Count of organic searches initiated by the user without any Mozilla partner codes or tracking parameters. These are unmonetized searches.
 - name: tagged_sap
   type: INTEGER
   mode: NULLABLE
+  description: Count of search access point (SAP) searches containing Mozilla partner tags. These searches are initiated from Mozilla-controlled access points and may generate revenue through search partnerships.
 - name: tagged_follow_on
   type: INTEGER
   mode: NULLABLE
+  description: Count of follow-on searches that occur after an initial tagged SAP search. These represent continued search interactions within the same search session and may also generate partner revenue.
 - name: ad_click
   type: INTEGER
   mode: NULLABLE
+  description: Total number of ad clicks across all search types (both organic and SAP). Indicates user engagement with sponsored search results.
 - name: search_with_ads
   type: INTEGER
   mode: NULLABLE
+  description: Total number of searches where advertisements were displayed in the search results, regardless of whether ads were clicked. Measures ad impression opportunities across all search types.
 - name: unknown
   type: INTEGER
   mode: NULLABLE
+  description: Count of searches that could not be classified into organic, tagged SAP, or tagged follow-on categories. May indicate parsing issues or new search patterns not yet categorized.
 - name: country
   type: STRING
   mode: NULLABLE
+  description: Two-letter ISO country code representing the geographic location where the search was performed, derived from IP geolocation. Used for regional analysis and partner reporting.
 - name: locale
   type: STRING
   mode: NULLABLE
+  description: Locale setting of the Firefox application (e.g., en-US, de-DE, ja-JP), indicating the user's language and regional preferences. Derived from the application's locale configuration.
 - name: app_version
   type: STRING
   mode: NULLABLE
+  description: Version number of the mobile Firefox application (e.g., 121.0, 122.0b1). Used to track search behavior across different release versions and identify version-specific issues.
 - name: channel
   type: STRING
   mode: NULLABLE
+  description: Release channel of the Firefox application (release, beta, nightly, esr). Indicates the update track and stability level of the client installation.
 - name: os
   type: STRING
   mode: NULLABLE
+  description: Operating system of the mobile device (e.g., Android, iOS). Derived from the client telemetry to enable platform-specific analysis.
 - name: os_version
   type: STRING
   mode: NULLABLE
+  description: Full version string of the device operating system (e.g., 13.0, 14.2.1). Used for compatibility analysis and platform-specific issue tracking.
 - name: default_search_engine
   type: STRING
   mode: NULLABLE
+  description: User's configured default search engine provider. This setting determines which search engine is used for searches initiated from the default search access points.
 - name: default_search_engine_submission_url
   type: STRING
   mode: NULLABLE
+  description: Full URL template used for submitting searches to the default search engine, including partner codes and tracking parameters. Used for validating search partner configurations.
 - name: distribution_id
   type: STRING
   mode: NULLABLE
+  description: Distribution partner identifier for specialized Firefox builds distributed through partner channels. NULL for standard Mozilla distributions.
 - name: profile_creation_date
   type: INTEGER
   mode: NULLABLE
+  description: Unix timestamp (days since epoch) when the Firefox profile was created. Used to calculate profile age and analyze user lifecycle patterns.
 - name: profile_age_in_days
   type: INTEGER
   mode: NULLABLE
+  description: Number of days since the Firefox profile was created, calculated as the difference between submission_date and profile_creation_date. Useful for cohort analysis and new user behavior studies.
 - name: sample_id
   type: INTEGER
   mode: NULLABLE
+  description: Sampling identifier (0-99) used for creating consistent random samples of clients. Enables reproducible analysis on subsets of the data without full table scans.
 - name: experiments
   type: RECORD
   mode: REPEATED
+  description: Array of active experiments and their branches that the client was enrolled in during this date. Used for A/B testing analysis and experiment impact measurement.
   fields:
   - name: key
     type: STRING
     mode: NULLABLE
+    description: Experiment identifier or slug (e.g., experiment-123-search-ui).
   - name: value
     type: STRING
     mode: NULLABLE
+    description: Experiment branch or treatment variant assigned to the client (e.g., control, treatment-a).
 - name: total_uri_count
   type: INTEGER
   mode: NULLABLE
+  description: Total number of URI/page loads by the client on this date. Provides context on overall browser activity level relative to search activity.
 - name: normalized_engine
   type: STRING
   mode: NULLABLE
+  description: Standardized search engine name derived from the raw engine field, using consistent naming conventions across all Mozilla data products (e.g., 'Google', 'DuckDuckGo').
 - name: ad_click_organic
   type: INTEGER
   mode: NULLABLE
+  description: Count of ad clicks that occurred during organic searches (searches without Mozilla partner tags). Represents user ad engagement on non-monetized searches.
 - name: search_with_ads_organic
   type: INTEGER
   mode: NULLABLE
+  description: Count of organic searches where advertisements were displayed in the results. Measures ad impression opportunities on non-monetized searches.
 - name: os_version_major
   type: INTEGER
   mode: NULLABLE
+  description: Major version number extracted from the os_version field (e.g., 13 from '13.2.1'). Enables simplified platform version analysis without parsing full version strings.
 - name: os_version_minor
   type: INTEGER
   mode: NULLABLE
+  description: Minor version number extracted from the os_version field (e.g., 2 from '13.2.1'). Provides additional granularity for platform-specific compatibility tracking.
