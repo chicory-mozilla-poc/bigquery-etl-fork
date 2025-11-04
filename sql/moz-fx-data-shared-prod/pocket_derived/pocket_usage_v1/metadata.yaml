@@ -1,6 +1,7 @@
 friendly_name: Pocket usage by event type
 description: |-
   Percentage of DAU for Pocket usage by event type for each channel
+deprecated: true
 owners:
   - gkatre@mozilla.com
 labels:
