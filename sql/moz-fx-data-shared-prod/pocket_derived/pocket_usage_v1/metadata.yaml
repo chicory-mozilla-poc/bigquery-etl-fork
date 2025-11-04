@@ -8,6 +8,7 @@ labels:
   schedule: daily
   table_type: aggregate
   owner1: gkatre@mozilla.com
+deprecated: true
 scheduling:
   dag_name: bqetl_pocket
 bigquery:
