@@ -1,0 +1,5 @@
+friendly_name: Pocket Usage
+description: View for Pocket usage data (DEPRECATED - No usage detected in last 6 months)
+owners: []
+labels: {}
+deprecated: true
