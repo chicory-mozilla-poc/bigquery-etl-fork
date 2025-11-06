@@ -3,47 +3,39 @@ fields:
 - mode: NULLABLE
   name: submission_date
   type: DATE
-  description: |
-    Partition field, also corresponds to internal execution date of the job. submision_date - 7 days gives us the same date as the date field.
+  description: The date when the telemetry ping is received on the server side.
 
 - mode: NULLABLE
   name: first_seen_date
   type: DATE
-  description: |
-    Date of when the user was first seen.
+  description: Date when the app store activity occurred, 7 days prior to submission_date.
 
 - mode: NULLABLE
   name: country
   type: STRING
-  description: |
-    Dimension by which the numeric values are grouped.
+  description: Name of the country in which the activity took place, as determined by the IP geolocation.
 
 - mode: NULLABLE
   name: impressions
   type: INTEGER
-  description: |
-    Number of Firefox iOS app unique impressions in the Apple Store.
+  description: Count of unique device impressions for Firefox iOS in the Apple App Store.
 
 - mode: NULLABLE
   name: total_downloads
   type: INTEGER
-  description: |
-    Total number of downloads of the Firefox iOS app from the Apple Store.
+  description: Total number of Firefox iOS app downloads from the Apple App Store.
 
 - mode: NULLABLE
   name: first_time_downloads
   type: INTEGER
-  description: |
-    Number of first time downloads of the Firefox iOS app from the Apple Store.
+  description: Number of users downloading Firefox iOS for the first time.
 
 - mode: NULLABLE
   name: redownloads
   type: INTEGER
-  description: |
-    Number of redownloads of the Firefox iOS app from the Apple Store.
+  description: Number of users re-downloading Firefox iOS after previous installation.
 
 - mode: NULLABLE
   name: new_profiles
   type: INTEGER
-  description: |
-    Number of new profiles on the date.
+  description: Number of new Firefox iOS user profiles created on the first_seen_date.

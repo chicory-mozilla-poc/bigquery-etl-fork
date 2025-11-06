@@ -101,6 +101,18 @@ fields:
 - name: document_id
   type: STRING
   description: The document ID specified in the URI when the client sent this message.
+- name: first_seen_date
+  type: DATE
+  mode: NULLABLE
+  description: Date when the app store activity occurred, 7 days prior to submission_date.
+- name: first_time_downloads
+  type: INTEGER
+  mode: NULLABLE
+  description: Number of users downloading Firefox iOS for the first time.
+- name: impressions
+  type: INTEGER
+  mode: NULLABLE
+  description: Count of unique device impressions for Firefox iOS in the Apple App Store.
 - name: is_default_browser
   type: BOOLEAN
   description: A flag indicating whether the browser is set as the default browser on the client side.
@@ -118,6 +130,10 @@ fields:
 - name: locale
   type: STRING
   description: Set of language- and/or country-based preferences for a user interface.
+- name: new_profiles
+  type: INTEGER
+  mode: NULLABLE
+  description: Number of new Firefox iOS user profiles created on the first_seen_date.
 - name: normalized_channel
   description: The normalized channel the application is being distributed on.
   type: STRING
@@ -156,6 +172,10 @@ fields:
 - name: profile_group_id
   type: STRING
   description: A UUID uniquely identifying the profile group, not shared with other telemetry data.
+- name: redownloads
+  type: INTEGER
+  mode: NULLABLE
+  description: Number of users re-downloading Firefox iOS after previous installation.
 - name: sample_id
   type: INTEGER
   description: A number, 0-99, that samples by client_id and allows filtering data for analysis.
@@ -184,6 +204,10 @@ fields:
 - name: telemetry_sdk_build
   type: STRING
   description: The version of the Glean SDK at the time the ping was collected (e.g. 25.0.0).
+- name: total_downloads
+  type: INTEGER
+  mode: NULLABLE
+  description: Total number of Firefox iOS app downloads from the Apple App Store.
 - name: updated_at
   type: TIMESTAMP
   description: Most recent date and time when the row was updated.
