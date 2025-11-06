@@ -3,47 +3,39 @@ fields:
 - mode: NULLABLE
   name: submission_date
   type: DATE
-  description: |
-    Partition field, also corresponds to internal execution date of the job. submision_date - 7 days gives us the same date as the date field.
+  description: The date when the telemetry ping is received on the server side.
 
 - mode: NULLABLE
   name: first_seen_date
   type: DATE
-  description: |
-    Date of when the user was first seen.
+  description: Date when the user was first observed, offset by 7 days from submission_date to align with App Store data availability.
 
 - mode: NULLABLE
   name: country
   type: STRING
-  description: |
-    Dimension by which the numeric values are grouped.
+  description: Name of the country in which the activity took place, as determined by the IP geolocation.
 
 - mode: NULLABLE
   name: impressions
   type: INTEGER
-  description: |
-    Number of Firefox iOS app unique impressions in the Apple Store.
+  description: Count of unique device impressions for Firefox iOS app in the Apple App Store, excluding institutional purchases and web/app referrers.
 
 - mode: NULLABLE
   name: total_downloads
   type: INTEGER
-  description: |
-    Total number of downloads of the Firefox iOS app from the Apple Store.
+  description: Total count of Firefox iOS app downloads from the Apple App Store, including both first-time downloads and redownloads.
 
 - mode: NULLABLE
   name: first_time_downloads
   type: INTEGER
-  description: |
-    Number of first time downloads of the Firefox iOS app from the Apple Store.
+  description: Count of initial Firefox iOS app downloads from users who have never previously downloaded the app.
 
 - mode: NULLABLE
   name: redownloads
   type: INTEGER
-  description: |
-    Number of redownloads of the Firefox iOS app from the Apple Store.
+  description: Count of Firefox iOS app downloads from users who previously downloaded the app.
 
 - mode: NULLABLE
   name: new_profiles
   type: INTEGER
-  description: |
-    Number of new profiles on the date.
+  description: Count of new Firefox iOS release channel profiles created on the first_seen_date.
