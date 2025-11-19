@@ -10,25 +10,32 @@ fields:
 - name: legacy_telemetry_client_id
   type: STRING
   mode: NULLABLE
+  description: Legacy Firefox telemetry client identifier for cross-system data 
+    linking
 - name: newtab_visit_count
   type: INTEGER
   mode: NULLABLE
+  description: Total number of new tab page visits by the client on this date
 - name: normalized_os
   type: STRING
   mode: NULLABLE
-  description: The normalized name of the operating system running at the client.
+  description: The normalized name of the operating system running at the 
+    client.
 - name: normalized_os_version
   type: STRING
   mode: NULLABLE
+  description: Normalized version number of the operating system
 - name: country_code
   type: STRING
   mode: NULLABLE
-  description: Code of the country in which the activity took place, as determined
-    by the IP geolocation. Unknown or NULL values are normally stored as '??'.
+  description: Code of the country in which the activity took place, as 
+    determined by the IP geolocation. Unknown or NULL values are normally stored
+    as '??'.
 - name: locale
   type: STRING
   mode: NULLABLE
-  description: Set of language- and/or country-based preferences for a user interface.
+  description: Set of language- and/or country-based preferences for a user 
+    interface.
 - name: channel
   type: STRING
   mode: NULLABLE
@@ -36,42 +43,55 @@ fields:
 - name: browser_version
   type: STRING
   mode: NULLABLE
+  description: Firefox browser version string
 - name: browser_name
   type: STRING
   mode: NULLABLE
+  description: Name of the browser application
 - name: default_search_engine
   type: STRING
   mode: NULLABLE
+  description: Default search engine configured in the browser
 - name: default_private_search_engine
   type: STRING
   mode: NULLABLE
+  description: Search engine configured for private browsing mode
 - name: pocket_is_signed_in
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether the user is signed into their Pocket account
 - name: pocket_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether Pocket recommendations are enabled on new tab
 - name: pocket_sponsored_stories_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether sponsored Pocket stories are shown
 - name: topsites_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether the top sites section is enabled
 - name: topsites_sponsored_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether sponsored top sites are enabled
 - name: newtab_weather_widget_enabled
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether the weather widget is displayed on new tab
 - name: newtab_homepage_category
   type: STRING
   mode: NULLABLE
+  description: Configuration category for the homepage display
 - name: newtab_newtab_category
   type: STRING
   mode: NULLABLE
+  description: Configuration category for new tab page display
 - name: topsites_rows
   type: INTEGER
   mode: NULLABLE
+  description: Number of top site rows configured to display
 - name: experiments
   type: RECORD
   mode: REPEATED
@@ -79,6 +99,7 @@ fields:
   - name: key
     type: STRING
     mode: NULLABLE
+    description: Unique identifier for the experiment
   - name: value
     type: RECORD
     mode: NULLABLE
@@ -86,6 +107,7 @@ fields:
     - name: branch
       type: STRING
       mode: NULLABLE
+      description: Assigned experiment branch or treatment group
     - name: extra
       type: RECORD
       mode: NULLABLE
@@ -93,226 +115,297 @@ fields:
       - name: type
         type: STRING
         mode: NULLABLE
+        description: Type or category of the experiment
       - name: enrollment_id
         type: STRING
         mode: NULLABLE
+        description: Unique identifier for this experiment enrollment
+      description: Additional experiment metadata
+    description: Experiment configuration details
+  description: Active experiments and their configurations for this client
 - name: visits_with_non_impression_engagement
   type: INTEGER
   mode: NULLABLE
+  description: Count of visits where user engaged beyond viewing impressions
 - name: visits_with_non_search_engagement
   type: INTEGER
   mode: NULLABLE
+  description: Count of visits with engagement other than search
 - name: visits_with_non_default_ui
   type: INTEGER
   mode: NULLABLE
+  description: Count of visits with customized UI settings
 - name: is_new_profile
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether this is a newly created Firefox profile
 - name: activity_segment
   type: STRING
   mode: NULLABLE
-  description: Classification of users based on their browsing activity. E.g., infrequent,
-    casual, regular.
+  description: Classification of users based on their browsing activity. E.g., 
+    infrequent, casual, regular.
 - name: searches
   type: INTEGER
   mode: NULLABLE
+  description: Total number of searches performed from new tab
 - name: tagged_search_ad_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on search ads with Mozilla attribution tags
 - name: tagged_search_ad_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of search ads with Mozilla attribution tags
 - name: follow_on_search_ad_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on ads from follow-on search result pages
 - name: follow_on_search_ad_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of ads on follow-on search result pages
 - name: tagged_follow_on_search_ad_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Tagged ad clicks on follow-on search pages
 - name: tagged_follow_on_search_ad_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Tagged ad impressions on follow-on search pages
 - name: topsite_tile_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Total clicks on top site tiles
 - name: sponsored_topsite_tile_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on sponsored top site tiles
 - name: organic_topsite_tile_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on organic (non-sponsored) top site tiles
 - name: topsite_tile_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Total impressions of top site tiles
 - name: sponsored_topsite_tile_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of sponsored top site tiles
 - name: organic_topsite_tile_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of organic top site tiles
 - name: topsite_tile_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Total dismissals of top site tiles
 - name: sponsored_topsite_tile_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of sponsored top site tiles
 - name: organic_topsite_tile_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of organic top site tiles
 - name: pocket_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Total Pocket recommendation impressions
 - name: sponsored_pocket_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of sponsored Pocket stories
 - name: organic_pocket_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of organic Pocket stories
 - name: pocket_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Total clicks on Pocket recommendations
 - name: sponsored_pocket_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on sponsored Pocket stories
 - name: organic_pocket_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on organic Pocket stories
 - name: pocket_saves
   type: INTEGER
   mode: NULLABLE
+  description: Total stories saved to Pocket
 - name: sponsored_pocket_saves
   type: INTEGER
   mode: NULLABLE
+  description: Sponsored stories saved to Pocket
 - name: organic_pocket_saves
   type: INTEGER
   mode: NULLABLE
+  description: Organic stories saved to Pocket
 - name: wallpaper_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Total new tab wallpaper selection clicks
 - name: wallpaper_clicks_had_previous_wallpaper
   type: INTEGER
   mode: NULLABLE
+  description: Wallpaper changes from an existing selection
 - name: wallpaper_clicks_first_selected_wallpaper
   type: INTEGER
   mode: NULLABLE
+  description: First-time wallpaper selections
 - name: wallpaper_category_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on wallpaper category filters
 - name: wallpaper_highlight_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of wallpaper feature highlights
 - name: wallpaper_highlight_cta_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on wallpaper call-to-action buttons
 - name: weather_widget_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Number of times weather widget was displayed
 - name: weather_widget_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on the weather widget
 - name: weather_widget_load_errors
   type: INTEGER
   mode: NULLABLE
+  description: Count of weather widget loading failures
 - name: weather_widget_change_display_to_detailed
   type: INTEGER
   mode: NULLABLE
+  description: Changes from simple to detailed weather view
 - name: weather_widget_change_display_to_simple
   type: INTEGER
   mode: NULLABLE
+  description: Changes from detailed to simple weather view
 - name: weather_widget_location_selected
   type: INTEGER
   mode: NULLABLE
+  description: Weather location changes or selections
 - name: visits_with_default_ui
   type: INTEGER
   mode: NULLABLE
+  description: Count of visits using default UI configuration
 - name: visits_with_default_ui_with_non_impression_engagement
   type: INTEGER
   mode: NULLABLE
+  description: Default UI visits with non-impression engagement
 - name: visits_with_default_ui_with_non_search_engagement
   type: INTEGER
   mode: NULLABLE
+  description: Default UI visits with non-search engagement
 - name: topic_preferences_set
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether user has configured topic preferences
 - name: sponsored_pocket_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Sponsored Pocket story dismissals
 - name: organic_pocket_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Organic Pocket story dismissals
 - name: pocket_thumbs_up
   type: INTEGER
   mode: NULLABLE
+  description: Positive feedback on Pocket stories
 - name: pocket_thumbs_down
   type: INTEGER
   mode: NULLABLE
+  description: Negative feedback on Pocket stories
 - name: pocket_thumb_voting_events
   type: INTEGER
   mode: NULLABLE
+  description: Total Pocket story rating actions
 - name: topic_selection_selected_topics_first_time
   type: BOOLEAN
   mode: NULLABLE
+  description: Whether user selected topics for the first time
 - name: topic_selection_updates
   type: INTEGER
   mode: NULLABLE
+  description: Count of topic preference modifications
 - name: topic_selection_opened
   type: INTEGER
   mode: NULLABLE
+  description: Count of topic selection dialog opens
 - name: topic_selection_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Count of topic selection dialog dismissals
 - name: profile_group_id
   type: STRING
   mode: NULLABLE
-  description: A UUID uniquely identifying the profile group, not shared with other
-    telemetry data.
+  description: A UUID uniquely identifying the profile group, not shared with 
+    other telemetry data.
 - name: topsites_sponsored_tiles_configured
   type: INTEGER
   mode: NULLABLE
-  description: An integer from client configuration that determines how many tiles
-    the client can see. This telemetry released in Fx123 (2024/02/20), so it should
-    only be considered for clients with Fx123+.
+  description: Maximum number of sponsored tiles the client can display
 - name: non_search_engagement_count
   type: INTEGER
   mode: NULLABLE
+  description: Total non-search engagement actions on new tab
 - name: newtab_dismissal_count
   type: INTEGER
   mode: NULLABLE
+  description: Total dismissal actions performed on new tab
 - name: list_card_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Total clicks on list-style Pocket cards
 - name: organic_list_card_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on organic list-style cards
 - name: sponsored_list_card_clicks
   type: INTEGER
   mode: NULLABLE
+  description: Clicks on sponsored list-style cards
 - name: list_card_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Total impressions of list-style Pocket cards
 - name: organic_list_card_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of organic list-style cards
 - name: sponsored_list_card_impressions
   type: INTEGER
   mode: NULLABLE
+  description: Impressions of sponsored list-style cards
 - name: list_card_saves
   type: INTEGER
   mode: NULLABLE
+  description: Stories saved from list-style cards
 - name: organic_list_card_saves
   type: INTEGER
   mode: NULLABLE
+  description: Saves from organic list-style cards
 - name: sponsored_list_card_saves
   type: INTEGER
   mode: NULLABLE
+  description: Saves from sponsored list-style cards
 - name: list_card_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of list-style Pocket cards
 - name: organic_list_card_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of organic list-style cards
 - name: sponsored_list_card_dismissals
   type: INTEGER
   mode: NULLABLE
+  description: Dismissals of sponsored list-style cards
